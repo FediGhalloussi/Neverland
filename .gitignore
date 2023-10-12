@@ -26,6 +26,9 @@
 # Visual Studio cache directory
 .vs/
 
+# visual studio config file
+.vsconfig
+
 # Jetbrain Rider cache directory
 .idea/
 
