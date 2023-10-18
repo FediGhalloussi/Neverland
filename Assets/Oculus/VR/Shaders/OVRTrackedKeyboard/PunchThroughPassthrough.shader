@@ -1,4 +1,4 @@
-Shader "Punch Through Passthrough"
+ Shader "Punch Through Passthrough"
 {
     Properties
     {
