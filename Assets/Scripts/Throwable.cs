@@ -9,10 +9,12 @@ public class Throwable : MonoBehaviour
     bool pickedUp = false;
     GameObject parentHand;
     Rigidbody rb;
+    Collider collider;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        collider = GetComponent<Collider>();
     }
 
     private void Update()
@@ -37,13 +39,13 @@ public class Throwable : MonoBehaviour
             rb.AddForce(direction*velocity);
             rb.useGravity = true;
             rb.isKinematic = false;
-            GetComponent<Collider>().isTrigger = false;
+            collider.isTrigger = false;
         }
     }
     private void OnTriggerEnter (Collider other)
     {
         float triggerRight = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
-        if (other.gameObject.tag == "hand" && triggerRight > 0.9f)
+        if (other.gameObject.tag == "Hand" && triggerRight > 0.9f)
         {
             pickedUp = true;
             parentHand=other.gameObject;
