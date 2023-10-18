@@ -17,11 +17,11 @@ public class Snowmen : MonoBehaviour
     void Start()
     {
         nb_hit_snowman = 0; 
-        Instantiate(snowman);
+        //Instantiate(snowman);
         player = GameObject.FindGameObjectWithTag("Player");
         //gm = FindObjectOfType<GameManager>;
         //wall = gm.wall;
-        snowman.transform.position = new Vector3(0, 0, 5);
+        transform.position = new Vector3(0, 0.5f, 5);
     }
     private void Update()
     {
@@ -30,8 +30,10 @@ public class Snowmen : MonoBehaviour
 
     void Attack()
     {
-        Vector3 direction_snowman = (snowman.transform.position - player.transform.position).normalized;
-        snowman.transform.position += direction_snowman * Time.deltaTime * speed_snowman;
+        
+        Vector3 direction_snowman = (player.transform.position-snowman.transform.position).normalized;
+        transform.position += direction_snowman * Time.deltaTime * speed_snowman;
+        transform.position = new Vector3(transform.position.x,0.5f,transform.position.z);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,7 +62,7 @@ public class Snowmen : MonoBehaviour
 
     void gameWon()
     {
-        Debug.Log("mini jeu réussi !");
+        Debug.Log("mini jeu rï¿½ussi !");
     }
     void gameOver()
     {
