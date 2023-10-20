@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int num_snowman = 0;
+    public bool game_snow_started = false;
 
     // Start is called before the first frame update
     void Start()

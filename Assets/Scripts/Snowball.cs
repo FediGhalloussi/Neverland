@@ -12,11 +12,12 @@ public class Snowball : MonoBehaviour
     void Start()
     {
         gm = (GameManager)FindObjectOfType(typeof(GameManager));
-        if (gm.num_snowman==0)
+        if (gm.game_snow_started == false)
         {
             Instantiate(snowman, new Vector3(0, 0, 5f), Quaternion.identity);
+            gm.game_snow_started == true;
         }
-        gm.num_snowman++;
+        ;
         
     }
 

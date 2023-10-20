@@ -62,7 +62,7 @@ public class Snowmen : MonoBehaviour
 
     void gameWon()
     {
-        Debug.Log("mini jeu r�ussi !");
+        Debug.Log("mini jeu reussi !");
     }
     void gameOver()
     {
