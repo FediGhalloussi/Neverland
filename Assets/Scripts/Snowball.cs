@@ -15,7 +15,7 @@ public class Snowball : MonoBehaviour
         if (gm.game_snow_started == false)
         {
             Instantiate(snowman, new Vector3(0, 0, 5f), Quaternion.identity);
-            gm.game_snow_started == true;
+            gm.game_snow_started = true;
         }
         ;
         
