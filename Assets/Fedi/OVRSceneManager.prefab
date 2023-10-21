@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2227857032539726351}
   - component: {fileID: 3141415046525078521}
   - component: {fileID: 942106598634709442}
+  - component: {fileID: 3351652356397885186}
   m_Layer: 0
   m_Name: OVRSceneManager
   m_TagString: Untagged
@@ -45,10 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2253d75e3ddc644b8153409c62dd74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlanePrefab: {fileID: 102490448831091297, guid: 13b69f23789024b849461d04072ff55b, type: 3}
-  VolumePrefab: {fileID: 8013016026686888416, guid: 39405b287cfc44c7c8c0df5ff4b5f2b3, type: 3}
+  PlanePrefab: {fileID: 2107458253378869099, guid: 6193b66cd2755a042a907611ddfb75c3,
+    type: 3}
+  VolumePrefab: {fileID: 2107458253378869099, guid: 91b87f2f8b7f3694bae893f0420ef0fb,
+    type: 3}
   PrefabOverrides: []
   VerboseLogging: 0
+  MaxSceneAnchorUpdatesPerFrame: 3
+  _initialAnchorParent: {fileID: 0}
 --- !u!114 &942106598634709442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,5 +64,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1c4a1713e5d1b4409a95470bcf9e5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3351652356397885186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3780963730173484233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 651b914dab23b7d43b947854ec217886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

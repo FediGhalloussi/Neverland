@@ -34,7 +34,7 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
 
             foreach (var obj in allObjects)
             {
-                if (obj.GetComponent<Collider>() == null)
+                if (obj.GetComponent<Collider>() == null || obj)
                 {
                     obj.AddComponent<BoxCollider>();
                 }
@@ -43,11 +43,21 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
             // fix to desks - for some reason they are upside down with Meta's default code
             OVRSemanticClassification[] allClassifications = FindObjectsOfType<OVRSemanticClassification>()
                 .Where(c => c.Contains(OVRSceneManager.Classification.Table))
+                .ToArray(); // fix to desks - for some reason they are upside down with Meta's default code
+
+            OVRSemanticClassification[] allClassificationsFloor = FindObjectsOfType<OVRSemanticClassification>()
+                .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
                 .ToArray();
 
-            foreach(var classification in allClassifications)
+            foreach (var classification in allClassifications)
             {
-                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * -1);
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y,
+                    transform.localScale.z * -1);
+            }
+
+            foreach (var classification in allClassificationsFloor)
+            {
+                classification.AddComponent<BoxCollider>();
             }
         }
     }

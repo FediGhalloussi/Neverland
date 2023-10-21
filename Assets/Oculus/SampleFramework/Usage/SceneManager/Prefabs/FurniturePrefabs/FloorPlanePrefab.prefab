@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 854406862341039361}
   - component: {fileID: 7329915652745048277}
   - component: {fileID: -8252937306274120266}
+  - component: {fileID: -2122383861687393644}
   m_Layer: 0
   m_Name: FloorPlanePrefab
   m_TagString: Untagged
@@ -161,3 +162,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8733429697405204941, guid: 7a109b977f513824da5b75db64b1998d, type: 3}
+--- !u!114 &-2122383861687393644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303299338288874185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7effd8dcbccbd47a159b6edf76fe59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snowballPrefab: {fileID: 2118235946060914716, guid: 4fba5e0c0c3e3e44e800d574bb33caf2,
+    type: 3}

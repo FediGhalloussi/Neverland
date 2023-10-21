@@ -40,10 +40,12 @@ public class Snowmen : MonoBehaviour
     {
         if (other.gameObject.tag == "Snowball")
         {
+            Debug.Log("snowman hit");
             isHit();
         }
         else if (other.gameObject.tag == "Player")
         {
+            Debug.Log("game over");
             gameOver();
         }
     }

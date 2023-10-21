@@ -166,8 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerAnchor: {fileID: 0}
   displayText: {fileID: 0}
-  meshRenderToggleAction: 0
-  objectsToggleAction: 0
-  restoreObjectsAction: 0
+  meshRenderToggleAction: 1
+  objectsToggleAction: 2
+  restoreObjectsAction: 67109376
   lineWidth: 0.01
   lineMaxLength: 50
