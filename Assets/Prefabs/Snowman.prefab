@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snowman: {fileID: 7708109082999990766}
-  speed_snowman: 2
+  speedSnowman: 1

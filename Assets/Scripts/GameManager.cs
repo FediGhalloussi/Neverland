@@ -1,19 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public bool game_snow_started = false;
+    private bool gameSnowStarted = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool GameSnowStarted
     {
+        get { return gameSnowStarted; }
+        set { gameSnowStarted = value; }
     }
 
-    // Update is called once per frame
-    void Update()
+    private static GameManager instance;
+
+    public static GameManager Instance
     {
-        
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManager>();
+            }
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 }

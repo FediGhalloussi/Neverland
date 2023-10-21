@@ -26,14 +26,13 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
 
         private IEnumerator AddCollidersAndFixClassifications()
         {
-            // [Note] jackyangzzh: to avoid racing condition, wait for end of frame
-            //                     for all prefabs to be populated properly before continuing
             yield return new WaitForEndOfFrame();
 
             MeshRenderer[] allObjects = FindObjectsOfType<MeshRenderer>();
 
             foreach (var obj in allObjects)
             {
+                obj.enabled = false;
                 if (obj.GetComponent<Collider>() == null || obj)
                 {
                     obj.AddComponent<BoxCollider>();

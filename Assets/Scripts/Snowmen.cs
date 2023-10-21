@@ -1,31 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Snowmen : MonoBehaviour
 {
-    [SerializeField] GameObject snowman;
-    [SerializeField] float speed_snowman;
-    int nb_hit_snowman;
-    GameObject player;
-    MeshRenderer meshRenderer;
-    // GameManager gm;
-    // GameObject wall;
+    [SerializeField] private GameObject snowman;
+    [SerializeField] private float speedSnowman;
+    private int numberOfHitsSnowman;
+    private GameObject player;
+    private MeshRenderer meshRenderer;
 
-    // Start is called before the first frame update
     void Start()
     {
-        nb_hit_snowman = 0; 
-        //Instantiate(snowman);
+        numberOfHitsSnowman = 0;
         player = GameObject.FindGameObjectWithTag("Player");
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.enabled = true;
-        //gm = FindObjectOfType<GameManager>;
-        //wall = gm.wall;
         transform.position = new Vector3(0, 0.5f, 5);
     }
+
     private void Update()
     {
         Attack();
@@ -33,45 +24,46 @@ public class Snowmen : MonoBehaviour
 
     void Attack()
     {
-        
-        Vector3 direction_snowman = (player.transform.position-snowman.transform.position).normalized;
-        transform.position += direction_snowman * Time.deltaTime * speed_snowman;
-        transform.position = new Vector3(transform.position.x,0.5f,transform.position.z);
+        Vector3 directionSnowman = (player.transform.position - snowman.transform.position).normalized;
+        transform.position += directionSnowman * Time.deltaTime * speedSnowman;
+        transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger detected with " + other.name);
-        if (other.gameObject.tag == "Snowball")
+        if (other.gameObject.CompareTag("Snowball"))
         {
-            Debug.Log("snowman hit");
-            isHit();
+            Debug.Log("Snowman hit");
+            IsHit();
         }
-        else if (other.gameObject.tag == "Player")
+        else if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("game over");
-            gameOver();
-        }
-    }
-    void isHit()
-    {
-        nb_hit_snowman += 1;
-        Debug.Log(nb_hit_snowman + " snowman hit");
-        if (nb_hit_snowman == 3)
-        {
-            gameWon();
-        }
-        else
-        {
-            snowman.transform.position = new Vector3(2, 0, 5);
+            Debug.Log("Game over");
+            GameOver();
         }
     }
 
-    void gameWon()
+    void IsHit()
     {
-        Debug.Log("mini jeu reussi !");
+        numberOfHitsSnowman += 1;
+        Debug.Log(numberOfHitsSnowman + " snowman hit");
+        if (numberOfHitsSnowman == 3)
+        {
+            GameWon();
+        }
+        else
+        {
+            snowman.transform.position = new Vector3(2, 2, 5);
+        }
     }
-    void gameOver()
+
+    void GameWon()
+    {
+        Debug.Log("Mini game successful!");
+    }
+
+    void GameOver()
     {
         meshRenderer.enabled = false;
         Invoke("Start", 3.0f);
