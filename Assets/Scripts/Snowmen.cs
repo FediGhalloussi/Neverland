@@ -10,6 +10,7 @@ public class Snowmen : MonoBehaviour
     [SerializeField] float speed_snowman;
     int nb_hit_snowman;
     GameObject player;
+    MeshRenderer meshRenderer;
     // GameManager gm;
     // GameObject wall;
 
@@ -19,6 +20,8 @@ public class Snowmen : MonoBehaviour
         nb_hit_snowman = 0; 
         //Instantiate(snowman);
         player = GameObject.FindGameObjectWithTag("Player");
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.enabled = true;
         //gm = FindObjectOfType<GameManager>;
         //wall = gm.wall;
         transform.position = new Vector3(0, 0.5f, 5);
@@ -38,6 +41,7 @@ public class Snowmen : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger detected with " + other.name);
         if (other.gameObject.tag == "Snowball")
         {
             Debug.Log("snowman hit");
@@ -52,6 +56,7 @@ public class Snowmen : MonoBehaviour
     void isHit()
     {
         nb_hit_snowman += 1;
+        Debug.Log(nb_hit_snowman + " snowman hit");
         if (nb_hit_snowman == 3)
         {
             gameWon();
@@ -68,7 +73,7 @@ public class Snowmen : MonoBehaviour
     }
     void gameOver()
     {
-        Destroy(snowman);
+        meshRenderer.enabled = false;
         Invoke("Start", 3.0f);
     }
 }
