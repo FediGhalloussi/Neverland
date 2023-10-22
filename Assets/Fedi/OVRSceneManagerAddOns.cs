@@ -47,6 +47,9 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
             OVRSemanticClassification[] allClassificationsFloor = FindObjectsOfType<OVRSemanticClassification>()
                 .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
                 .ToArray();
+            OVRSemanticClassification[] allClassificationsCeiling = FindObjectsOfType<OVRSemanticClassification>()
+                .Where(c => c.Contains(OVRSceneManager.Classification.Ceiling))
+                .ToArray();
 
             foreach (var classification in allClassifications)
             {
@@ -57,6 +60,15 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
             foreach (var classification in allClassificationsFloor)
             {
                 classification.AddComponent<BoxCollider>();
+            }
+            
+            foreach (var classification in allClassificationsCeiling)
+            {
+                //find snow named gameobject and set its y position to the ceiling position + box collider y size
+                GameObject snow = GameObject.Find("Snow");
+                Debug.Log("Snow position: " + snow.transform.position);
+                snow.transform.position = new Vector3(snow.transform.position.x, classification.transform.position.y - .5f, snow.transform.position.z);
+                Debug.Log("Snow new position: " + snow.transform.position);
             }
         }
     }
