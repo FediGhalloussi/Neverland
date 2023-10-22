@@ -1,14 +1,15 @@
+using System;
 using UnityEngine;
 
 public class Snowball : MonoBehaviour
 {
     [SerializeField] private GameObject snowman;
-    void Start()
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (!GameManager.Instance.GameSnowStarted)
+        if (other.CompareTag(null))
         {
-            Instantiate(snowman, new Vector3(0, 0, 5f), Quaternion.identity);
-            GameManager.Instance.GameSnowStarted = true;
+            Destroy(gameObject);
         }
     }
 }
