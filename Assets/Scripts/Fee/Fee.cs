@@ -9,9 +9,11 @@ public class Fee : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float minDistance;
     [SerializeField] private AnimationCurve speedCurve;
+    [SerializeField] private FeeIA IAScript;
     float firstAnimDuration;
     float initialDist;
     float currentDist;
+    bool startedSwap = false;
 
     private bool isMoving = true;
 
@@ -19,6 +21,12 @@ public class Fee : MonoBehaviour
     {
         currentDist = Vector3.Distance(transform.position, cameraTransform.position)-minDistance;
         return currentDist/initialDist;
+    }
+
+    private void swapScript()
+    {
+        IAScript.started = true;
+        Destroy(this);
     }
 
     void Start()
@@ -49,6 +57,11 @@ public class Fee : MonoBehaviour
         {
             // Faites tourner l'objet autour de la caméra
             transform.RotateAround(cameraTransform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+            if (!startedSwap)
+            {
+                startedSwap=true;
+                Invoke("swapScript",4f);
+            }
         }
     }
 }

@@ -605,6 +605,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1025635226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7232320090740523695, guid: 2f822455231dbc04ba4314d2b386b165,
+    type: 3}
+  m_PrefabInstance: {fileID: 1992707227492714255}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1025635232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025635226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ec19758c692b4408cc6192f40828ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  started: 0
+  speed: 0.3
+  speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 1
+      inSlope: -0.012195169
+      outSlope: -0.012195169
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.19375001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  hand: {fileID: 1362777124}
+--- !u!1 &1362777124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 480055663496419397, guid: 13b29c5f3db1cdd4bb9d4bf50ba45f9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3791706630079155093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1471935872
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +984,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1369350022504686951, guid: 2f822455231dbc04ba4314d2b386b165,
         type: 3}
+      propertyPath: IAScript
+      value: 
+      objectReference: {fileID: 1025635232}
+    - target: {fileID: 1369350022504686951, guid: 2f822455231dbc04ba4314d2b386b165,
+        type: 3}
       propertyPath: rotationSpeed
       value: 90
       objectReference: {fileID: 0}
@@ -1001,7 +1075,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7232320090740523695, guid: 2f822455231dbc04ba4314d2b386b165,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1025635232}
   m_SourcePrefab: {fileID: 100100000, guid: 2f822455231dbc04ba4314d2b386b165, type: 3}
 --- !u!1001 &3791706630079155093
 PrefabInstance:
