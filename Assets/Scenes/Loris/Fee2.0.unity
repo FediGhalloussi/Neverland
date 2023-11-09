@@ -624,7 +624,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   started: 0
-  speed: 0.3
+  initialSpeed: 0.5
+  fearSpeed: 3
   speedCurve:
     serializedVersion: 2
     m_Curve:
@@ -667,13 +668,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  hand: {fileID: 1362777124}
---- !u!1 &1362777124 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 480055663496419397, guid: 13b29c5f3db1cdd4bb9d4bf50ba45f9e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3791706630079155093}
-  m_PrefabAsset: {fileID: 0}
+  hand: {fileID: 1501895265}
+  interactionDistance: 0.3
 --- !u!1 &1471935872
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +701,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2022611148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1501895265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3917997495829251119, guid: 13b29c5f3db1cdd4bb9d4bf50ba45f9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3791706630079155093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1558542490
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +785,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1016,6 +1018,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speedCurve.m_Curve.Array.data[3].value
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776811280026678994, guid: 2f822455231dbc04ba4314d2b386b165,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7232320090740523695, guid: 2f822455231dbc04ba4314d2b386b165,
         type: 3}

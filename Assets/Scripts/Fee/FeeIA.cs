@@ -6,7 +6,9 @@ public class FeeIA : MonoBehaviour
 {
     public bool started = false;
     private bool localStarted = false;
-    [SerializeField] private float speed;
+    [SerializeField] private float initialSpeed;
+    private float speed;
+    [SerializeField] private float fearSpeed;
     [SerializeField] private AnimationCurve speedCurve;
     private Vector3 target;
     private bool movementOver;
@@ -15,12 +17,15 @@ public class FeeIA : MonoBehaviour
     private Vector3[] handPositions;
     private int currentPositionIndex;
     [SerializeField] private GameObject hand;
+    private bool isScared;
+    [SerializeField] private float interactionDistance;
 
     // Start is called before the first frame update
     void Start()
     {
         handPositions = new Vector3[10];
         currentPositionIndex = 0;
+        speed = initialSpeed;
     }
 
     // Update is called once per frame
@@ -54,6 +59,8 @@ public class FeeIA : MonoBehaviour
                 transform.position = target;
                 Invoke("StartMovement",0.15f);
                 movementOver=true;
+                isScared=false;
+                if (transform.position.z <2f) speed=initialSpeed;
             }
             
         }
@@ -78,5 +85,18 @@ public class FeeIA : MonoBehaviour
         if (currentPositionIndex<9) currentPositionIndex++;
         else currentPositionIndex=0;
         Invoke("trackHandPosition",0.2f);
+        if (Vector3.Distance(hand.transform.position,transform.position)<interactionDistance&&!isScared)
+        {
+            Scared();
+            isScared=true;
+            speed=fearSpeed;
+        }
+    }
+
+    private void Scared()
+    {
+        target = new Vector3(0f,0f,5f);
+        movementOver=false;
+        movementDist = Vector3.Distance(transform.position,target);
     }
 }
