@@ -10,13 +10,35 @@ public class BoxesSpawner : MonoBehaviour
 
     void Start()
     {
+        // find ovr scene manager component in scene
+        var sceneManager = FindObjectOfType<OVRSceneManager>();
+        sceneManager.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
+        Debug.Log("Scene manager found");
+    }
+
+    public Vector3[] getSpawnerPositions()
+    {
+        return spawnerPosition;
+    }
+    private void boxeSpawn(Vector3 spawner)
+    {
+        Debug.Log("Boxe spawn");
+        Instantiate(boxPrefab);
+        boxPrefab.transform.position = spawner;
+        boxPrefab.SetActive(true);
+    }
+    
+    
+    private void OnSceneModelLoadedSuccessfully()
+    {
+        Debug.Log("Scene loaded");
         spawnerObjects[1] = FindObjectsOfType<OVRSemanticClassification>()
-                .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
-                .ToArray()[0];
+            .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
+            .ToArray()[0];
         spawnerPosition[1] = spawnerObjects[1].transform.position;
         OVRSemanticClassification[] desks = FindObjectsOfType<OVRSemanticClassification>()
-                .Where(c => c.Contains(OVRSceneManager.Classification.Table))
-                .ToArray();
+            .Where(c => c.Contains(OVRSceneManager.Classification.Table))
+            .ToArray();
         if (desks.Length != 0)
         {
             spawnerObjects[0] = desks[0];
@@ -30,17 +52,6 @@ public class BoxesSpawner : MonoBehaviour
 
         boxeSpawn(spawnerPosition[0]);
         boxeSpawn(spawnerPosition[1]);
-    }
-
-    public Vector3[] getSpawnerPositions()
-    {
-        return spawnerPosition;
-    }
-    private void boxeSpawn(Vector3 spawner)
-    {
-        Instantiate(boxPrefab);
-        boxPrefab.transform.position = spawner;
-        boxPrefab.SetActive(true);
     }
 
 
