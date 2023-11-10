@@ -19,6 +19,8 @@ public class FeeIA : MonoBehaviour
     [SerializeField] private GameObject hand;
     private bool isScared;
     [SerializeField] private float interactionDistance;
+    [SerializeField] private GameObject successVFX;
+    [SerializeField] private float speedLimit;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class FeeIA : MonoBehaviour
         handPositions = new Vector3[10];
         currentPositionIndex = 0;
         speed = initialSpeed;
+        movementOver=true;
     }
 
     // Update is called once per frame
@@ -45,9 +48,12 @@ public class FeeIA : MonoBehaviour
 
     private void StartMovement()
     {
-        target = new Vector3(Random.Range(-.25f,.25f),Random.Range(-.25f,.25f),Random.Range(.90f,1.1f));
-        movementOver=false;
-        movementDist = Vector3.Distance(transform.position,target);
+        if (movementOver) // todo: check
+        {
+            target = new Vector3(Random.Range(-.25f,.25f),Random.Range(-.25f,.25f),Random.Range(.90f,1.1f));
+            movementOver=false;
+            movementDist = Vector3.Distance(transform.position,target);
+        }
     }
 
     private void Move()
@@ -87,9 +93,17 @@ public class FeeIA : MonoBehaviour
         Invoke("trackHandPosition",0.2f);
         if (Vector3.Distance(hand.transform.position,transform.position)<interactionDistance&&!isScared)
         {
-            Scared();
-            isScared=true;
-            speed=fearSpeed;
+            if (SuccessOrScared())
+            {
+                Success();
+            }
+            else
+            {
+                Scared();
+                isScared=true;
+                speed=fearSpeed;
+            }
+            
         }
     }
 
@@ -98,5 +112,39 @@ public class FeeIA : MonoBehaviour
         target = new Vector3(0f,0f,5f);
         movementOver=false;
         movementDist = Vector3.Distance(transform.position,target);
+    }
+
+    private void Success()
+    {
+        successVFX.SetActive(true);
+    }
+
+    private bool SuccessOrScared() //returns true if success false if scared (according to velocity)
+    {
+        bool rep = true;
+        for (int i=currentPositionIndex;i<9;i++)
+        {
+            if (Vector3.Distance(handPositions[i],handPositions[i+1])>speedLimit/5f)
+            {
+                rep=false;
+            }
+        }
+        if (currentPositionIndex!=0) 
+        {
+            if (Vector3.Distance(handPositions[9],handPositions[0])>speedLimit/5f)
+            {
+                rep=false;
+            }
+        }
+        for (int i=0;i<currentPositionIndex;i++)
+        {
+            if (Vector3.Distance(handPositions[i],handPositions[i+1])>speedLimit/5f)
+            {
+                rep=false;
+            }
+        }
+        // if we decide to move SuccessOrScared from positiontracking algo we need to add the last frames here
+        return rep;
+        
     }
 }
