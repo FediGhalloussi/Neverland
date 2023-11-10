@@ -22,6 +22,7 @@ public class FeeIA : MonoBehaviour
     [SerializeField] private GameObject successVFX;
     [SerializeField] private float speedLimit;
 
+    [SerializeField] private FairyEnding fairyEndingScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +97,7 @@ public class FeeIA : MonoBehaviour
             if (SuccessOrScared())
             {
                 Success();
+                Destroy(this);
             }
             else
             {
@@ -117,6 +119,7 @@ public class FeeIA : MonoBehaviour
     private void Success()
     {
         successVFX.SetActive(true);
+        fairyEndingScript.hasStarted=true;
     }
 
     private bool SuccessOrScared() //returns true if success false if scared (according to velocity)
