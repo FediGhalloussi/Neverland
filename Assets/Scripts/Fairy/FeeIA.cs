@@ -18,6 +18,7 @@ public class FeeIA : MonoBehaviour
     private int currentPositionIndex;
     [SerializeField] private GameObject hand;
     private bool isScared;
+    private bool wasScared;
     [SerializeField] private float interactionDistance;
     [SerializeField] private GameObject successVFX;
     [SerializeField] private float speedLimit;
@@ -66,7 +67,8 @@ public class FeeIA : MonoBehaviour
                 transform.position = target;
                 Invoke("StartMovement",0.15f);
                 movementOver=true;
-                isScared=false;
+                if (isScared) isScared=false;
+                else if (wasScared) wasScared=false;
                 if (transform.position.z <2f) speed=initialSpeed;
             }
             
@@ -125,6 +127,10 @@ public class FeeIA : MonoBehaviour
     private bool SuccessOrScared() //returns true if success false if scared (according to velocity)
     {
         bool rep = true;
+        if (wasScared) //pour pas qu'on puisse attendre au point d'arrivée de la fée
+        {
+            return false;
+        }
         for (int i=currentPositionIndex;i<9;i++)
         {
             if (Vector3.Distance(handPositions[i],handPositions[i+1])>speedLimit/5f)
