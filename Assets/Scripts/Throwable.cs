@@ -15,6 +15,7 @@ public class Throwable : MonoBehaviour
     void Start()
     {
         collider = GetComponent<Collider>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()

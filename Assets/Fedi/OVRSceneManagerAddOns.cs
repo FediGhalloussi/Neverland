@@ -28,14 +28,23 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
         {
             yield return new WaitForEndOfFrame();
 
-            MeshRenderer[] allObjects = FindObjectsOfType<MeshRenderer>();
+            MeshRenderer[] allObjectss = FindObjectsOfType<MeshRenderer>();
 
-            foreach (var obj in allObjects)
+            foreach (var obj in allObjectss)
             {
-                obj.enabled = false;
                 if (obj.GetComponent<Collider>() == null || obj)
                 {
                     obj.AddComponent<BoxCollider>();
+                }
+            }
+            
+            OVRSemanticClassification[] allObjects = FindObjectsOfType<OVRSemanticClassification>();
+
+            foreach (var obj in allObjects)
+            {
+                if (obj.gameObject.GetComponentInChildren<MeshRenderer>() != null)
+                {
+                    obj.GetComponentInChildren<MeshRenderer>().enabled = false;
                 }
             }
 

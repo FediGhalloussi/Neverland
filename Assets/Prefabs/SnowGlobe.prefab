@@ -16,10 +16,9 @@ GameObject:
   - component: {fileID: 5781662625221387527}
   - component: {fileID: 6638421737864498925}
   - component: {fileID: 2779050376972890960}
-  - component: {fileID: 6617549149459901970}
-  - component: {fileID: -1475310496797325163}
+  - component: {fileID: 7527574638595573504}
   m_Layer: 0
-  m_Name: Snowball
+  m_Name: SnowGlobe
   m_TagString: Snowball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 6513858929755942971, guid: afcf09e55a190704e99cfd047692166c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -195,7 +194,7 @@ MonoBehaviour:
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
   _physicsGrabbable: {fileID: 5781662625221387527}
---- !u!114 &6617549149459901970
+--- !u!114 &7527574638595573504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,20 +203,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2118235946060914716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e493ee07b99ac114c835111d14e3d42e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6905994b93a39a04c9cd908e86972ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snowman: {fileID: 7708109082999990766, guid: 82eedf81244797b4e9251b06f48ff11f, type: 3}
---- !u!114 &-1475310496797325163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118235946060914716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dacfb898f512fc41a9a995d3db43952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 1000
+  snowfallParticleSystem: {fileID: 0}
+  shakeThreshold: 0.5
+  shakeCooldown: 1
