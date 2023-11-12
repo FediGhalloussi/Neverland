@@ -8,10 +8,10 @@ public class SnowballSpawner : MonoBehaviour
 
     private void Update()
     {
-        Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale);
+        Collider[] colliders = Physics.OverlapBox(transform.position, new Vector3(1.5f, 1.5f, 1.5f));
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Hand") && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) && !hasInstantiatedSnowball)
+            if (collider.CompareTag("Hand") && (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))  && !hasInstantiatedSnowball)
             {
                 // Instantiate the snowball prefab when the hand is close to the overlap box
                 Instantiate(snowballPrefab, collider.transform.position, Quaternion.identity);
@@ -19,7 +19,7 @@ public class SnowballSpawner : MonoBehaviour
             }
         }
         
-        if (hasInstantiatedSnowball && !OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
+        if (hasInstantiatedSnowball && !(OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)))
         {
             hasInstantiatedSnowball = false;
         }

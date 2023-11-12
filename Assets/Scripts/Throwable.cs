@@ -32,7 +32,7 @@ public class Throwable : MonoBehaviour
         }
         trackingPos.Add(transform.position);
 
-        float triggerRight = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
+        float triggerRight = OVRInput.Get(OVRInput.RawAxis1D.RHandTrigger);
         if (triggerRight < 0.1f)
         {
             pickedUp = false;
@@ -45,7 +45,7 @@ public class Throwable : MonoBehaviour
     }
     private void OnTriggerEnter (Collider other)
     {
-        float triggerRight = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
+        float triggerRight = OVRInput.Get(OVRInput.RawAxis1D.RHandTrigger);
         if (other.gameObject.tag == "Hand" && triggerRight > 0.9f)
         {
             pickedUp = true;
