@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ChestSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject chest;
+    [SerializeField] private GameObject chest1;
+    [SerializeField] private GameObject chest2;
     // Start is called before the first frame update
 
     void Start()
     {
-        Instantiate(chest, new Vector3(-1f,-1f,1f), Quaternion.identity);
-        Instantiate(chest, new Vector3(1f,-1f,1f), Quaternion.identity);
+        chest1.SetActive(true);
+        chest2.SetActive(true);
     }
 
 

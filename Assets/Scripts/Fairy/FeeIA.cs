@@ -20,7 +20,7 @@ public class FeeIA : MonoBehaviour
     private bool isScared;
     private bool wasScared;
     [SerializeField] private float interactionDistance;
-    [SerializeField] private GameObject successVFX;
+    [SerializeField] private GameObject chestSpawn;
     [SerializeField] private float speedLimit;
 
     [SerializeField] private FairyEnding fairyEndingScript;
@@ -120,7 +120,7 @@ public class FeeIA : MonoBehaviour
 
     private void Success()
     {
-        successVFX.SetActive(true);
+        chestSpawn.SetActive(true);
         fairyEndingScript.hasStarted=true;
     }
 
