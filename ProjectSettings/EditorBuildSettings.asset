@@ -8,11 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: "Assets/Scenes/L\xE9o.unity"
     guid: 7fdfaf832b323eb45ab5ffbabaf15afd
+  - enabled: 1
+    path: Assets/Scenes/VictoBonhomme.unity
+    guid: 14c8e2750319ca84d86bae2554d09961
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 5edd0556fd7a8424ca5d7b0d187e2f90,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d575b720dadb4c445991ba793be39fa7,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: c1ac5ac7827847e4aa4ccdd22f8b1e43,
       type: 2}

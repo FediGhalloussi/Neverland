@@ -1,4 +1,4 @@
-﻿// This shader fills the mesh shape with a color predefined in the code.
+// This shader fills the mesh shape with a color predefined in the code.
 Shader "Passthrough"
 {
     // The properties block of the Unity shader. In this example this block is empty

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Snowmen : MonoBehaviour
@@ -7,6 +8,7 @@ public class Snowmen : MonoBehaviour
     private int numberOfHitsSnowman;
     private GameObject player;
     private MeshRenderer meshRenderer;
+    private OVRSemanticClassification floor;
 
     void Start()
     {
@@ -14,7 +16,10 @@ public class Snowmen : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.enabled = true;
-        transform.position = new Vector3(0, 0.5f, 5);
+        floor = FindObjectsOfType<OVRSemanticClassification>()
+            .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
+            .ToArray()[0];
+        transform.position = new Vector3(0, floor.transform.position.y + meshRenderer.bounds.size.y/2f, 5);
     }
 
     private void Update()
@@ -26,7 +31,7 @@ public class Snowmen : MonoBehaviour
     {
         Vector3 directionSnowman = (player.transform.position - snowman.transform.position).normalized;
         transform.position += directionSnowman * Time.deltaTime * speedSnowman;
-        transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, floor.transform.position.y + meshRenderer.bounds.size.y/2f, transform.position.z);
     }
 
     private void OnTriggerEnter(Collider other)
