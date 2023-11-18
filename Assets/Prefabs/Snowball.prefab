@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6638421737864498925}
   - component: {fileID: 2779050376972890960}
   - component: {fileID: 6617549149459901970}
+  - component: {fileID: 890678524587942991}
   m_Layer: 0
   m_Name: Snowball
   m_TagString: Snowball
@@ -207,3 +208,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snowman: {fileID: 7708109082999990766, guid: 82eedf81244797b4e9251b06f48ff11f, type: 3}
+--- !u!114 &890678524587942991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118235946060914716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dacfb898f512fc41a9a995d3db43952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 1000
