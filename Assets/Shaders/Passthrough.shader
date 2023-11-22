@@ -38,13 +38,16 @@ Shader "Passthrough"
             {
                 // The positionOS variable contains the vertex positions in object
                 // space.
-                float4 positionOS   : POSITION;                 
+                float4 positionOS   : POSITION;
+
+                UNITY_VERTEX_INPUT_INSTANCE_ID // Use for stereo single pass rendering
             };
 
             struct Varyings
             {
                 // The positions in this struct must have the SV_POSITION semantic.
                 float4 positionHCS  : SV_POSITION;
+                UNITY_VERTEX_OUTPUT_STEREO // Use for stereo single pass rendering
             };            
 
             // The vertex shader definition with properties defined in the Varyings 
@@ -54,16 +57,20 @@ Shader "Passthrough"
             {
                 // Declaring the output object (OUT) with the Varyings struct.
                 Varyings OUT;
+
+                UNITY_SETUP_INSTANCE_ID(IN); // Use for stereo single pass rendering
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT); // Use for stereo single pass rendering
                 // The TransformObjectToHClip function transforms vertex positions
                 // from object space to homogenous space
                 OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
                 // Returning the output.
                 return OUT;
             }
-
+            
             // The fragment shader definition.            
-            half4 frag() : SV_Target
+            half4 frag(Varyings v) : SV_Target
             {
+                UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(v); // Use for stereo single pass rendering
                 // Defining the color variable and returning it.
                 half4 customColor;
                 customColor = half4(0,0,0,0);
