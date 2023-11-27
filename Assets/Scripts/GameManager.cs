@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private bool gameSnowStarted = false;
+    private bool gameCannonStarted = false;
 
     public bool GameSnowStarted
     {
@@ -10,6 +11,12 @@ public class GameManager : MonoBehaviour
         set { gameSnowStarted = value; }
     }
 
+
+    public bool GameCannonStarted
+    {
+        get { return gameCannonStarted; }
+        set { gameCannonStarted = value; }
+    }
     private static GameManager instance;
 
     public static GameManager Instance
