@@ -4,7 +4,9 @@ Shader "Passthrough"
     // The properties block of the Unity shader. In this example this block is empty
     // because the output color is predefined in the fragment shader code.
     Properties
-    { }
+    {
+        
+    }
 
     // The SubShader block containing the Shader code. 
     SubShader
