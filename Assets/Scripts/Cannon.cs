@@ -49,7 +49,7 @@ public class Cannon : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Game over");
-            //GameOver();
+            GameOver();
         }
     }
 
@@ -57,5 +57,10 @@ public class Cannon : MonoBehaviour
     {
         CancelInvoke();
         Debug.Log("player has won");
+    }
+
+    private void GameOver()
+    {
+        timer = 30;
     }
 }
