@@ -1,10 +1,14 @@
+using System.Collections.Generic;
 using System.Linq;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class Snowmen : MonoBehaviour
 {
     [SerializeField] private GameObject snowman;
+    [SerializeField] private GameObject magnifyingGlassPrefab;
     [SerializeField] private float speedSnowman;
+    private List<GameObject> children;
     private int numberOfHitsSnowman;
     private GameObject player;
     private MeshRenderer meshRenderer;
@@ -66,11 +70,21 @@ public class Snowmen : MonoBehaviour
     void GameWon()
     {
         Debug.Log("Mini game successful!");
+        var chests = GameObject.FindGameObjectsWithTag("Chest");
+        foreach (var chest in chests)
+        {
+            chest.GetChildGameObjects(children);
+            foreach (var child in children)
+            {
+                Destroy(child);
+            }
+        }
+        Destroy(this); //destroy the snowman bc game is finished
     }
 
     void GameOver()
     {
         meshRenderer.enabled = false;
-        Invoke("Start", 3.0f);
+        Invoke("Start", 3.0f); //game starts again
     }
 }
