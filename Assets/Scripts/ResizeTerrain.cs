@@ -5,16 +5,26 @@ using UnityEngine;
 public class ResizeTerrain : MonoBehaviour
 {
     public GameObject terrain;
+    public Vector3 positionOffset;
+    private Vector3 initialPosition;
+
     // Start is called before the first frame update
     void Start()
-    {
-        terrain.transform.localScale = new Vector3(GetComponentInParent<OVRScenePlane>().Width, 0, GetComponentInParent<OVRScenePlane>().Height);
+    {   //get the normal
+        Vector3 right = GetComponentInParent<OVRScenePlane>().gameObject.transform.right;
+        Vector3 forward = GetComponentInParent<OVRScenePlane>().gameObject.transform.forward;
+        //scale only local x and z
+        terrain.transform.localScale = new Vector3(GetComponentInParent<OVRScenePlane>().Width*100, GetComponentInParent<OVRScenePlane>().Height*100,.15f );
+        //terrain.transform.localScale = new Vector3(GetComponentInParent<OVRScenePlane>().Width*10, GetComponentInParent<OVRScenePlane>().Height*10,.15f );
         //terrain.gameObject.transform.rotation = GetComponentInParent<OVRScenePlane>().gameObject.transform.rotation;
+        initialPosition = transform.position;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        //Attack();
+        transform.position = initialPosition + positionOffset;
     }
+
 }

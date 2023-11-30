@@ -4,45 +4,45 @@ using UnityEngine;
 public class SnowballSpawner : MonoBehaviour
 {
     public GameObject snowballPrefab;
-    private bool hasInstantiatedSnowball = false;
+    public float offsetFloor = 5f;
+    public bool hasInstantiatedSnowball = false;
 
+    private void Start()
+    {
+        Vector3 normal = GetComponentInParent<OVRScenePlane>().gameObject.transform.forward;
+        gameObject.transform.position = GetComponentInParent<OVRScenePlane>().gameObject.transform.position + normal * offsetFloor;
+    }
     private void Update()
     {
-        Collider[] colliders = Physics.OverlapBox(transform.position, new Vector3(1.5f, 1.5f, 1.5f));
-        foreach (Collider collider in colliders)
-        {
-            if (collider.CompareTag("Hand") && (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))  && !hasInstantiatedSnowball)
-            {
-                // Instantiate the snowball prefab when the hand is close to the overlap box
-                Instantiate(snowballPrefab, collider.transform.position, Quaternion.identity);
-                hasInstantiatedSnowball = true;
-            }
-        }
-        
+        Debug.Log("input detected " + (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)));
         if (hasInstantiatedSnowball && !(OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)))
         {
             hasInstantiatedSnowball = false;
         }
         
+        Debug.Log("hasInstantiatedSnowball " + hasInstantiatedSnowball);
+        
     }
 
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //     Debug.Log("Collision detected with " + collision.collider.name);
-    //     if (collision.collider.CompareTag("Hand"))
-    //     {
-    //         Debug.Log("Collision detected with hand");
-    //         Instantiate(snowballPrefab, collision.transform.position, Quaternion.identity);
-    //     }
-    // }
-    //
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     Debug.Log("Trigger detected with " + other.name);
-    //     if (other.CompareTag("Hand"))
-    //     {
-    //         Debug.Log("Trigger detected with hand");
-    //         Instantiate(snowballPrefab, other.transform.position, Quaternion.identity);
-    //     }
-    // }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Hand") && (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))  && !hasInstantiatedSnowball)
+        {
+            // Instantiate the snowball prefab when the hand is close to the overlap box
+            Instantiate(snowballPrefab, collision.collider.transform.position, Quaternion.identity);
+            hasInstantiatedSnowball = true;
+        }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Trigger detected with " + other.name);
+        if (other.CompareTag("Hand") && (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))  && !hasInstantiatedSnowball)
+        {
+            Debug.Log("Trigger detected with hand");
+            Instantiate(snowballPrefab, other.transform.position, Quaternion.identity);
+            hasInstantiatedSnowball = true;
+
+        }
+    }
 }

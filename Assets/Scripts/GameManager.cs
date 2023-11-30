@@ -1,10 +1,11 @@
+using System.Linq;
 using UnityEngine;
-
 public class GameManager : MonoBehaviour
 {
     private bool gameSnowStarted = false;
     private bool gameCannonStarted = false;
 
+    public OVRSemanticClassification floor;
     public bool GameSnowStarted
     {
         get { return gameSnowStarted; }
@@ -43,5 +44,9 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+    }
+    
+    private void Start()
+    {
     }
 }

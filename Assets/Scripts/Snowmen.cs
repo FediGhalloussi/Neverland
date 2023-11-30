@@ -23,7 +23,9 @@ public class Snowmen : MonoBehaviour
         floor = FindObjectsOfType<OVRSemanticClassification>()
             .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
             .ToArray()[0];
-        transform.position = new Vector3(0, floor.transform.position.y + meshRenderer.bounds.size.y/2f, 5);
+        // transform.position = new Vector3(0, floor.transform.position.y + meshRenderer.bounds.size.y/2f, 5);
+        // transform.position = new Vector3(floor.transform.transform.position.x, floor.transform.position.y + meshRenderer.bounds.size.y/2f, floor.transform.transform.position.z);
+        transform.position += floor.transform.forward * .1f;
     }
 
     private void Update()
@@ -33,14 +35,28 @@ public class Snowmen : MonoBehaviour
 
     void Attack()
     {
-        Vector3 directionSnowman = (player.transform.position - snowman.transform.position).normalized;
+        Vector3 directionSnowman = (player.transform.position - transform.position).normalized;
         transform.position += directionSnowman * Time.deltaTime * speedSnowman;
-        transform.position = new Vector3(transform.position.x, floor.transform.position.y + meshRenderer.bounds.size.y/2f, transform.position.z);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger detected with " + other.name);
+        if (other.gameObject.CompareTag("Snowball"))
+        {
+            Debug.Log("Snowman hit");
+            IsHit();
+        }
+        else if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Game over");
+            GameOver();
+        }
+    }
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("Collision detected with " + other.collider.name);
         if (other.gameObject.CompareTag("Snowball"))
         {
             Debug.Log("Snowman hit");

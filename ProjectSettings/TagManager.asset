@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Hand
   - Snowball
+  - RoomLight
+  - Snowman
+  - Chest
   layers:
   - Default
   - TransparentFX
