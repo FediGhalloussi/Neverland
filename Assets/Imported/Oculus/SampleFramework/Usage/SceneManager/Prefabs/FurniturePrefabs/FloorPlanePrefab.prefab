@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 7543116765372040812}
-  positionOffset: {x: 0, y: 12, z: 0}
+  positionOffset: {x: 0, y: 12.7, z: 0}
 --- !u!1 &7543116765372040812
 GameObject:
   m_ObjectHideFlags: 0

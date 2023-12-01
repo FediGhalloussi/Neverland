@@ -13,6 +13,8 @@ public class Snowmen : MonoBehaviour
     private GameObject player;
     private MeshRenderer meshRenderer;
     private OVRSemanticClassification floor;
+    private Vector3 initialPosition;
+    private float heightSnowman;
 
     void Start()
     {
@@ -23,9 +25,11 @@ public class Snowmen : MonoBehaviour
         floor = FindObjectsOfType<OVRSemanticClassification>()
             .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
             .ToArray()[0];
-        // transform.position = new Vector3(0, floor.transform.position.y + meshRenderer.bounds.size.y/2f, 5);
-        // transform.position = new Vector3(floor.transform.transform.position.x, floor.transform.position.y + meshRenderer.bounds.size.y/2f, floor.transform.transform.position.z);
-        transform.position += floor.transform.forward * .1f;
+        heightSnowman = meshRenderer.bounds.size.y; //height of the snowman
+        //initialPosition = floor.GetComponentInChildren<SnowballSpawner>().transform.position + floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman/2f ;
+        //initial pos is 10 meter in front of the player with a random angle between -30 and 30 degrees around player forward
+        //initialPosition = player.transform.position + player.transform.forward * 5f + floor.transform.forward *  heightSnowman;
+        transform.position = GetInitialPosition();
     }
 
     private void Update()
@@ -33,6 +37,12 @@ public class Snowmen : MonoBehaviour
         Attack();
     }
 
+    
+    private Vector3 GetInitialPosition()
+    {
+        return player.transform.position + player.transform.forward * 5f + player.transform.right * Random.Range(-10f, 10f) + floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman * 1f;
+    }
+    
     void Attack()
     {
         Vector3 directionSnowman = (player.transform.position - transform.position).normalized;
@@ -79,7 +89,7 @@ public class Snowmen : MonoBehaviour
         }
         else
         {
-            snowman.transform.position = new Vector3(2, 2, 5);
+            snowman.transform.position = initialPosition;
         }
     }
 
