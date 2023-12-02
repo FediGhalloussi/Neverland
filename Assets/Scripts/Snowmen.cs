@@ -40,7 +40,19 @@ public class Snowmen : MonoBehaviour
     
     private Vector3 GetInitialPosition()
     {
-        return player.transform.position + player.transform.forward * 5f + player.transform.right * Random.Range(-10f, 10f) + floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman * 1f;
+        //instead of 5f, send raycast to the direction of the player right and put distance to the first wall
+        RaycastHit hit;
+        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit, 100f))
+        {
+            Debug.DrawRay(player.transform.position, player.transform.right * hit.distance, Color.yellow);
+            Debug.Log("Did Hit");
+        }
+        else
+        {
+            Debug.DrawRay(player.transform.position, player.transform.right * 100f, Color.white);
+            Debug.Log("Did not Hit");
+        }
+        return player.transform.position + player.transform.forward * hit.distance/2f + player.transform.right * Random.Range(-5f, 5f) + floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman * 1f;
     }
     
     void Attack()
@@ -89,7 +101,7 @@ public class Snowmen : MonoBehaviour
         }
         else
         {
-            snowman.transform.position = initialPosition;
+            snowman.transform.position = GetInitialPosition();
         }
     }
 

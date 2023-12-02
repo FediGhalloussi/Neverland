@@ -9,12 +9,11 @@ public class Snowball : MonoBehaviour
         if (!GameManager.Instance.GameSnowStarted)
         {
             //rotation = floor.gameObject.transform.rotation + 90 degrees around x axis
-            Quaternion rotation = Quaternion.Euler(GameManager.Instance.floor.gameObject.transform.rotation.eulerAngles.x + 90, GameManager.Instance.floor.gameObject.transform.rotation.eulerAngles.y, GameManager.Instance.floor.gameObject.transform.rotation.eulerAngles.z);
+            Quaternion rotation = Quaternion.Euler(GameManager.Instance.floor.gameObject.transform.rotation.eulerAngles.x - 90, GameManager.Instance.floor.gameObject.transform.rotation.eulerAngles.y, -GameManager.Instance.floor.gameObject.transform.rotation.eulerAngles.z);
             Instantiate(snowman, GameManager.Instance.floor.gameObject.transform.position, rotation);
             GameManager.Instance.GameSnowStarted = true;
         }
     }
-
 
     private void OnCollisionEnter(Collision other)
     {
