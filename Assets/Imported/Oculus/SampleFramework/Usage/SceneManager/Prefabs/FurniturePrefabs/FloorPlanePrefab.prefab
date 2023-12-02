@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 7329915652745048277}
   - component: {fileID: -8252937306274120266}
   - component: {fileID: 7408819395305932110}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FloorPlanePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,8 +297,9 @@ GameObject:
   - component: {fileID: 9132456269447850048}
   - component: {fileID: 6905963963436289145}
   - component: {fileID: 8317162261526997730}
+  - component: {fileID: 5248156497762935581}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SnowGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,5 +405,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 2118235946060914716, guid: 4fba5e0c0c3e3e44e800d574bb33caf2,
     type: 3}
-  offsetFloor: 3
+  offsetFloor: 0.5
   hasInstantiatedSnowball: 0
+--- !u!114 &5248156497762935581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7543116765372040812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cc53a4269a0cb498fe7a194a5ecb45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: -876546973899608171, guid: 5ca1363765da8f7449e9d127a8dc91a9, type: 3}

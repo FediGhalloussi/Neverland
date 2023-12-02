@@ -20,12 +20,15 @@ public class Snowmen : MonoBehaviour
     {
         numberOfHitsSnowman = 0;
         player = GameObject.FindGameObjectWithTag("Player");
-        meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.enabled = true;
         floor = FindObjectsOfType<OVRSemanticClassification>()
             .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
             .ToArray()[0];
-        heightSnowman = meshRenderer.bounds.size.y; //height of the snowman
+        if (floor == null)
+        {
+            Debug.Log("1");
+            floor = GameManager.Instance.floor;
+        }
+        heightSnowman = GetComponent<CapsuleCollider>().height; //height of the snowman
         //initialPosition = floor.GetComponentInChildren<SnowballSpawner>().transform.position + floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman/2f ;
         //initial pos is 10 meter in front of the player with a random angle between -30 and 30 degrees around player forward
         //initialPosition = player.transform.position + player.transform.forward * 5f + floor.transform.forward *  heightSnowman;
@@ -40,9 +43,14 @@ public class Snowmen : MonoBehaviour
     
     private Vector3 GetInitialPosition()
     {
-        //instead of 5f, send raycast to the direction of the player right and put distance to the first wall
+        //instead of 5f, send raycast to the direction of the player right and put distance to the first wall (layer mask wall)
         RaycastHit hit;
-        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit, 100f))
+        if (floor == null)
+        {
+            Debug.Log("2");
+            floor = GameManager.Instance.floor;
+        }
+        if (Physics.Raycast(player.transform.position+ floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman * 1f, player.transform.forward, out hit, 100f, LayerMask.GetMask("Wall")))
         {
             Debug.DrawRay(player.transform.position, player.transform.right * hit.distance, Color.yellow);
             Debug.Log("Did Hit");
@@ -51,8 +59,11 @@ public class Snowmen : MonoBehaviour
         {
             Debug.DrawRay(player.transform.position, player.transform.right * 100f, Color.white);
             Debug.Log("Did not Hit");
+            return initialPosition;
         }
-        return player.transform.position + player.transform.forward * hit.distance/2f + player.transform.right * Random.Range(-5f, 5f) + floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman * 1f;
+        //todo add random range to the right
+        initialPosition = player.transform.position + player.transform.forward * (hit.distance-.1f) + player.transform.right * Random.Range(-0f, 0f) + floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman * 1f;
+        return initialPosition;
     }
     
     void Attack()
