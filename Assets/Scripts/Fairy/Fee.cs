@@ -14,6 +14,7 @@ public class Fee : MonoBehaviour
     float initialDist;
     float currentDist;
     bool startedSwap = false;
+    private float defaultHeight;
 
     private bool isMoving = true;
 
@@ -31,6 +32,7 @@ public class Fee : MonoBehaviour
 
     void Start()
     {
+        defaultHeight = transform.position.y;
         firstAnimDuration = Vector3.Distance(transform.position, cameraTransform.position)*1.1f; // todo: faire un algo de calcul d'intégral d'animationcurve pour avoir une valeur exacte
        
         initialDist=Vector3.Distance(transform.position, cameraTransform.position)-minDistance;

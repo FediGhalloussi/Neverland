@@ -12,8 +12,8 @@ public class FeeIA : MonoBehaviour
     [SerializeField] private AnimationCurve speedCurve;
     private Vector3 target;
     private bool movementOver;
-    float movementDist;
-    float currentDist;
+    private float movementDist;
+    private float currentDist;
     private Vector3[] handPositions;
     private int currentPositionIndex;
     [SerializeField] private GameObject hand;
@@ -23,10 +23,13 @@ public class FeeIA : MonoBehaviour
     [SerializeField] private GameObject chestSpawn;
     [SerializeField] private float speedLimit;
 
+    private float defaultHeight;
+
     [SerializeField] private FairyEnding fairyEndingScript;
     // Start is called before the first frame update
     void Start()
     {
+        defaultHeight = transform.position.y;
         handPositions = new Vector3[10];
         currentPositionIndex = 0;
         speed = initialSpeed;
@@ -42,7 +45,7 @@ public class FeeIA : MonoBehaviour
             {
                 StartMovement();
                 localStarted=true;
-                trackHandPosition();
+                TrackHandPosition();
             }
             Move();
         }
@@ -52,7 +55,7 @@ public class FeeIA : MonoBehaviour
     {
         if (movementOver) // todo: check
         {
-            target = new Vector3(Random.Range(-.25f,.25f),Random.Range(-.25f,.25f),Random.Range(.90f,1.1f));
+            target = new Vector3(Random.Range(-.25f,.25f),Random.Range(-.25f+defaultHeight,.25f+defaultHeight),Random.Range(.90f,1.1f));
             movementOver=false;
             movementDist = Vector3.Distance(transform.position,target);
         }
@@ -88,12 +91,12 @@ public class FeeIA : MonoBehaviour
         return currentDist/movementDist;
     }
 
-    private void trackHandPosition()
+    private void TrackHandPosition()
     {
         handPositions[currentPositionIndex] = hand.transform.position;
         if (currentPositionIndex<9) currentPositionIndex++;
         else currentPositionIndex=0;
-        Invoke("trackHandPosition",0.2f);
+        Invoke("TrackHandPosition",0.2f);
         if (Vector3.Distance(hand.transform.position,transform.position)<interactionDistance&&!isScared)
         {
             if (SuccessOrScared())
@@ -113,7 +116,7 @@ public class FeeIA : MonoBehaviour
 
     private void Scared()
     {
-        target = new Vector3(0f,0f,5f);
+        target = new Vector3(0f,defaultHeight,5f);
         movementOver=false;
         movementDist = Vector3.Distance(transform.position,target);
     }
