@@ -41,8 +41,8 @@ namespace Oculus.Interaction
         private bool _isBeingTransformed = false;
         private Vector3 _initialScale;
         private bool _hasPendingForce;
-        private Vector3 _linearVelocity;
-        private Vector3 _angularVelocity;
+        public Vector3 _linearVelocity;
+        public Vector3 _angularVelocity;
 
         protected bool _started = false;
 

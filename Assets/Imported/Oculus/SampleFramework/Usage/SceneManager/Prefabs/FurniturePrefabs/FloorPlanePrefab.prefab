@@ -297,13 +297,14 @@ GameObject:
   - component: {fileID: 9132456269447850048}
   - component: {fileID: 6905963963436289145}
   - component: {fileID: 8317162261526997730}
+  - component: {fileID: 5545183324861722190}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: SnowGround
+  m_TagString: SnowGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6067960495724887381
 Transform:
   m_ObjectHideFlags: 0
@@ -406,3 +407,17 @@ MonoBehaviour:
     type: 3}
   offsetFloor: -10
   hasInstantiatedSnowball: 0
+--- !u!114 &5545183324861722190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7543116765372040812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cc53a4269a0cb498fe7a194a5ecb45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: dcac35fe802d8054dac6910d01f56108, type: 2}

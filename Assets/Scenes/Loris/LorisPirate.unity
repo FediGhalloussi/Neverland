@@ -369,7 +369,7 @@ Transform:
   m_GameObject: {fileID: 383370463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.63, y: -7.66, z: 75.38}
+  m_LocalPosition: {x: -1.63, y: -7.66, z: 35.069992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonballPrefab: {fileID: 8072830712093860720, guid: 2443252c0ab6bd542b8a74b2e53aad86,
     type: 3}
-  cannonballSpeed: 20
+  cannonballSpeed: 3
   shootingInterval: 3.3
 --- !u!1 &410087039
 GameObject:
@@ -1842,7 +1842,7 @@ Transform:
   m_GameObject: {fileID: 1885933361}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.24, y: -8.05, z: 75.38}
+  m_LocalPosition: {x: -4.24, y: -8.05, z: 35.069992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1862,7 +1862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonballPrefab: {fileID: 8072830712093860720, guid: 2443252c0ab6bd542b8a74b2e53aad86,
     type: 3}
-  cannonballSpeed: 20
+  cannonballSpeed: 3
   shootingInterval: 2.2
 --- !u!1001 &1917095845
 PrefabInstance:
@@ -2212,7 +2212,7 @@ Transform:
   m_GameObject: {fileID: 1983852895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.82, y: -8.25, z: 75.41}
+  m_LocalPosition: {x: -6.82, y: -8.25, z: 35.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonballPrefab: {fileID: 8072830712093860720, guid: 2443252c0ab6bd542b8a74b2e53aad86,
     type: 3}
-  cannonballSpeed: 20
+  cannonballSpeed: 3
   shootingInterval: 1
 --- !u!1 &2022611147
 GameObject:
