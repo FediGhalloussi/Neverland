@@ -61,6 +61,7 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
             OVRSemanticClassification[] allClassificationsCeiling = FindObjectsOfType<OVRSemanticClassification>()
                                                                     .Where(c => c.Contains(OVRSceneManager.Classification.Ceiling))
                 .ToArray();
+            GameManager.Instance.ceiling = allClassificationsCeiling[0];
 
             foreach (var classification in allClassifications)
             {

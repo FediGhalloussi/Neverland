@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     private bool gameCannonStarted = false;
 
     public OVRSemanticClassification floor;
+    public OVRSemanticClassification ceiling;
     public bool GameSnowStarted
     {
         get { return gameSnowStarted; }

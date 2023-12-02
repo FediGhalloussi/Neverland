@@ -24,6 +24,7 @@ public class SnowGlobe : MonoBehaviour
         { 
             if (!snowfallParticleSystem.isPlaying)
             {
+                snowfallParticleSystem.GetComponent<ParticleSystemShapeFitter>().enabled = true;
                 snowfallParticleSystem.Play();
                 FindFirstObjectByType<DemoSnow>(FindObjectsInactive.Include).gameObject.SetActive(true);
                 //FIND object with tag
