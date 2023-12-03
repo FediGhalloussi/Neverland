@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7727411499679753856}
   - component: {fileID: 7901688005481968204}
   - component: {fileID: 4039025600760901600}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MagnyfingGlass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5694946351498058590}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: magnifying_glass
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1cea282a65806b346ae0874fba21c002,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

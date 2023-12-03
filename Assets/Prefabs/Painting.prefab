@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1507490480034047508}
   - component: {fileID: 317078437053991619}
   - component: {fileID: 6871641969247757007}
-  m_Layer: 0
+  - component: {fileID: 3604650785478292196}
+  m_Layer: 2
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +107,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &3604650785478292196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7029427775278147412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ac8405fa3d4a249834a103eebf0f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7448612431698432277
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +131,7 @@ GameObject:
   - component: {fileID: 3342693183411381341}
   - component: {fileID: 2927019480303959641}
   - component: {fileID: 2699709412162284439}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4351292886002169236}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Painting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
