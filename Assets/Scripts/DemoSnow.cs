@@ -23,7 +23,18 @@ public class DemoSnow : MonoBehaviour
 
         for(int i = 0; i < materials.Length; ++i)
         {
-            materials[i].SetFloat("_SnowAmount", snowAmount);
+            if (materials[i].GetFloat("_SnowAmount") < 1.0f)
+            {
+                materials[i].SetFloat("_SnowAmount", snowAmount);
+            }
+        }
+    }
+
+    private void OnEnable()
+    {
+        for (int i = 0; i < materials.Length; ++i)
+        {
+            materials[i].SetFloat("_SnowAmount", 0.0f);
         }
     }
 }

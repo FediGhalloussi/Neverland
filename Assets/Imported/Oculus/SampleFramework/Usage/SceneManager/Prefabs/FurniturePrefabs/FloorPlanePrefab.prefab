@@ -405,7 +405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 2118235946060914716, guid: 4fba5e0c0c3e3e44e800d574bb33caf2,
     type: 3}
-  offsetFloor: 0.5
+  offsetFloor: 0.75
   hasInstantiatedSnowball: 0
 --- !u!114 &5248156497762935581
 MonoBehaviour:
@@ -414,10 +414,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7543116765372040812}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90cc53a4269a0cb498fe7a194a5ecb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
   - {fileID: -876546973899608171, guid: 5ca1363765da8f7449e9d127a8dc91a9, type: 3}
+  - {fileID: 2100000, guid: dcac35fe802d8054dac6910d01f56108, type: 2}
