@@ -15,7 +15,7 @@ public class SnowGlobe : MonoBehaviour
         snowfallSnowballParticleSystem.Stop();
         
         //TODO ONLY FOR TESTING PURPOSES - REMOVE LATER 
-        transform.position = FindObjectOfType<OVRCameraRig>().transform.position + FindObjectOfType<OVRCameraRig>().transform.up * .5f;
+        //transform.position = FindObjectOfType<OVRCameraRig>().transform.position + FindObjectOfType<OVRCameraRig>().transform.up * .5f;
     }
     void Update()
     {
