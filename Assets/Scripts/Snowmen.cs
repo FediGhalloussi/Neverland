@@ -18,11 +18,15 @@ public class Snowmen : MonoBehaviour
 
     private GameObject middleEyeAnchor;
 
+    
+    private GameObject nextGame;
+
     void Start()
     {
         numberOfHitsSnowman = 0;
         //player = GameObject.FindGameObjectWithTag("Player");
         middleEyeAnchor = GameObject.FindGameObjectWithTag("MainCamera");
+        nextGame = GameObject.FindGameObjectWithTag("PirateGame");
         player = middleEyeAnchor;
         floor = FindObjectsOfType<OVRSemanticClassification>()
             .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
@@ -142,7 +146,12 @@ public class Snowmen : MonoBehaviour
                 Destroy(child);
             }
         }
-        Destroy(this); //destroy the snowman bc game is finished
+
+        if (nextGame != null)
+        {
+            nextGame.SetActive(true);
+        }
+        Destroy(gameObject); //destroy the snowman bc game is finished
     }
 
     void GameOver()

@@ -10,6 +10,7 @@ TagManager:
   - Snowman
   - Chest
   - SnowGround
+  - PirateGame
   layers:
   - Default
   - TransparentFX
