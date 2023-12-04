@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7727411499679753856}
   - component: {fileID: 7901688005481968204}
   - component: {fileID: 4039025600760901600}
+  - component: {fileID: 7321067157305232931}
   m_Layer: 2
   m_Name: MagnyfingGlass
   m_TagString: Untagged
@@ -104,6 +105,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7321067157305232931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7217283217024714187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375b431fcb5e3434db38556256a5a993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8007046813766196618
 GameObject:
   m_ObjectHideFlags: 0
