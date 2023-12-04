@@ -11,6 +11,7 @@ TagManager:
   - Chest
   - SnowGround
   - PirateGame
+  - PirateGame2
   layers:
   - Default
   - TransparentFX
