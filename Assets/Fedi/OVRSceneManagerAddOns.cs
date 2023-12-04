@@ -49,7 +49,7 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
             {
                 if (obj.gameObject.GetComponentInChildren<MeshRenderer>() != null)
                 {
-                    obj.GetComponentInChildren<MeshRenderer>().enabled = false;
+                    //obj.GetComponentInChildren<MeshRenderer>().enabled = false;
                 }
             }
 

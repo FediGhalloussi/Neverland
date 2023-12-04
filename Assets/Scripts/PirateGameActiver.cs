@@ -18,5 +18,7 @@ public class PirateGameActiver : MonoBehaviour
     public void Active2()
     {
         part2.SetActive(true);
+        Destroy(FindObjectOfType<MagnyfingGlass>().gameObject);
+        FindObjectOfType<OVRSceneRoom>().gameObject.SetActive(false);
     }
 }
