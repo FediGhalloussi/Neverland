@@ -78,6 +78,7 @@ public class Snowmen : MonoBehaviour
     {
         Vector3 directionSnowman = (player.transform.position - transform.position).normalized;
         transform.position += new Vector3(directionSnowman.x * Time.deltaTime * speedSnowman,directionSnowman.y * Time.deltaTime * speedSnowman,directionSnowman.z * Time.deltaTime * speedSnowman);
+        transform.LookAt(player.transform);
         if (Vector3.Distance(transform.position, player.transform.position)<0.2f)
         {
             GameOver();
