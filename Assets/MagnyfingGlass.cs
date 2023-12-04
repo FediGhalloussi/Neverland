@@ -7,11 +7,12 @@ public class MagnyfingGlass : MonoBehaviour
 {
     private LayerMask mask;
 
-    private GameObject pirateGame2;
+    private PirateGameActiver activer;
     // Start is called before the first frame update
     void Start()
     {
-        pirateGame2 = GameObject.FindGameObjectWithTag("PirateGame2");
+        //pirateGame2 = GameObject.FindGameObjectWithTag("PirateGame2");
+        activer = FindObjectOfType<PirateGameActiver>();
         mask = LayerMask.GetMask("Painting");
     }
 
@@ -24,9 +25,9 @@ public class MagnyfingGlass : MonoBehaviour
         if (res)
         {
             Debug.Log("Start le jeu boulet de cannon");
-            if (pirateGame2 != null)
+            if (activer != null)
             {
-                pirateGame2.SetActive(true);
+                activer.Active2();
             }
         }
     }
