@@ -12,9 +12,9 @@ public class Snowball : MonoBehaviour
             
             //Quaternion rotation = Quaternion.Euler(GameManager.Instance.floor.gameObject.transform.rotation.eulerAngles.x - 90, GameManager.Instance.floor.gameObject.transform.rotation.eulerAngles.y, -GameManager.Instance.floor.gameObject.transform.rotation.eulerAngles.z);
             GameObject snowmanInstance = Instantiate(snowman/*, GameManager.Instance.floor.gameObject.transform.rotation*/);
-            
+            snowmanInstance.transform.position = new Vector3(0f, 1f, 5f);
             // Make the snowman's up vector the same as the floor's normal vector
-            snowmanInstance.transform.rotation = Quaternion.FromToRotation(Vector3.up, -GameManager.Instance.floorNormal);
+            //snowmanInstance.transform.rotation = Quaternion.FromToRotation(Vector3.up, -GameManager.Instance.floorNormal);
             GameManager.Instance.GameSnowStarted = true;
         }
     }

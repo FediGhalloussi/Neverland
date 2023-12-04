@@ -16,10 +16,14 @@ public class Snowmen : MonoBehaviour
     private Vector3 initialPosition;
     private float heightSnowman;
 
+    private GameObject middleEyeAnchor;
+
     void Start()
     {
         numberOfHitsSnowman = 0;
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
+        middleEyeAnchor = GameObject.FindGameObjectWithTag("MainCamera");
+        player = middleEyeAnchor;
         floor = FindObjectsOfType<OVRSemanticClassification>()
             .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
             .ToArray()[0];
@@ -73,6 +77,10 @@ public class Snowmen : MonoBehaviour
     {
         Vector3 directionSnowman = (player.transform.position - transform.position).normalized;
         transform.position += directionSnowman * Time.deltaTime * speedSnowman;
+        if (Vector3.Distance(transform.position, player.transform.position)<0.2f)
+        {
+            GameOver();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -115,7 +123,8 @@ public class Snowmen : MonoBehaviour
         }
         else
         {
-            snowman.transform.position = GetInitialPosition();
+            //snowman.transform.position = GetInitialPosition();
+            snowman.transform.position = new Vector3(0f, 1f, 5f);
         }
     }
 

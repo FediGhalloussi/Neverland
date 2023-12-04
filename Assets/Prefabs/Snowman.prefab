@@ -59,7 +59,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -82,6 +82,7 @@ MonoBehaviour:
   snowman: {fileID: 7708109082999990766}
   magnifyingGlassPrefab: {fileID: 0}
   speedSnowman: 0.16
+  middleEyeAnchor: {fileID: 0}
 --- !u!54 &-544931552288050365
 Rigidbody:
   m_ObjectHideFlags: 0
