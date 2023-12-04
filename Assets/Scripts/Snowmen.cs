@@ -50,9 +50,11 @@ public class Snowmen : MonoBehaviour
             Debug.Log("2");
             floor = GameManager.Instance.floor;
         }
-        if (Physics.Raycast(player.transform.position+ floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman * 1f, player.transform.forward, out hit, 100f, LayerMask.GetMask("Wall")))
+        //todo change player forward to where camera is looking
+        Debug.DrawRay(player.transform.position+ GameManager.Instance.floorNormal * heightSnowman * .5f, player.transform.forward * 100f, Color.green, 10000f);
+        if (Physics.Raycast(player.transform.position+ GameManager.Instance.floorNormal * heightSnowman * .5f, player.transform.forward, out hit, 100f, LayerMask.GetMask("Wall")))
         {
-            Debug.DrawRay(player.transform.position, player.transform.right * hit.distance, Color.yellow);
+            Debug.DrawRay(player.transform.position + GameManager.Instance.floorNormal * heightSnowman * .5f, player.transform.forward * hit.distance, Color.yellow, 10000f);
             Debug.Log("Did Hit");
         }
         else
@@ -62,7 +64,8 @@ public class Snowmen : MonoBehaviour
             return initialPosition;
         }
         //todo add random range to the right
-        initialPosition = player.transform.position + player.transform.forward * (hit.distance-.1f) + player.transform.right * Random.Range(-0f, 0f) + floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman * 1f;
+        initialPosition = player.transform.position + player.transform.forward * (hit.distance - .1f) +
+                          player.transform.right * Random.Range(-0f, 0f) + GameManager.Instance.floorNormal * heightSnowman * .5f;
         return initialPosition;
     }
     

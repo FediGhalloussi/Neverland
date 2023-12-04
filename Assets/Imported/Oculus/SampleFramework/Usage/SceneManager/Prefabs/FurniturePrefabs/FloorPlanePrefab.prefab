@@ -149,7 +149,6 @@ GameObject:
   - component: {fileID: 4251060097223836053}
   - component: {fileID: 854406862341039361}
   - component: {fileID: 7329915652745048277}
-  - component: {fileID: -8252937306274120266}
   - component: {fileID: 7408819395305932110}
   m_Layer: 6
   m_Name: FloorPlanePrefab
@@ -248,28 +247,6 @@ MonoBehaviour:
   PaddingZ: 0
   PaddingZMax: 0
   _pivotTransform: {fileID: 2634019197476865952}
---- !u!64 &-8252937306274120266
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7303299338288874185}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8733429697405204941, guid: 7a109b977f513824da5b75db64b1998d, type: 3}
 --- !u!114 &7408819395305932110
 MonoBehaviour:
   m_ObjectHideFlags: 0

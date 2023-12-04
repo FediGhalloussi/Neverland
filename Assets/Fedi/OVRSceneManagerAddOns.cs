@@ -19,6 +19,11 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
             SceneManager.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
         }
 
+        void Update()
+        {
+            Debug.DrawRay(new Vector3(0f,0f,0f), GameManager.Instance.floor.transform.position * 1000f, Color.magenta, 10000f);
+            Debug.Log("draw ray update");
+        }
         private void OnSceneModelLoadedSuccessfully()
         {
             StartCoroutine(AddCollidersAndFixClassifications());
@@ -37,7 +42,7 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
                     obj.AddComponent<BoxCollider>();
                 }
             }
-            
+
             OVRSemanticClassification[] allObjects = FindObjectsOfType<OVRSemanticClassification>();
 
             foreach (var obj in allObjects)
@@ -56,10 +61,33 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
             OVRSemanticClassification[] allClassificationsFloor = FindObjectsOfType<OVRSemanticClassification>()
                 .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
                 .ToArray();
-            
+
             GameManager.Instance.floor = allClassificationsFloor[0];
+            // set the floor normal
+            {
+                // Get the OVRCameraRig object
+                OVRCameraRig ovrCameraRig = FindObjectOfType<OVRCameraRig>();
+
+                // Send a raycast from the camera position downwards
+                RaycastHit hit;
+                Debug.DrawRay(new Vector3(0f,0f,0f), GameManager.Instance.floor.transform.position*1000f, Color.magenta, 10000f);
+                Debug.Log("floor position " + GameManager.Instance.floor.transform.position);
+                if (Physics.Raycast(new Vector3(0f,0f,0f), GameManager.Instance.floor.transform.position * 1000f, out hit))
+                {
+                    Debug.Log("hit normal " + hit.normal);
+                    // If the raycast hits the floor, get the normal
+                    Vector3 hitNormal = hit.normal;
+                    Debug.DrawRay(GameManager.Instance.floor.transform.position, hitNormal*1000f, Color.cyan, 10000f);
+                    GameManager.Instance.floorNormal = - hitNormal;
+                }
+                else
+                {
+                    Debug.Log("no hit normal");
+                }
+            }
+
             OVRSemanticClassification[] allClassificationsCeiling = FindObjectsOfType<OVRSemanticClassification>()
-                                                                    .Where(c => c.Contains(OVRSceneManager.Classification.Ceiling))
+                .Where(c => c.Contains(OVRSceneManager.Classification.Ceiling))
                 .ToArray();
             GameManager.Instance.ceiling = allClassificationsCeiling[0];
 
@@ -73,12 +101,13 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
             {
                 classification.AddComponent<BoxCollider>();
             }*/
-            
+
             foreach (var classification in allClassificationsCeiling)
             {
                 //find snow named gameobject and set its y position to the ceiling position + box collider y size
                 GameObject snow = GameObject.Find("Snow");
-                snow.transform.position = new Vector3(snow.transform.position.x, classification.transform.position.y - .5f, snow.transform.position.z);
+                snow.transform.position = new Vector3(snow.transform.position.x,
+                    classification.transform.position.y - .5f, snow.transform.position.z);
             }
         }
     }
