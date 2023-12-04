@@ -669,14 +669,13 @@ PrefabInstance:
     - target: {fileID: 3141415046525078521, guid: 9276623369a3da943accc53a8b2276f0,
         type: 3}
       propertyPath: PrefabOverrides.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3141415046525078521, guid: 9276623369a3da943accc53a8b2276f0,
         type: 3}
       propertyPath: PrefabOverrides.Array.data[0].Prefab
       value: 
-      objectReference: {fileID: 4025537716497158586, guid: 1ea974962b1adaa4aaa66e6bbd6843dd,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3141415046525078521, guid: 9276623369a3da943accc53a8b2276f0,
         type: 3}
       propertyPath: PrefabOverrides.Array.data[0].ClassificationLabel
@@ -1950,7 +1949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1425056797
 Transform:
   m_ObjectHideFlags: 0
