@@ -125,6 +125,8 @@ public class FeeIA : MonoBehaviour
     {
         chestSpawn.SetActive(true);
         fairyEndingScript.hasStarted=true;
+        //TODO remove if we decide to do EndingScript
+        Destroy(gameObject);
     }
 
     private bool SuccessOrScared() //returns true if success false if scared (according to velocity)
