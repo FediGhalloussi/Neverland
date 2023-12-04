@@ -19,7 +19,7 @@ Shader "MagnifyingGlass"
         Pass
         {
             
-            Blend SrcAlpha OneMinusSrcAlpha
+            Blend Zero One
             
             // The HLSL code block. Unity SRP uses the HLSL language.
             HLSLPROGRAM

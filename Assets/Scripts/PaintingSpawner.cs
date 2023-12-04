@@ -8,22 +8,20 @@ public class PaintingSpawner : MonoBehaviour
 
     void Start()
     {
-        // find ovr scene manager component in scene
-        var sceneManager = FindObjectOfType<OVRSceneManager>();
-        sceneManager.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
+        SpawnAllPainting();
     }
     
     private void SpawnPainting(GameObject painting, Transform spawnParent)
     {
-        var p = Instantiate(painting, spawnParent);
+        GameObject p = Instantiate(painting, spawnParent);
         OVRScenePlane plane = spawnParent.GetComponent<OVRScenePlane>();
         Vector2 dimension = plane.Dimensions;
-        p.transform.position = new Vector3(Random.Range(dimension.x / 2f - dimension.x,dimension.x/2f),
-                                           Random.Range(dimension.y / 2f - dimension.y, dimension.y / 2f),
-                                           0);
+        p.transform.localPosition = new Vector3(Random.Range(dimension.x / 2f - dimension.x + 0.5f,dimension.x/2f - 0.5f),
+                                           Random.Range(dimension.y / 2f - dimension.y + 0.5f, dimension.y / 2f - 0.5f),
+                                           0.02f);
     }
     
-    private void OnSceneModelLoadedSuccessfully()
+    private void SpawnAllPainting()
     {
 
         // find all walls in scene model

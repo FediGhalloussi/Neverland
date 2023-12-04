@@ -22,7 +22,7 @@ public class BoxesSpawner : MonoBehaviour
         GameObject box = Instantiate(boxPrefab, spawner);
         OVRScenePlane plane = spawner.GetComponent<OVRScenePlane>();
         Vector2 dimension = plane.Dimensions;
-        box.transform.position = new Vector3(Random.Range(dimension.x / 2f - dimension.x,dimension.x/2f),
+        box.transform.localPosition = new Vector3(Random.Range(dimension.x / 2f - dimension.x,dimension.x/2f),
                                              Random.Range(dimension.y / 2f - dimension.y, dimension.y / 2f),
                                              0);
         boxPrefab.SetActive(true);

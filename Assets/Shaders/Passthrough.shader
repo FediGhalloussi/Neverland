@@ -41,7 +41,8 @@ Shader "Passthrough"
 
         // -------------------------------------
         // Render State Commands
-        Blend Zero Zero
+        BlendOp RevSub
+        Blend One Zero, Zero Zero
         ZWrite [_ZWrite]
         Cull [_Cull]
 

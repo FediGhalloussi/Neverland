@@ -16,11 +16,11 @@ public class MagnyfingGlass : MonoBehaviour
     void FixedUpdate()
     {
         Ray ray = new Ray(transform.position,transform.forward);
-        bool res = Physics.Raycast(ray,50,mask);
+        bool res = Physics.SphereCast(ray,0.5f,100f,mask);
 
         if (res)
         {
-            Debug.Log("we have a hit");
+            Debug.Log("Start le jeu boulet de cannon");
         }
     }
 }
