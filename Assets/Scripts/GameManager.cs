@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     {
         
         // debug raycast normal floor
-        Debug.DrawRay(floor.transform.position, GameManager.Instance.floorNormal * 100f, Color.red, 10000f);
+        //Debug.DrawRay(floor.transform.position, GameManager.Instance.floorNormal * 100f, Color.red, 10000f);
         Debug.Log("normalfloor " + GameManager.Instance.floorNormal);
         
     }

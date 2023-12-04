@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4251060097223836053}
   - component: {fileID: 854406862341039361}
   - component: {fileID: 7329915652745048277}
-  - component: {fileID: 7408819395305932110}
+  - component: {fileID: 5301024096267108070}
   m_Layer: 6
   m_Name: FloorPlanePrefab
   m_TagString: Untagged
@@ -247,7 +247,7 @@ MonoBehaviour:
   PaddingZ: 0
   PaddingZMax: 0
   _pivotTransform: {fileID: 2634019197476865952}
---- !u!114 &7408819395305932110
+--- !u!114 &5301024096267108070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 2118235946060914716, guid: 4fba5e0c0c3e3e44e800d574bb33caf2,
     type: 3}
-  offsetFloor: 0.75
+  offsetFloor: 0.05
   hasInstantiatedSnowball: 0
 --- !u!114 &5248156497762935581
 MonoBehaviour:

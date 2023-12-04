@@ -21,7 +21,7 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
 
         void Update()
         {
-            Debug.DrawRay(new Vector3(0f,0f,0f), GameManager.Instance.floor.transform.position * 1000f, Color.magenta, 10000f);
+            //Debug.DrawRay(new Vector3(0f,0f,0f), GameManager.Instance.floor.transform.position * 1000f, Color.magenta, 10000f);
             Debug.Log("draw ray update");
         }
         private void OnSceneModelLoadedSuccessfully()

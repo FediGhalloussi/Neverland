@@ -147,7 +147,6 @@ public class Snowmen : MonoBehaviour
 
     void GameOver()
     {
-        meshRenderer.enabled = false;
-        Invoke("Start", 3.0f); //game starts again
+        Start(); //game starts again
     }
 }

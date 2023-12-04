@@ -55,7 +55,7 @@ Material:
     - _NoiseSize: 217.7
     - _NormalStrength: 0.89
     - _QueueControl: 1
-    - _SnowAmount: 0.877268
+    - _SnowAmount: 1.0000112
     - _SnowBlend: 0
     - _SnowColorNoiseSize: 202.5
     - _SnowColorNoiseStrength: 0.106
