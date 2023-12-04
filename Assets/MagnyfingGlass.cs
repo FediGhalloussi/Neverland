@@ -6,9 +6,12 @@ using UnityEngine;
 public class MagnyfingGlass : MonoBehaviour
 {
     private LayerMask mask;
+
+    private GameObject pirateGame2;
     // Start is called before the first frame update
     void Start()
     {
+        pirateGame2 = GameObject.FindGameObjectWithTag("PirateGame2");
         mask = LayerMask.GetMask("Painting");
     }
 
@@ -21,6 +24,10 @@ public class MagnyfingGlass : MonoBehaviour
         if (res)
         {
             Debug.Log("Start le jeu boulet de cannon");
+            if (pirateGame2 != null)
+            {
+                pirateGame2.SetActive(true);
+            }
         }
     }
 }
