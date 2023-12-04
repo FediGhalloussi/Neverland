@@ -2467,13 +2467,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2098637304}
   - component: {fileID: 2098637303}
+  - component: {fileID: 2098637305}
   m_Layer: 0
   m_Name: VictoTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2098637303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2503,6 +2504,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2098637305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098637302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b6a8042585f5348844eb69d3b37e84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paintingPrefabs:
+  - {fileID: 8268604492042395516, guid: 887265765e743c448807fde0288d4a3e, type: 3}
+  - {fileID: 4552779545631432961, guid: 0ad6799ec44bff04cbe36041cf31e051, type: 3}
+  - {fileID: 788946351697848234, guid: 42e6e5c00d610754c8279a68f173cadf, type: 3}
 --- !u!1001 &2127166697
 PrefabInstance:
   m_ObjectHideFlags: 0
