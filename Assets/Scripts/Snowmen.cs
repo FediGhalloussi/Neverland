@@ -10,7 +10,7 @@ public class Snowmen : MonoBehaviour
     [SerializeField] private float speedSnowman;
     private List<GameObject> children;
     private int numberOfHitsSnowman;
-    private GameObject player;
+    public GameObject player;
     private MeshRenderer meshRenderer;
     private OVRSemanticClassification floor;
     private Vector3 initialPosition;
@@ -36,7 +36,8 @@ public class Snowmen : MonoBehaviour
         //initialPosition = floor.GetComponentInChildren<SnowballSpawner>().transform.position + floor.GetComponentInChildren<SnowballSpawner>().transform.forward * heightSnowman/2f ;
         //initial pos is 10 meter in front of the player with a random angle between -30 and 30 degrees around player forward
         //initialPosition = player.transform.position + player.transform.forward * 5f + floor.transform.forward *  heightSnowman;
-        transform.position = GetInitialPosition();
+        //transform.position = GetInitialPosition();
+        transform.position = new Vector3(0f, 0f, 5f);
     }
 
     private void Update()
@@ -76,7 +77,7 @@ public class Snowmen : MonoBehaviour
     void Attack()
     {
         Vector3 directionSnowman = (player.transform.position - transform.position).normalized;
-        transform.position += directionSnowman * Time.deltaTime * speedSnowman;
+        transform.position += new Vector3(directionSnowman.x * Time.deltaTime * speedSnowman,directionSnowman.y * Time.deltaTime * speedSnowman,directionSnowman.z * Time.deltaTime * speedSnowman);
         if (Vector3.Distance(transform.position, player.transform.position)<0.2f)
         {
             GameOver();
