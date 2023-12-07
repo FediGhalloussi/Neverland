@@ -126,6 +126,11 @@ public class FeeIA : MonoBehaviour
         chestSpawn.SetActive(true);
         fairyEndingScript.hasStarted=true;
         //TODO remove if we decide to do EndingScript
+        Invoke("DestroyFairy",3f);
+    }
+
+    private void DestroyFairy()
+    {
         Destroy(gameObject);
     }
 
