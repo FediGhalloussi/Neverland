@@ -25,12 +25,27 @@ public class CaptainHook : MonoBehaviour
         {
             Flee();
         }
-        //todo : gameWon si le captain touche le crocodile
     }
 
     public void Flee()
     {
-        //todo : fuite sur les côtés si rencontre un mur
+        transform.LookAt(player.transform);
         transform.Translate(Vector3.back * speed * Time.deltaTime);
+        //todo : debug si bloqué dans un angle
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Trigger detected with " + other.name);
+        if (other.gameObject.CompareTag("Crocodile"))
+        {
+            Debug.Log("Game won");
+            GameWon();
+        }
+    }
+
+    private void GameWon()
+    {
+        Debug.Log("player has won");
     }
 }
