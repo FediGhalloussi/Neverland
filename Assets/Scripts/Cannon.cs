@@ -1,3 +1,4 @@
+using Meta.WitAi;
 using UnityEngine;
 
 public class Cannon : MonoBehaviour
@@ -5,6 +6,7 @@ public class Cannon : MonoBehaviour
     public GameObject cannonballPrefab;
     public float cannonballSpeed = 10f;
     public float shootingInterval = 2f;
+    [SerializeField] float cannonballLifetime = 3f;
     Vector3 fromCannonToPlayer;
     private GameObject player;
     private float timer;
@@ -41,7 +43,7 @@ public class Cannon : MonoBehaviour
         // Shoot the cannonball in the forward direction with specified speed
         rb.velocity = fromCannonToPlayer * cannonballSpeed;
 
-        // You can add more customization to the cannonball here if needed
+        Destroy(cannonball, cannonballLifetime);
     }
     private void OnTriggerEnter(Collider other)
     {
