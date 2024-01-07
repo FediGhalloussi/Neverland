@@ -11,15 +11,20 @@ public class SnowGlobe : MonoBehaviour
     [SerializeField] private float shakeCooldown = 1.0f;
     void Start()
     {
-        snowfallParticleSystem.Stop();
+        //snowfallParticleSystem.Stop();
         snowfallSnowballParticleSystem.Stop();
+        if (snowfallParticleSystem == null)
+        {
+            //todo degueu
+            snowfallParticleSystem = (ParticleSystem) FindObjectOfType<ParticleSystemShapeFitter>().gameObject.GetComponent<ParticleSystem>();
+        }
     }
     void Update()
     {
         // Check if the snow globe is being shaken and grabbed by the player
         if (IsShakeDetected() && GetComponent<Grabbable>().SelectingPointsCount >= 1)
         { 
-            if (!snowfallParticleSystem.isPlaying)
+            if (snowfallParticleSystem!= null && !snowfallParticleSystem.isPlaying)
             {
                 snowfallParticleSystem.GetComponent<ParticleSystemShapeFitter>().enabled = true;
                 snowfallParticleSystem.Play();

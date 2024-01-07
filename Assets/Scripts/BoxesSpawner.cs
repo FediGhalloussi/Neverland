@@ -8,6 +8,7 @@ public class BoxesSpawner : MonoBehaviour
     private OVRSemanticClassification[] spawnerObjects=new OVRSemanticClassification[2];
     private Transform[] spawnerPosition=new Transform[2];
 
+    //todo use this to spawn boxes after catching fairy
     void Start()
     {
         // find ovr scene manager component in scene
@@ -26,6 +27,7 @@ public class BoxesSpawner : MonoBehaviour
                                              Random.Range(dimension.y / 2f - dimension.y, dimension.y / 2f),
                                              0);
         boxPrefab.SetActive(true);
+        box.SetActive(false);
     }
     
     

@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class ChestSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject chest1;
-    [SerializeField] private GameObject chest2;
+    //todo : remove pblic, only for debug
+    public Chest[] chests;
     // Start is called before the first frame update
 
     void Start()
     {
-        chest1.SetActive(true);
-        chest2.SetActive(true);
+        chests = FindObjectsByType<Chest>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (var chest in chests)
+        {
+            chest.gameObject.SetActive(true);
+        }
     }
 
+    public void NextObject()
+    {
+        foreach (var chest in chests)
+        {
+            chest.objectsInChest[GameManager.Instance.currentObjectIndex].SetActive(false);
+        }
+        GameManager.Instance.currentObjectIndex++;
+
+        foreach (var chest in chests)
+        {
+            if (GameManager.Instance.currentObjectIndex < chest.objectsInChest.Length)
+            {
+                chest.objectsInChest[GameManager.Instance.currentObjectIndex].SetActive(true);
+            } 
+        }
+        
+        GameManager.Instance.chestOpenable = true;
+
+    }
 
 }

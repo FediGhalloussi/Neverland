@@ -147,11 +147,9 @@ public class Snowmen : MonoBehaviour
                 Destroy(child);
             }
         }
-
-        if (activer != null)
-        {
-            activer.Active1();
-        }
+        //todo to change degueu
+        FindObjectOfType<ChestSpawn>().NextObject();
+    
         Destroy(gameObject); //destroy the snowman bc game is finished
     }
 

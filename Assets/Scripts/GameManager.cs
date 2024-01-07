@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     public OVRSemanticClassification ceiling;
     
     public Vector3 floorNormal;
+    
+    //Chest related variables
+    public int currentObjectIndex = 0;
+    public bool chestOpenable = true;
     public bool GameSnowStarted
     {
         get { return gameSnowStarted; }
@@ -61,4 +65,5 @@ public class GameManager : MonoBehaviour
         Debug.Log("normalfloor " + GameManager.Instance.floorNormal);
         
     }
+    
 }

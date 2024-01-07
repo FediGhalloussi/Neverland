@@ -34,6 +34,8 @@ public class FeeIA : MonoBehaviour
         currentPositionIndex = 0;
         speed = initialSpeed;
         movementOver=true;
+        //todo: remove        
+        Invoke("Success",2f);
     }
 
     // Update is called once per frame
@@ -97,6 +99,7 @@ public class FeeIA : MonoBehaviour
         if (currentPositionIndex<9) currentPositionIndex++;
         else currentPositionIndex=0;
         Invoke("TrackHandPosition",0.2f);
+        Debug.Log("Tracking hand position" + Vector3.Distance(hand.transform.position,transform.position));
         if (Vector3.Distance(hand.transform.position,transform.position)<interactionDistance&&!isScared)
         {
             if (SuccessOrScared())
@@ -116,6 +119,7 @@ public class FeeIA : MonoBehaviour
 
     private void Scared()
     {
+        Debug.Log("Scared");
         target = new Vector3(0f,defaultHeight,5f);
         movementOver=false;
         movementDist = Vector3.Distance(transform.position,target);
@@ -123,10 +127,12 @@ public class FeeIA : MonoBehaviour
 
     private void Success()
     {
+        Debug.Log("Success");
+        GameManager.Instance.chestOpenable = true;
         chestSpawn.SetActive(true);
         fairyEndingScript.hasStarted=true;
         //TODO remove if we decide to do EndingScript
-        Invoke("DestroyFairy",3f);
+        //Invoke("DestroyFairy",3f);
     }
 
     private void DestroyFairy()

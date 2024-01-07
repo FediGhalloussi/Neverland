@@ -31,7 +31,7 @@ public class CaptainHook : MonoBehaviour
     {
         transform.LookAt(player.transform);
         transform.Translate(Vector3.back * speed * Time.deltaTime);
-        //todo : debug si bloqué dans un angle
+        //todo : debug si bloquÃ© dans un angle
     }
 
     private void OnTriggerEnter(Collider other)
