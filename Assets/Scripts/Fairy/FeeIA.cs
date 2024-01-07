@@ -34,8 +34,6 @@ public class FeeIA : MonoBehaviour
         currentPositionIndex = 0;
         speed = initialSpeed;
         movementOver=true;
-        //todo: remove        
-        Invoke("Success",2f);
     }
 
     // Update is called once per frame
@@ -99,7 +97,6 @@ public class FeeIA : MonoBehaviour
         if (currentPositionIndex<9) currentPositionIndex++;
         else currentPositionIndex=0;
         Invoke("TrackHandPosition",0.2f);
-        Debug.Log("Tracking hand position" + Vector3.Distance(hand.transform.position,transform.position));
         if (Vector3.Distance(hand.transform.position,transform.position)<interactionDistance&&!isScared)
         {
             if (SuccessOrScared())

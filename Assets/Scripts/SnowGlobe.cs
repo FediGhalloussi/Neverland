@@ -1,7 +1,7 @@
 using Oculus.Interaction;
 using UnityEngine;
 
-public class SnowGlobe : MonoBehaviour
+public class SnowGlobe : MonoBehaviour, GameActiver
 {
     public ParticleSystem snowfallParticleSystem;
     public ParticleSystem snowfallSnowballParticleSystem;
@@ -15,7 +15,7 @@ public class SnowGlobe : MonoBehaviour
         snowfallSnowballParticleSystem.Stop();
         if (snowfallParticleSystem == null)
         {
-            //todo degueu
+            //todo pas beau
             snowfallParticleSystem = (ParticleSystem) FindObjectOfType<ParticleSystemShapeFitter>().gameObject.GetComponent<ParticleSystem>();
         }
     }
@@ -44,11 +44,9 @@ public class SnowGlobe : MonoBehaviour
         Vector3 currentPos = transform.position;
         float velocity = (currentPos - lastPosition).magnitude / Time.deltaTime;
         lastPosition = currentPos;
-        Debug.Log("velocity: " + velocity);
 
         if (velocity > shakeThreshold)
         {
-            Debug.Log("Shake detected");
             if (snowfallSnowballParticleSystem.isStopped)
             {
                 snowfallSnowballParticleSystem.Play();
@@ -95,5 +93,10 @@ public class SnowGlobe : MonoBehaviour
     {
         // Reset lastPosition when disabled
         lastPosition = Vector3.zero;
+    }
+
+    public void ActivateGame()
+    {
+        
     }
 }

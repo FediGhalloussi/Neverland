@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChestSpawn : MonoBehaviour
 {
-    //todo : remove pblic, only for debug
+    //todo : remove pblic
     public Chest[] chests;
     // Start is called before the first frame update
 
@@ -22,7 +22,7 @@ public class ChestSpawn : MonoBehaviour
     {
         foreach (var chest in chests)
         {
-            chest.objectsInChest[GameManager.Instance.currentObjectIndex].SetActive(false);
+            chest.objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(false);
         }
         GameManager.Instance.currentObjectIndex++;
 
@@ -30,7 +30,7 @@ public class ChestSpawn : MonoBehaviour
         {
             if (GameManager.Instance.currentObjectIndex < chest.objectsInChest.Length)
             {
-                chest.objectsInChest[GameManager.Instance.currentObjectIndex].SetActive(true);
+                chest.objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(true);
             } 
         }
         

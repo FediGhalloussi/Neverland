@@ -6,32 +6,45 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     [Tooltip("Objects need to be ordered")]
-    public GameObject[] objectsInChest;
+    public GameActiver[] objectsInChest = new GameActiver[2];
     
     bool isOpen = false;
     Animator animator;
     
     private void Start()
     {
-        objectsInChest[GameManager.Instance.currentObjectIndex].SetActive(true);
+        objectsInChest[0] = GetComponentInChildren<SnowGlobe>(true);
+        objectsInChest[0].gameObject.SetActive(false);
+        objectsInChest[1] = GetComponentInChildren<MagnyfingGlass>(true);
+        objectsInChest[1].gameObject.SetActive(false);
+        
+        Debug.Log(objectsInChest[GameManager.Instance.currentObjectIndex]);
+        Debug.Log(objectsInChest[GameManager.Instance.currentObjectIndex].gameObject);
+        objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(true);
         animator = GetComponentInChildren<Animator>();
     }
     
     private void Update()
     {
         //if chest is open and object of current index is not colliding with chest, close chest
-        if (isOpen && !objectsInChest[GameManager.Instance.currentObjectIndex].GetComponent<Collider>().bounds.Intersects(GetComponent<Collider>().bounds))
+        Collider collider = objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.GetComponent<Collider>();
+        if (collider == null)
+        {
+            collider = objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.GetComponentInChildren<Collider>();
+        }
+        if (!collider.bounds.Intersects(GetComponent<Collider>().bounds))
         {
             CloseChest();
+            objectsInChest[GameManager.Instance.currentObjectIndex].ActivateGame();
         }
     }
     
     public void NextObject()
     {
-        objectsInChest[GameManager.Instance.currentObjectIndex].SetActive(false);
+        objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(false);
         if (GameManager.Instance.currentObjectIndex < objectsInChest.Length)
         {
-            objectsInChest[GameManager.Instance.currentObjectIndex].SetActive(true);
+            objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(true);
         } 
         GameManager.Instance.chestOpenable = true;
     }
@@ -58,7 +71,7 @@ public class Chest : MonoBehaviour
         isOpen = false;
     }
 
-    
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger detected with " + other.name);
