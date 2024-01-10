@@ -11,10 +11,15 @@ public class CaptainHook : MonoBehaviour
     float distance;
     [SerializeField] float triggerArea = 5;
     [SerializeField] float speed;
+    Vector3 movement;
+
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        movement = Vector3.back * speed * Time.deltaTime;
+
     }
 
     // Update is called once per frame
@@ -30,8 +35,10 @@ public class CaptainHook : MonoBehaviour
     public void Flee()
     {
         transform.LookAt(player.transform);
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
+        transform.Translate(movement);
         //todo : debug si bloqué dans un angle
+        //utilise la fonction Vector3.Reflect(Vector3 incidence originalObject.position, Vector3 normal)
+        //Vector3.Reflect(speed.normalized,coll.contacts[0].normal)
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,6 +48,17 @@ public class CaptainHook : MonoBehaviour
         {
             Debug.Log("Game won");
             GameWon();
+        } 
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Crocodile"))
+        {
+
+        }
+        else
+        {
+            transform.Translate(Vector3.Reflect(movement.normalized, collision.contacts[0].normal));
         }
     }
 
