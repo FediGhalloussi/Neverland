@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagnyfingGlass : MonoBehaviour
+public class MagnyfingGlass : MonoBehaviour , GameActiver
 {
     private LayerMask mask;
 
@@ -29,6 +29,14 @@ public class MagnyfingGlass : MonoBehaviour
             {
                 activer.Active2();
             }
+        }
+    }
+    
+    public void ActivateGame()
+    {
+        if (activer != null)
+        {
+            activer.Active1();
         }
     }
 }

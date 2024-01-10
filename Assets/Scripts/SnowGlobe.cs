@@ -1,7 +1,7 @@
 using Oculus.Interaction;
 using UnityEngine;
 
-public class SnowGlobe : MonoBehaviour
+public class SnowGlobe : MonoBehaviour, GameActiver
 {
     public ParticleSystem snowfallParticleSystem;
     public ParticleSystem snowfallSnowballParticleSystem;
@@ -11,15 +11,20 @@ public class SnowGlobe : MonoBehaviour
     [SerializeField] private float shakeCooldown = 1.0f;
     void Start()
     {
-        snowfallParticleSystem.Stop();
+        //snowfallParticleSystem.Stop();
         snowfallSnowballParticleSystem.Stop();
+        if (snowfallParticleSystem == null)
+        {
+            //todo pas beau
+            snowfallParticleSystem = (ParticleSystem) FindObjectOfType<ParticleSystemShapeFitter>().gameObject.GetComponent<ParticleSystem>();
+        }
     }
     void Update()
     {
         // Check if the snow globe is being shaken and grabbed by the player
         if (IsShakeDetected() && GetComponent<Grabbable>().SelectingPointsCount >= 1)
         { 
-            if (!snowfallParticleSystem.isPlaying)
+            if (snowfallParticleSystem!= null && !snowfallParticleSystem.isPlaying)
             {
                 snowfallParticleSystem.GetComponent<ParticleSystemShapeFitter>().enabled = true;
                 snowfallParticleSystem.Play();
@@ -39,11 +44,9 @@ public class SnowGlobe : MonoBehaviour
         Vector3 currentPos = transform.position;
         float velocity = (currentPos - lastPosition).magnitude / Time.deltaTime;
         lastPosition = currentPos;
-        Debug.Log("velocity: " + velocity);
 
         if (velocity > shakeThreshold)
         {
-            Debug.Log("Shake detected");
             if (snowfallSnowballParticleSystem.isStopped)
             {
                 snowfallSnowballParticleSystem.Play();
@@ -90,5 +93,10 @@ public class SnowGlobe : MonoBehaviour
     {
         // Reset lastPosition when disabled
         lastPosition = Vector3.zero;
+    }
+
+    public void ActivateGame()
+    {
+        
     }
 }

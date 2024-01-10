@@ -147,11 +147,10 @@ public class Snowmen : MonoBehaviour
                 Destroy(child);
             }
         }
-
-        if (activer != null)
-        {
-            activer.Active1();
-        }
+        //todo to change pas beau
+        FindObjectOfType<ParticleSystemShapeFitter>().gameObject.SetActive(false);
+        FindObjectOfType<ChestSpawn>().NextObject();
+    
         Destroy(gameObject); //destroy the snowman bc game is finished
     }
 

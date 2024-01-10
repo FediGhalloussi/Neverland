@@ -116,6 +116,7 @@ public class FeeIA : MonoBehaviour
 
     private void Scared()
     {
+        Debug.Log("Scared");
         target = new Vector3(0f,defaultHeight,5f);
         movementOver=false;
         movementDist = Vector3.Distance(transform.position,target);
@@ -123,10 +124,12 @@ public class FeeIA : MonoBehaviour
 
     private void Success()
     {
+        Debug.Log("Success");
+        GameManager.Instance.chestOpenable = true;
         chestSpawn.SetActive(true);
         fairyEndingScript.hasStarted=true;
         //TODO remove if we decide to do EndingScript
-        Invoke("DestroyFairy",3f);
+        //Invoke("DestroyFairy",3f);
     }
 
     private void DestroyFairy()

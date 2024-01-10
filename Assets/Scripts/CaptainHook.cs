@@ -35,10 +35,8 @@ public class CaptainHook : MonoBehaviour
     public void Flee()
     {
         transform.LookAt(player.transform);
+        movement = Vector3.back * speed * Time.deltaTime;
         transform.Translate(movement);
-        //todo : debug si bloqué dans un angle
-        //utilise la fonction Vector3.Reflect(Vector3 incidence originalObject.position, Vector3 normal)
-        //Vector3.Reflect(speed.normalized,coll.contacts[0].normal)
     }
 
     private void OnTriggerEnter(Collider other)
