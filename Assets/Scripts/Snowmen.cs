@@ -150,7 +150,11 @@ public class Snowmen : MonoBehaviour
         //todo to change pas beau
         FindObjectOfType<ParticleSystemShapeFitter>().gameObject.SetActive(false);
         FindObjectOfType<ChestSpawn>().NextObject();
-    
+        var snowGround  = FindObjectsOfType<OVRSemanticClassification>()
+            .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
+            .ToArray()[0].gameObject.transform.GetChild(2);
+        snowGround.gameObject.SetActive(false);
+        
         Destroy(gameObject); //destroy the snowman bc game is finished
     }
 

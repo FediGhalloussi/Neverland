@@ -45,7 +45,7 @@ public class CaptainHook : MonoBehaviour
         if (other.gameObject.CompareTag("Crocodile"))
         {
             Debug.Log("Game won");
-            GameWon();
+            GameWon(); 
         } 
     }
     private void OnCollisionEnter(Collision collision)
