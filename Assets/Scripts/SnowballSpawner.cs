@@ -11,6 +11,7 @@ public class SnowballSpawner : MonoBehaviour
     {
         Vector3 normal = GetComponentInParent<OVRScenePlane>().gameObject.transform.forward;
         gameObject.transform.position = GetComponentInParent<OVRScenePlane>().gameObject.transform.position + normal * offsetFloor;
+        Debug.Log("Snowball spawner ON");
     }
     private void Update()
     {
@@ -24,17 +25,19 @@ public class SnowballSpawner : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.CompareTag("Hand") && (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))  && !hasInstantiatedSnowball)
         {
             // Instantiate the snowball prefab when the hand is close to the overlap box
             Instantiate(snowballPrefab, collision.collider.transform.position, Quaternion.identity);
             hasInstantiatedSnowball = true;
+            Debug.Log("Spawning snowball !");
+
         }
     }
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         Debug.Log("Trigger detected with " + other.name);
         if (other.CompareTag("Hand") && (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))  && !hasInstantiatedSnowball)
@@ -42,6 +45,8 @@ public class SnowballSpawner : MonoBehaviour
             Debug.Log("Trigger detected with hand");
             Instantiate(snowballPrefab, other.transform.position, Quaternion.identity);
             hasInstantiatedSnowball = true;
+            Debug.Log("Spawning snowball !");
+
 
         }
     }

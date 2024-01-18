@@ -254,7 +254,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.8147, y: 8.9, z: 35.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1425056797}
@@ -273,8 +273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonballPrefab: {fileID: 8072830712093860720, guid: 2443252c0ab6bd542b8a74b2e53aad86,
     type: 3}
-  cannonballSpeed: 3
-  shootingInterval: 1
+  cannonballSpeed: 10
+  shootingInterval: 12
   cannonballLifetime: 3
 --- !u!224 &137038809 stripped
 RectTransform:
@@ -1735,7 +1735,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.2346997, y: 9.1, z: 35.069992}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1425056797}
@@ -1754,8 +1754,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonballPrefab: {fileID: 8072830712093860720, guid: 2443252c0ab6bd542b8a74b2e53aad86,
     type: 3}
-  cannonballSpeed: 3
-  shootingInterval: 2.2
+  cannonballSpeed: 10
+  shootingInterval: 8
   cannonballLifetime: 3
 --- !u!1 &1191002145
 GameObject:
@@ -2044,6 +2044,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DisplaySemanticsPlate
       objectReference: {fileID: 0}
+    - target: {fileID: 7947486331839759784, guid: 3df3db1f065c35d4a8a5dad57b50e1ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2199,7 +2204,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.6247, y: 9.49, z: 35.069992}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1425056797}
@@ -2218,8 +2223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonballPrefab: {fileID: 8072830712093860720, guid: 2443252c0ab6bd542b8a74b2e53aad86,
     type: 3}
-  cannonballSpeed: 3
-  shootingInterval: 3.3
+  cannonballSpeed: 10
+  shootingInterval: 5
   cannonballLifetime: 3
 --- !u!1001 &1651931330
 PrefabInstance:

@@ -12,6 +12,7 @@ TagManager:
   - SnowGround
   - PirateGame
   - PirateGame2
+  - Crocodile
   layers:
   - Default
   - TransparentFX

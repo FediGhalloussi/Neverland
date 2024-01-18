@@ -1,99 +1,255 @@
-// This shader fills the mesh shape with a color predefined in the code.
-Shader "MagnifyingGlass"
+Shader "Passthrough"
 {
-    // The properties block of the Unity shader. In this example this block is empty
-    // because the output color is predefined in the fragment shader code.
     Properties
     {
-        _BaseMap("Base Map", 2D) = ""
+        [MainTexture] _BaseMap("Texture", 2D) = "white" {}
+        [MainColor] _BaseColor("Color", Color) = (1, 1, 1, 1)
+        _Cutoff("AlphaCutout", Range(0.0, 1.0)) = 0.5
+
+        // BlendMode
+        _Surface("__surface", Float) = 0.0
+        _Blend("__mode", Float) = 0.0
+        _Cull("__cull", Float) = 2.0
+        [ToggleUI] _AlphaClip("__clip", Float) = 0.0
+        [HideInInspector] _BlendOp("__blendop", Float) = 0.0
+        [HideInInspector] _SrcBlend("__src", Float) = 1.0
+        [HideInInspector] _DstBlend("__dst", Float) = 0.0
+        [HideInInspector] _SrcBlendAlpha("__srcA", Float) = 1.0
+        [HideInInspector] _DstBlendAlpha("__dstA", Float) = 0.0
+        [HideInInspector] _ZWrite("__zw", Float) = 1.0
+        [HideInInspector] _AlphaToMask("__alphaToMask", Float) = 0.0
+
+        // Editmode props
+        _QueueOffset("Queue offset", Float) = 0.0
+
+        // ObsoleteProperties
+        [HideInInspector] _MainTex("BaseMap", 2D) = "white" {}
+        [HideInInspector] _Color("Base Color", Color) = (0.5, 0.5, 0.5, 1)
+        [HideInInspector] _SampleGI("SampleGI", float) = 0.0 // needed from bakedlit
     }
 
-    // The SubShader block containing the Shader code. 
     SubShader
     {
-        
-        // SubShader Tags define when and under which conditions a SubShader block or
-        // a pass is executed.
-        Tags { "RenderType" = "Transparent" "RenderPipeline" = "UniversalRenderPipeline" }
+        Tags
+        {
+            "RenderType" = "Opaque"
+            "IgnoreProjector" = "True"
+            "UniversalMaterialType" = "Unlit"
+            "RenderPipeline" = "UniversalPipeline"
+        }
+        LOD 100
+
+        // -------------------------------------
+        // Render State Commands
+        Blend Zero One
+        ZWrite [_ZWrite]
+        Cull [_Cull]
 
         Pass
         {
-            
-            Blend Zero One
-            
-            // The HLSL code block. Unity SRP uses the HLSL language.
+            Name "Unlit"
+
+            // -------------------------------------
+            // Render State Commands
+            AlphaToMask[_AlphaToMask]
+
             HLSLPROGRAM
-            // This line defines the name of the vertex shader. 
-            #pragma vertex vert
-            // This line defines the name of the fragment shader. 
-            #pragma fragment frag
+            #pragma target 2.0
 
-            // The Core.hlsl file contains definitions of frequently used HLSL
-            // macros and functions, and also contains #include references to other
-            // HLSL files (for example, Common.hlsl, SpaceTransforms.hlsl, etc.).
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"            
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex UnlitPassVertex
+            #pragma fragment UnlitPassFragment
 
-            // The structure definition defines which variables it contains.
-            // This example uses the Attributes structure as an input structure in
-            // the vertex shader.
-            struct Attributes
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature_local_fragment _SURFACE_TYPE_TRANSPARENT
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
+            #pragma shader_feature_local_fragment _ALPHAMODULATE_ON
+
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile_fog
+            #pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION
+            #pragma multi_compile_fragment _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
+            #pragma multi_compile _ DEBUG_DISPLAY
+            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RenderingLayers.hlsl"
+
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+
+            // -------------------------------------
+            // Includes
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitForwardPass.hlsl"
+            ENDHLSL
+        }
+
+        // Fill GBuffer data to prevent "holes", just in case someone wants to reuse GBuffer for non-lighting effects.
+        // Deferred lighting is stenciled out.
+        Pass
+        {
+            Name "GBuffer"
+            Tags
             {
-                // The positionOS variable contains the vertex positions in object
-                // space.
-                float4 positionOS   : POSITION;
-                float2 uv           : TEXCOORD0;
-                UNITY_VERTEX_INPUT_INSTANCE_ID // Use for stereo single pass rendering
-            };
-
-            struct Varyings
-            {
-                // The positions in this struct must have the SV_POSITION semantic.
-                float4 positionHCS  : SV_POSITION;
-                float2 uv           : TEXCOORD0;
-                UNITY_VERTEX_OUTPUT_STEREO // Use for stereo single pass rendering
-            };            
-
-                        // This macro declares _BaseMap as a Texture2D object.
-            TEXTURE2D(_BaseMap);
-            // This macro declares the sampler for the _BaseMap texture.
-            SAMPLER(sampler_BaseMap);
-
-            CBUFFER_START(UnityPerMaterial)
-                // The following line declares the _BaseMap_ST variable, so that you
-                // can use the _BaseMap variable in the fragment shader. The _ST 
-                // suffix is necessary for the tiling and offset function to work.
-                float4 _BaseMap_ST;
-            CBUFFER_END
-            
-            // The vertex shader definition with properties defined in the Varyings 
-            // structure. The type of the vert function must match the type (struct)
-            // that it returns.
-            Varyings vert(Attributes IN)
-            {
-                // Declaring the output object (OUT) with the Varyings struct.
-                Varyings OUT;
-
-                UNITY_SETUP_INSTANCE_ID(IN);
-                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
-                // The TransformObjectToHClip function transforms vertex positions
-                // from object space to homogenous space
-                OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
-                OUT.uv = IN.uv;
-                // Returning the output.
-                return OUT;
+                "LightMode" = "UniversalGBuffer"
             }
 
-            // The fragment shader definition.            
-            half4 frag(Varyings IN) : SV_Target
+            HLSLPROGRAM
+            #pragma target 4.5
+
+            // Deferred Rendering Path does not support the OpenGL-based graphics API:
+            // Desktop OpenGL, OpenGL ES 3.0, WebGL 2.0.
+            #pragma exclude_renderers gles3 glcore
+
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex UnlitPassVertex
+            #pragma fragment UnlitPassFragment
+
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
+            #pragma shader_feature_local_fragment _ALPHAMODULATE_ON
+
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION
+            #pragma multi_compile_fragment _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
+            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RenderingLayers.hlsl"
+
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+
+            // -------------------------------------
+            // Includes
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitGBufferPass.hlsl"
+            ENDHLSL
+        }
+
+        Pass
+        {
+            Name "DepthOnly"
+            Tags
             {
-                UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(IN);
-                // Defining the color variable and returning it.
-                half4 color;
-                //color =  SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv);
-                color = half4(0,0,0.1,0.1);
-                return color;
+                "LightMode" = "DepthOnly"
             }
+
+            // -------------------------------------
+            // Render State Commands
+            ZWrite On
+            ColorMask R
+
+            HLSLPROGRAM
+            #pragma target 2.0
+
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex DepthOnlyVertex
+            #pragma fragment DepthOnlyFragment
+
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
+
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
+
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+
+            // -------------------------------------
+            // Includes
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
+            ENDHLSL
+        }
+
+        Pass
+        {
+            Name "DepthNormalsOnly"
+            Tags
+            {
+                "LightMode" = "DepthNormalsOnly"
+            }
+
+            // -------------------------------------
+            // Render State Commands
+            ZWrite On
+
+            HLSLPROGRAM
+            #pragma target 2.0
+
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex DepthNormalsVertex
+            #pragma fragment DepthNormalsFragment
+
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
+
+            // -------------------------------------
+            // Universal Pipeline keywords
+            #pragma multi_compile_fragment _ _GBUFFER_NORMALS_OCT // forward-only variant
+            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RenderingLayers.hlsl"
+
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+
+            // -------------------------------------
+            // Includes
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitDepthNormalsPass.hlsl"
+            ENDHLSL
+        }
+
+        // This pass it not used during regular rendering, only for lightmap baking.
+        Pass
+        {
+            Name "Meta"
+            Tags
+            {
+                "LightMode" = "Meta"
+            }
+
+            // -------------------------------------
+            // Render State Commands
+            Cull Off
+
+            HLSLPROGRAM
+            #pragma target 2.0
+
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex UniversalVertexMeta
+            #pragma fragment UniversalFragmentMetaUnlit
+
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma shader_feature EDITOR_VISUALIZATION
+
+            // -------------------------------------
+            // Includes
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitMetaPass.hlsl"
             ENDHLSL
         }
     }
+
+    FallBack "Hidden/Universal Render Pipeline/FallbackError"
+    CustomEditor "UnityEditor.Rendering.Universal.ShaderGUI.UnlitShader"
 }

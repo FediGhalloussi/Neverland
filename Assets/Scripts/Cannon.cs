@@ -35,7 +35,7 @@ public class Cannon : MonoBehaviour
     {
         // Instantiate a new cannonball
         GameObject cannonball = Instantiate(cannonballPrefab, transform.position, Quaternion.identity);
-        fromCannonToPlayer = player.transform.position - cannonball.transform.position;
+        fromCannonToPlayer = (player.transform.position - cannonball.transform.position).normalized;
 
         // Get the Rigidbody component of the cannonball
         Rigidbody rb = cannonball.GetComponent<Rigidbody>();

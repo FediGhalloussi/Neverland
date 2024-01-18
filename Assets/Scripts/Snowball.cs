@@ -16,16 +16,19 @@ public class Snowball : MonoBehaviour
             // Make the snowman's up vector the same as the floor's normal vector
             //snowmanInstance.transform.rotation = Quaternion.FromToRotation(Vector3.up, -GameManager.Instance.floorNormal);
             GameManager.Instance.GameSnowStarted = true;
+            Debug.Log("Snowball spawned !");
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
         Debug.Log("Collision detected with " + other.collider.name);
-        if (!other.collider.CompareTag("Hand") && !other.collider.CompareTag("Snowball") && !other.collider.CompareTag("Player") && !FindObjectOfType<SnowballSpawner>().hasInstantiatedSnowball)
+        SnowballSpawner snowballSpawner = FindObjectOfType<SnowballSpawner>();
+            if (snowballSpawner != null && !other.collider.CompareTag("Hand") && !other.collider.CompareTag("Snowball") && !other.collider.CompareTag("Player") && !snowballSpawner.hasInstantiatedSnowball)
         {
             Debug.Log("Collision detected with other than hand " + other.collider.name);
-            // Destroy(gameObject);
+            Debug.Log("Snowball destroyed !");
+            Destroy(gameObject);
         }
     }
     
