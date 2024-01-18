@@ -55,10 +55,10 @@ Material:
     - _NoiseSize: 217.7
     - _NormalStrength: 0.89
     - _QueueControl: 1
-    - _SnowAmount: 1.0001544
-    - _SnowBlend: 0
+    - _SnowAmount: 1.0001382
+    - _SnowBlend: 0.206
     - _SnowColorNoiseSize: 202.5
-    - _SnowColorNoiseStrength: 0.106
+    - _SnowColorNoiseStrength: 0.33
     m_Colors:
     - _Tiling: {r: 15, g: 15, b: 0, a: 0}
   m_BuildTextureStacks: []

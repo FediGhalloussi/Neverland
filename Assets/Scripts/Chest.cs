@@ -70,6 +70,14 @@ public class Chest : MonoBehaviour
         GameManager.Instance.chestOpenable = false;
         isOpen = false;
     }
+    
+    public void MakeChestDisappear()
+    {
+        // todo add vfx maybe ?
+        
+        // make chest disappear
+        gameObject.SetActive(false);
+    }
 
 
     private void OnTriggerEnter(Collider other)

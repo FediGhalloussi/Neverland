@@ -5,8 +5,9 @@ using UnityEngine;
 public class DeactivateParent : MonoBehaviour
 {
 
-    // public void Deactivate()
-    // {
-    //     gameObject.transform.parent.gameObject.SetActive(false);
-    // }
+    public void Deactivate()
+    {
+        //todo play vfx
+        gameObject.transform.parent.gameObject.SetActive(false);
+    }
 }

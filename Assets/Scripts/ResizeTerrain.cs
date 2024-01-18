@@ -14,7 +14,7 @@ public class ResizeTerrain : MonoBehaviour
         Vector3 right = GetComponentInParent<OVRScenePlane>().gameObject.transform.right;
         Vector3 forward = GetComponentInParent<OVRScenePlane>().gameObject.transform.forward;
         //scale only local x and z
-        terrain.transform.localScale = new Vector3(GetComponentInParent<OVRScenePlane>().Width, GetComponentInParent<OVRScenePlane>().Height,.15f );
+        terrain.transform.localScale = new Vector3(GetComponentInParent<OVRScenePlane>().Width/10f,1f , GetComponentInParent<OVRScenePlane>().Height/10f);
         //terrain.transform.localScale = new Vector3(GetComponentInParent<OVRScenePlane>().Width*10, GetComponentInParent<OVRScenePlane>().Height*10,.15f );
         //terrain.gameObject.transform.rotation = GetComponentInParent<OVRScenePlane>().gameObject.transform.rotation;
         initialPosition = transform.position;

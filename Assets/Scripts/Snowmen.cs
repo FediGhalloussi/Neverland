@@ -42,7 +42,9 @@ public class Snowmen : MonoBehaviour
         //initial pos is 10 meter in front of the player with a random angle between -30 and 30 degrees around player forward
         //initialPosition = player.transform.position + player.transform.forward * 5f + floor.transform.forward *  heightSnowman;
         //transform.position = GetInitialPosition();
-        transform.position = new Vector3(0f, 0f, 5f);
+        //transform.position = new Vector3(0f, 0f, 5f);
+
+        GetInitialPosition2();
     }
 
     private void Update()
@@ -77,6 +79,21 @@ public class Snowmen : MonoBehaviour
         initialPosition = player.transform.position + player.transform.forward * (hit.distance - .1f) +
                           player.transform.right * Random.Range(-0f, 0f) + GameManager.Instance.floorNormal * heightSnowman * .5f;
         return initialPosition;
+    }
+
+    private Vector3 GetInitialPosition2()
+    {
+        if (floor == null)
+        {
+            floor = GameManager.Instance.floor;
+        }
+        
+        OVRScenePlane plane = floor.GetComponent<OVRScenePlane>();
+        Vector2 dimension = plane.Dimensions;
+        this.transform.localPosition = new Vector3(Random.Range(dimension.x / 2f - dimension.x,dimension.x/2f),
+            Random.Range(dimension.y / 2f - dimension.y, dimension.y / 2f),
+            0);
+        return transform.localPosition;
     }
     
     void Attack()
@@ -130,8 +147,8 @@ public class Snowmen : MonoBehaviour
         }
         else
         {
-            //snowman.transform.position = GetInitialPosition();
-            snowman.transform.position = new Vector3(0f, 1f, 5f);
+            snowman.transform.position = GetInitialPosition();
+            //snowman.transform.position = new Vector3(0f, 1f, 5f);
         }
     }
 
