@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,12 @@ public class PirateGameActiver : MonoBehaviour
 
     [SerializeField] private GameObject part2;
     [SerializeField] private GameObject snow;
-    
+
+    private void Start()
+    {
+        Invoke("Active2", 5f);
+    }
+
     public void Active1()
     {
         part1.SetActive(true);
