@@ -9,6 +9,7 @@ public class Chest : MonoBehaviour
     public GameActiver[] objectsInChest = new GameActiver[2];
     
     bool isOpen = false;
+    private bool wasOpenOnce = false;
     Animator animator;
     
     private void Start()
@@ -20,7 +21,12 @@ public class Chest : MonoBehaviour
         
         Debug.Log(objectsInChest[GameManager.Instance.currentObjectIndex]);
         Debug.Log(objectsInChest[GameManager.Instance.currentObjectIndex].gameObject);
-        objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(true);
+        if (!wasOpenOnce)
+        {
+            objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(true);
+            animator.SetBool("open", true);
+        }
+
         animator = GetComponentInChildren<Animator>();
     }
     
@@ -34,7 +40,7 @@ public class Chest : MonoBehaviour
         }
         if (!collider.bounds.Intersects(GetComponent<Collider>().bounds))
         {
-            CloseChest();
+            //CloseChest();
             objectsInChest[GameManager.Instance.currentObjectIndex].ActivateGame();
         }
     }
@@ -57,6 +63,7 @@ public class Chest : MonoBehaviour
         // play sound of opening chest
         
         isOpen = true;
+        wasOpenOnce = true;
     }
     
     public void CloseChest()
@@ -85,7 +92,7 @@ public class Chest : MonoBehaviour
         Debug.Log("Trigger detected with " + other.name);
         Debug.Log("Trigger detected with " + other.tag);
         Debug.Log(GameManager.Instance.chestOpenable);
-        if (other.gameObject.CompareTag("Hand") && GameManager.Instance.chestOpenable)
+        if (other.gameObject.CompareTag("Hand") && GameManager.Instance.chestOpenable && !wasOpenOnce)
         {
             OpenChest();
         }
