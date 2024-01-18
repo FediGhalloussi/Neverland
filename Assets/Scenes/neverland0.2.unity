@@ -275,7 +275,7 @@ MonoBehaviour:
     type: 3}
   cannonballSpeed: 10
   shootingInterval: 12
-  cannonballLifetime: 3
+  cannonballLifetime: 10
 --- !u!224 &137038809 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7068242304679123029, guid: 3df3db1f065c35d4a8a5dad57b50e1ae,
@@ -1756,7 +1756,7 @@ MonoBehaviour:
     type: 3}
   cannonballSpeed: 10
   shootingInterval: 8
-  cannonballLifetime: 3
+  cannonballLifetime: 10
 --- !u!1 &1191002145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2225,7 @@ MonoBehaviour:
     type: 3}
   cannonballSpeed: 10
   shootingInterval: 5
-  cannonballLifetime: 3
+  cannonballLifetime: 10
 --- !u!1001 &1651931330
 PrefabInstance:
   m_ObjectHideFlags: 0
