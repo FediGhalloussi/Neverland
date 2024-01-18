@@ -64,7 +64,8 @@ public class Throwable : MonoBehaviour
             // Add haptic feedback when releasing the object
             OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
 
-            rb.velocity = releaseDirection * velocity;
+            // Release the object with the calculated release direction and velocity and multiple the velocity by the velocity of controller
+            rb.velocity = releaseDirection * velocity * OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch).magnitude;
             rb.useGravity = true;
             rb.isKinematic = false;
             collider.isTrigger = false;

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -54,5 +55,11 @@ public class ParticleSystemShapeFitter : MonoBehaviour
             // shapeModule.radius = someValue;
             // shapeModule.scale = someValue;
         }
-    
+
+    private void OnEnable()
+    {
+        // find ovr scene manager component in scene
+        var sceneManager = FindObjectOfType<OVRSceneManager>();
+        OnSceneModelLoadedSuccessfully();
+    }
 }
