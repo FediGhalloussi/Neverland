@@ -12,6 +12,7 @@ public class CaptainHook : MonoBehaviour
     [SerializeField] float triggerArea = 5;
     [SerializeField] float speed;
     Vector3 movement;
+    [SerializeField] GameObject crocodile;
 
 
     // Start is called before the first frame update
@@ -19,7 +20,7 @@ public class CaptainHook : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         movement = Vector3.back * speed * Time.deltaTime;
-
+        crocodile.SetActive(true);
     }
 
     // Update is called once per frame
