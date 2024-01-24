@@ -13,6 +13,9 @@ public class CaptainHook : MonoBehaviour
     [SerializeField] float speed;
     Vector3 movement;
     [SerializeField] GameObject crocodile;
+    [SerializeField] GameObject boat;
+    [SerializeField] private Animator anim_boat;
+    Collider boatCollider;
 
 
     // Start is called before the first frame update
@@ -21,6 +24,7 @@ public class CaptainHook : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         movement = Vector3.back * speed * Time.deltaTime;
         crocodile.SetActive(true);
+        boatCollider = boat.GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -47,7 +51,10 @@ public class CaptainHook : MonoBehaviour
         {
             Debug.Log("Game won");
             GameWon(); 
-        } 
+        }else if (other == boatCollider)
+        {
+            anim_boat.Play("boat");
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
