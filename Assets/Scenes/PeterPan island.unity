@@ -1143,6 +1143,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 611507789}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 405dae1ed98ffbd4a80195eb4d524460,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 611507790}
   m_SourcePrefab: {fileID: 100100000, guid: 405dae1ed98ffbd4a80195eb4d524460, type: 3}
 --- !u!1 &611507788 stripped
 GameObject:
@@ -1171,6 +1175,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &611507790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611507788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a8eccecd760614cabf08ef05b2c920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerArea: 5
+  speed: 1
+  crocodile: {fileID: 1348765159}
+  boat: {fileID: 972977967}
+  anim_boat: {fileID: 972977968}
 --- !u!1001 &616360258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2574,6 +2595,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d377fcb5e086fc34cb246bdde35cf5a9, type: 3}
+--- !u!1 &1348765159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d377fcb5e086fc34cb246bdde35cf5a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1348765158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1409713563
 GameObject:
   m_ObjectHideFlags: 0

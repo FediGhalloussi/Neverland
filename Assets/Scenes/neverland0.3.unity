@@ -276,6 +276,7 @@ MonoBehaviour:
   cannonballSpeed: 10
   shootingInterval: 12
   cannonballLifetime: 10
+  anim_Hook: {fileID: 1487460922}
 --- !u!224 &137038809 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7068242304679123029, guid: 3df3db1f065c35d4a8a5dad57b50e1ae,
@@ -1758,6 +1759,7 @@ MonoBehaviour:
   cannonballSpeed: 10
   shootingInterval: 8
   cannonballLifetime: 10
+  anim_Hook: {fileID: 1487460922}
 --- !u!1 &1191002145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,6 +2020,12 @@ PrefabInstance:
 --- !u!4 &1487460921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8925776943289995695, guid: 41fcada10ab19cb4aa482791d1a7cdd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487460920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1487460922 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2073775038373720221, guid: 41fcada10ab19cb4aa482791d1a7cdd7,
     type: 3}
   m_PrefabInstance: {fileID: 1487460920}
   m_PrefabAsset: {fileID: 0}
@@ -2316,6 +2324,7 @@ MonoBehaviour:
   cannonballSpeed: 10
   shootingInterval: 5
   cannonballLifetime: 10
+  anim_Hook: {fileID: 1487460922}
 --- !u!1001 &1651931330
 PrefabInstance:
   m_ObjectHideFlags: 0

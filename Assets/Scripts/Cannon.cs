@@ -10,6 +10,7 @@ public class Cannon : MonoBehaviour
     Vector3 fromCannonToPlayer;
     private GameObject player;
     private float timer;
+    [SerializeField] private Animator anim_Hook;
 
     private void Start()
     {
@@ -59,6 +60,7 @@ public class Cannon : MonoBehaviour
     {
         CancelInvoke();
         Debug.Log("player has won");
+        anim_Hook.Play("captain");
     }
 
     private void GameOver()
