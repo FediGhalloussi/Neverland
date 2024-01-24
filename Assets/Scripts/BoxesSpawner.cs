@@ -25,7 +25,7 @@ public class BoxesSpawner : MonoBehaviour
         Vector2 dimension = plane.Dimensions;
         box.transform.localPosition = new Vector3(Random.Range(dimension.x / 2f - dimension.x,dimension.x/2f),
                                              Random.Range(dimension.y / 2f - dimension.y, dimension.y / 2f),
-                                             0);
+                                             0.1f);
         boxPrefab.SetActive(true);
         box.SetActive(false);
     }

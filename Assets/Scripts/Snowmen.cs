@@ -155,18 +155,17 @@ public class Snowmen : MonoBehaviour
     void GameWon()
     {
         Debug.Log("Mini game successful!");
-        var chests = GameObject.FindGameObjectsWithTag("Chest");
+        
+        FindObjectOfType<ParticleSystemShapeFitter>().gameObject.SetActive(false);
+        var chests = FindObjectsOfType<Chest>();
+
         foreach (var chest in chests)
         {
-            chest.GetChildGameObjects(children);
-            foreach (var child in children)
-            {
-                Destroy(child);
-            }
+            chest.NextObject();
         }
-        //todo to change pas beau
-        FindObjectOfType<ParticleSystemShapeFitter>().gameObject.SetActive(false);
-        FindObjectOfType<ChestSpawn>().NextObject();
+        
+        GameManager.Instance.currentObjectIndex++;
+        
         var snowGround  = FindObjectsOfType<OVRSemanticClassification>()
             .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
             .ToArray()[0].gameObject.transform.GetChild(2);

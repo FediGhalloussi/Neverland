@@ -21,13 +21,14 @@ public class Chest : MonoBehaviour
         
         Debug.Log(objectsInChest[GameManager.Instance.currentObjectIndex]);
         Debug.Log(objectsInChest[GameManager.Instance.currentObjectIndex].gameObject);
+        animator = GetComponentInChildren<Animator>();
+        
         if (!wasOpenOnce)
         {
             objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(true);
-            animator.SetBool("open", true);
+            animator.SetBool("open", false);
         }
 
-        animator = GetComponentInChildren<Animator>();
     }
     
     private void Update()
@@ -47,10 +48,14 @@ public class Chest : MonoBehaviour
     
     public void NextObject()
     {
-        objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(false);
-        if (GameManager.Instance.currentObjectIndex < objectsInChest.Length)
+        int index = GameManager.Instance.currentObjectIndex;
+        objectsInChest[index].gameObject.SetActive(false);
+
+        index++;
+
+        if (index < objectsInChest.Length && !wasOpenOnce)
         {
-            objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(true);
+            objectsInChest[index].gameObject.SetActive(true);
         } 
         GameManager.Instance.chestOpenable = true;
     }
