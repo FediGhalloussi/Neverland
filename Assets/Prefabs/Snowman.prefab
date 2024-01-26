@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowman: {fileID: 7708109082999990766}
   magnifyingGlassPrefab: {fileID: 0}
-  speedSnowman: 0.8
+  speedSnowman: 0.4
   player: {fileID: 0}
 --- !u!54 &-544931552288050365
 Rigidbody:

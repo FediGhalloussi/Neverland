@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 2788100197818664682}
   - component: {fileID: 8437307130581060025}
   - component: {fileID: 5321199889077977401}
-  - component: {fileID: 3839052069208960268}
   m_Layer: 6
   m_Name: Navmesh
   m_TagString: Untagged
@@ -170,18 +169,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 9d11a444a836cf64daec2ab92475dcbe, type: 2}
   m_BuildHeightMesh: 0
---- !u!114 &3839052069208960268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361942856886563789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11b831f5c1875dd478190ec94e0c7913, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1623762208727237602
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +339,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dcac35fe802d8054dac6910d01f56108, type: 2}
+  - {fileID: 2100000, guid: b0db32d01de455d47bb6e54b3798e019, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -455,7 +442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7303299338288874185}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -465,7 +452,7 @@ Transform:
   - {fileID: 9219694111459174169}
   - {fileID: 3393098525599771564}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &4251060097223836053
 MeshFilter:
   m_ObjectHideFlags: 0

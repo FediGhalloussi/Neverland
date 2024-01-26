@@ -8,6 +8,7 @@
     #   define UNITY_patchconstantfunc      patchconstantfunc
     #   define UNITY_outputcontrolpoints    outputcontrolpoints
 #endif
+#include <HLSLSupport.cginc>
 
 struct Varyings
 {       
@@ -17,6 +18,8 @@ struct Varyings
     float2 uv : TEXCOORD0;
     float3 viewDir : TEXCOORD3;
     float fogFactor : TEXCOORD4;
+    UNITY_VERTEX_OUTPUT_STEREO
+
 };
 
 float _Tess;
@@ -32,7 +35,8 @@ struct Attributes
 {
     float4 vertex : POSITION;
     float3 normal : NORMAL;
-    float2 uv : TEXCOORD0;    
+    float2 uv : TEXCOORD0;  
+    UNITY_VERTEX_INPUT_INSTANCE_ID  
 };
 
 struct ControlPoint
@@ -114,6 +118,10 @@ float4 GetShadowPositionHClip(Attributes input)
 Varyings vert(Attributes input)
 {
     Varyings output;
+
+    UNITY_SETUP_INSTANCE_ID(input);
+    UNITY_INITIALIZE_OUTPUT(Varyings, output);
+    UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
     
     float3 worldPosition = mul(unity_ObjectToWorld, input.vertex).xyz;
     //create local uv

@@ -862,6 +862,7 @@ MonoBehaviour:
   - {fileID: 8268604492042395516, guid: 887265765e743c448807fde0288d4a3e, type: 3}
   - {fileID: 4552779545631432961, guid: 0ad6799ec44bff04cbe36041cf31e051, type: 3}
   - {fileID: 788946351697848234, guid: 42e6e5c00d610754c8279a68f173cadf, type: 3}
+  paintingPositions: []
 --- !u!1001 &519746761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1280,6 +1281,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloorPlanePrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 7303299338288874185, guid: a202d380b0eab3c4fbb4825c00a1e0cf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7931217867855206515, guid: a202d380b0eab3c4fbb4825c00a1e0cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1329,6 +1335,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219694111459174169, guid: a202d380b0eab3c4fbb4825c00a1e0cf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219694111459174169, guid: a202d380b0eab3c4fbb4825c00a1e0cf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219694111459174169, guid: a202d380b0eab3c4fbb4825c00a1e0cf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

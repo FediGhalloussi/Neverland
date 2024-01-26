@@ -13,6 +13,7 @@ TagManager:
   - PirateGame
   - PirateGame2
   - Crocodile
+  - RightHand
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - Wall
   - Painting
-  - 
+  - SnowEffect
   - 
   - 
   - 
