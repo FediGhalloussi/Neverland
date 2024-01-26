@@ -1924,6 +1924,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1425056797}
     m_Modifications:
+    - target: {fileID: 4634184853240757283, guid: 41fcada10ab19cb4aa482791d1a7cdd7,
+        type: 3}
+      propertyPath: anim_boat
+      value: 
+      objectReference: {fileID: 1487460925}
     - target: {fileID: 4848807023794738210, guid: 41fcada10ab19cb4aa482791d1a7cdd7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2041,6 +2046,12 @@ MonoBehaviour:
   shootingInterval: 5
   cannonballLifetime: 10
   anim_Hook: {fileID: 1487460922}
+--- !u!95 &1487460925 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6685528999650730033, guid: 41fcada10ab19cb4aa482791d1a7cdd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487460920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1578878219
 PrefabInstance:
   m_ObjectHideFlags: 0
