@@ -38,8 +38,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _MaxTessDistance: 100
-    - _NoiseScale: 0.37
-    - _NoiseWeight: 0.567
+    - _NoiseScale: 0.25
+    - _NoiseWeight: 0.3
     - _PathBlending: 3
     - _RimPower: 20
     - _SnowDepth: 38
