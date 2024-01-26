@@ -3,18 +3,17 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    public GameObject[] cannonballPrefabs;
-    public float cannonballSpeed = 10f;
+    [SerializeField] private GameObject cannonballPrefab;
+    [SerializeField] private Transform[] cannonTransforms;
+    [SerializeField] private float cannonballSpeed;
+    [SerializeField] private float cannonballLifetime;
     public float shootingInterval = 2f;
-    [SerializeField] float cannonballLifetime = 3f;
-    Vector3 fromCannonToPlayer;
-    private GameObject player;
+    [SerializeField] private Transform player;
     private float timer;
     [SerializeField] private Animator anim_Hook;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         timer = 30;
         // Start shooting cannonballs at regular intervals
         InvokeRepeating("ShootCannonball", 0f, shootingInterval);
@@ -34,37 +33,24 @@ public class Cannon : MonoBehaviour
 
     private void ShootCannonball()
     {
-        // Instantiate a new cannonball in a random cannon
-        int randomCannon = Random.Range(0, cannonballPrefabs.Length);
-        GameObject cannonball = Instantiate(cannonballPrefabs[randomCannon], transform.position, Quaternion.identity);
-        fromCannonToPlayer = (player.transform.position - cannonball.transform.position).normalized;
+        // Get a random cannon
+        Transform cannon = cannonTransforms[Random.Range(0, cannonTransforms.Length)];
 
-        // Get the Rigidbody component of the cannonball
-        Rigidbody rb = cannonball.GetComponent<Rigidbody>();
-
-        // Shoot the cannonball in the forward direction with specified speed
-        rb.velocity = fromCannonToPlayer * cannonballSpeed;
-
+        GameObject cannonball = Instantiate(cannonballPrefab, cannon.position, Quaternion.identity);
+        cannonball.GetComponent<Rigidbody>().velocity =
+            (player.position - cannonball.transform.position).normalized * cannonballSpeed;
         Destroy(cannonball, cannonballLifetime);
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Trigger detected with " + other.name);
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Game over");
-            GameOver();
-        }
-    }
-
+    
     private void GameWon()
     {
         CancelInvoke();
         Debug.Log("player has won");
         anim_Hook.Play("captain");
+        Destroy(this);
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         timer = 30;
     }
