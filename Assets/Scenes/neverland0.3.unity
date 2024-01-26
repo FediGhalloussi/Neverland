@@ -271,8 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2abc764acadc94890b86f2beba0618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonballPrefab: {fileID: 8072830712093860720, guid: 2443252c0ab6bd542b8a74b2e53aad86,
-    type: 3}
+  cannonballPrefabs: []
   cannonballSpeed: 10
   shootingInterval: 12
   cannonballLifetime: 10
@@ -1754,8 +1753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2abc764acadc94890b86f2beba0618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonballPrefab: {fileID: 8072830712093860720, guid: 2443252c0ab6bd542b8a74b2e53aad86,
-    type: 3}
+  cannonballPrefabs: []
   cannonballSpeed: 10
   shootingInterval: 8
   cannonballLifetime: 10
@@ -2319,8 +2317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2abc764acadc94890b86f2beba0618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonballPrefab: {fileID: 8072830712093860720, guid: 2443252c0ab6bd542b8a74b2e53aad86,
-    type: 3}
+  cannonballPrefabs: []
   cannonballSpeed: 10
   shootingInterval: 5
   cannonballLifetime: 10
