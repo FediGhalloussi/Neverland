@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    public GameObject cannonballPrefab;
+    public GameObject[] cannonballPrefabs;
     public float cannonballSpeed = 10f;
     public float shootingInterval = 2f;
     [SerializeField] float cannonballLifetime = 3f;
@@ -34,8 +34,9 @@ public class Cannon : MonoBehaviour
 
     private void ShootCannonball()
     {
-        // Instantiate a new cannonball
-        GameObject cannonball = Instantiate(cannonballPrefab, transform.position, Quaternion.identity);
+        // Instantiate a new cannonball in a random cannon
+        int randomCannon = Random.Range(0, cannonballPrefabs.Length);
+        GameObject cannonball = Instantiate(cannonballPrefabs[randomCannon], transform.position, Quaternion.identity);
         fromCannonToPlayer = (player.transform.position - cannonball.transform.position).normalized;
 
         // Get the Rigidbody component of the cannonball
