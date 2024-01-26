@@ -256,7 +256,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 136631671}
-  - component: {fileID: 136631672}
   m_Layer: 0
   m_Name: canon1
   m_TagString: Untagged
@@ -279,23 +278,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1425056797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &136631672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136631670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2abc764acadc94890b86f2beba0618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cannonballPrefabs: []
-  cannonballSpeed: 10
-  shootingInterval: 12
-  cannonballLifetime: 10
-  anim_Hook: {fileID: 1487460922}
 --- !u!224 &137038809 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7068242304679123029, guid: 3df3db1f065c35d4a8a5dad57b50e1ae,
@@ -1738,7 +1720,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1093509446}
-  - component: {fileID: 1093509447}
   m_Layer: 0
   m_Name: canon2
   m_TagString: Untagged
@@ -1761,23 +1742,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1425056797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1093509447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093509445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2abc764acadc94890b86f2beba0618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cannonballPrefabs: []
-  cannonballSpeed: 10
-  shootingInterval: 8
-  cannonballLifetime: 10
-  anim_Hook: {fileID: 1487460922}
 --- !u!1 &1191002145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,7 +1997,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5202715999026478577, guid: 41fcada10ab19cb4aa482791d1a7cdd7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1487460924}
   m_SourcePrefab: {fileID: 100100000, guid: 41fcada10ab19cb4aa482791d1a7cdd7, type: 3}
 --- !u!4 &1487460921 stripped
 Transform:
@@ -2047,6 +2015,32 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1487460920}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1487460923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5202715999026478577, guid: 41fcada10ab19cb4aa482791d1a7cdd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487460920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1487460924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487460923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2abc764acadc94890b86f2beba0618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannonballPrefabs:
+  - {fileID: 136631670}
+  - {fileID: 1093509445}
+  - {fileID: 1646623930}
+  cannonballSpeed: 10
+  shootingInterval: 5
+  cannonballLifetime: 10
+  anim_Hook: {fileID: 1487460922}
 --- !u!1001 &1578878219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2302,7 +2296,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1646623931}
-  - component: {fileID: 1646623932}
   m_Layer: 0
   m_Name: canon3
   m_TagString: Untagged
@@ -2325,23 +2318,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1425056797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1646623932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646623930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2abc764acadc94890b86f2beba0618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cannonballPrefabs: []
-  cannonballSpeed: 10
-  shootingInterval: 5
-  cannonballLifetime: 10
-  anim_Hook: {fileID: 1487460922}
 --- !u!1001 &1651931330
 PrefabInstance:
   m_ObjectHideFlags: 0
