@@ -36,6 +36,21 @@ public class Cannon : MonoBehaviour
         // Get a random cannon
         Transform cannon = cannonTransforms[Random.Range(0, cannonTransforms.Length)];
 
+        if (Random.Range(0, 2) == 0)
+        {
+            FindObjectOfType<AudioManager>().Play("canon1");
+        }
+
+        else if (Random.Range(0, 1) == 0)
+        {
+            FindObjectOfType<AudioManager>().Play("canon2");
+        }
+
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("canon3");
+        }
+
         GameObject cannonball = Instantiate(cannonballPrefab, cannon.position, Quaternion.identity);
         cannonball.GetComponent<Rigidbody>().velocity =
             (player.position - cannonball.transform.position).normalized * cannonballSpeed;
@@ -44,6 +59,7 @@ public class Cannon : MonoBehaviour
     
     private void GameWon()
     {
+        FindObjectOfType<AudioManager>().Play("victory_bell");
         CancelInvoke();
         Debug.Log("player has won");
         anim_Hook.Play("captain");
@@ -52,6 +68,7 @@ public class Cannon : MonoBehaviour
 
     public void GameOver()
     {
+        FindObjectOfType<AudioManager>().Play("lose_sound");
         timer = 30;
     }
 }

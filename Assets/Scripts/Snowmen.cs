@@ -23,6 +23,7 @@ public class Snowmen : MonoBehaviour
 
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("wind");
         numberOfHitsSnowman = 0;
         activer = FindObjectOfType<PirateGameActiver>();
         //player = GameObject.FindGameObjectWithTag("Player");
@@ -103,6 +104,7 @@ public class Snowmen : MonoBehaviour
         transform.LookAt(player.transform);
         if (Vector3.Distance(transform.position, player.transform.position)<0.2f)
         {
+            FindObjectOfType<AudioManager>().Play("lose_sound");
             GameOver();
         }
     }
@@ -127,6 +129,7 @@ public class Snowmen : MonoBehaviour
         Debug.Log("Collision detected with " + other.collider.name);
         if (other.gameObject.CompareTag("Snowball"))
         {
+            FindObjectOfType<AudioManager>().Play("snowball_hit");
             Debug.Log("Snowman hit");
             IsHit();
         }
@@ -155,6 +158,8 @@ public class Snowmen : MonoBehaviour
     void GameWon()
     {
         Debug.Log("Mini game successful!");
+        FindObjectOfType<AudioManager>().Stop("wind");
+        FindObjectOfType<AudioManager>().Play("chest_unlock");
         
         FindObjectOfType<ParticleSystemShapeFitter>().gameObject.SetActive(false);
         var chests = FindObjectsOfType<Chest>(true);

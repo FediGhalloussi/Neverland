@@ -59,9 +59,11 @@ public class Chest : MonoBehaviour
         
         objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(true);
         Debug.Log("Open chest");
+        
         // play animation of opening chest
         animator.SetBool("open", true);
         // play sound of opening chest
+        FindObjectOfType<AudioManager>().Play("ocean_noise");
         
         isOpen = true;
         wasOpenOnce = true;
