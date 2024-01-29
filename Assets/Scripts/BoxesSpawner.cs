@@ -12,6 +12,8 @@ public class BoxesSpawner : MonoBehaviour
     private Transform[] spawnerPosition=new Transform[2];
     [SerializeField] private Transform trackingSpace;
     OVRBoundary boundary = new OVRBoundary();
+    // I need this for debug purposes because Debug.Drawline does not show with quest link
+    private LineRenderer debugLineRenderer;
 
 
     //todo use this to spawn boxes after catching fairy
@@ -21,6 +23,7 @@ public class BoxesSpawner : MonoBehaviour
         var sceneManager = FindObjectOfType<OVRSceneManager>();
         sceneManager.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
         Debug.Log("Scene manager found");
+        debugLineRenderer = GetComponent<LineRenderer>();
     }
     
     private void boxeSpawn(Transform spawner)
@@ -39,7 +42,7 @@ public class BoxesSpawner : MonoBehaviour
         if (!IsInsideBoundary(box.transform.position))
         {
             var rect = boundary.GetGeometry(OVRBoundary.BoundaryType.PlayArea);
-            box.transform.position = trackingSpace.InverseTransformVector(new Vector3(Random.Range(rect[0].x, -rect[0].x),box.transform.position.y,Random.Range(-rect[0].z,rect[0].z)));
+            box.transform.position = trackingSpace.InverseTransformVector(new Vector3(Random.Range(0.8f*rect[0].x, -0.8f*rect[0].x),box.transform.position.y,Random.Range(-0.8f*rect[0].z,0.8f*rect[0].z)));
         }
         
         boxPrefab.SetActive(true);
@@ -88,14 +91,16 @@ public class BoxesSpawner : MonoBehaviour
 
     private void Update()
     {
+        debugLineRenderer.positionCount = 4;
         Debug.Log(boundary.GetConfigured());
         var points = boundary.GetGeometry(OVRBoundary.BoundaryType.PlayArea);
         for (int i = 0; i <= points.Length; i++)
         {
             Debug.LogWarning(trackingSpace.InverseTransformVector(points[i%points.Length]));
             Debug.DrawLine(trackingSpace.InverseTransformVector(points[i%points.Length]),
-                           trackingSpace.InverseTransformVector(points[i+1%points.Length]),
-                           Color.green);   
+                           trackingSpace.InverseTransformVector(points[(i+1)%points.Length]),
+                           Color.green,10.0f,false);
+            debugLineRenderer.SetPosition(i,trackingSpace.InverseTransformVector(points[i%points.Length]));
         }
     }
 

@@ -47,7 +47,7 @@ public class Fee : MonoBehaviour
             // Si la distance est supérieure à la distance minimale, faites avancer l'objet vers la caméra
             if (distance > minDistance)
             {
-                transform.position = Vector3.MoveTowards(transform.position, cameraTransform.position, moveSpeed * speedCurve.Evaluate(DistanceManagement())*Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(cameraTransform.position.x, defaultHeight, cameraTransform.position.z), moveSpeed * speedCurve.Evaluate(DistanceManagement())*Time.deltaTime);
             }
             else
             {
