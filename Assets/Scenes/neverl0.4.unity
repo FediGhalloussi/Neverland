@@ -357,6 +357,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1578878219}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &142923926 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+    type: 3}
+  m_PrefabInstance: {fileID: 257253246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &202712733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -666,6 +672,74 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1057166371}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &257253246
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 662891684}
+    m_Modifications:
+    - target: {fileID: 3952740710232617169, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_Name
+      value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457601808511615187, guid: 62131ddd5bb4eaa44989949cb1bd1bd4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 62131ddd5bb4eaa44989949cb1bd1bd4, type: 3}
 --- !u!1001 &260794354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2062,6 +2136,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 247
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: _trackingOriginType
       value: 1
@@ -2069,6 +2147,16 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: isInsightPassthroughEnabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000010189485334, guid: 126d619cf4daa52469682f85c1378b4a,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 247
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000012175207052, guid: 126d619cf4daa52469682f85c1378b4a,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 247
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2101,6 +2189,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 137038809}
+    - targetCorrespondingSourceObject: {fileID: 4484591312116288, guid: 126d619cf4daa52469682f85c1378b4a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 142923926}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a,
         type: 3}

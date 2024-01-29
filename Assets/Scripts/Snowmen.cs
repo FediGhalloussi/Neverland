@@ -47,7 +47,7 @@ public class Snowmen : MonoBehaviour
 
         Vector3 initialPosition = GetInitialPositionFrontOfObstacles();
         this.transform.position = new Vector3(initialPosition.x, initialPosition.y, initialPosition.z);
-        this.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, /*transform.localPosition.z*/ 1f);
+        this.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, /*transform.localPosition.z*/ .5f);
         Debug.Log("Snowman spawned  at : " + initialPosition);
     }
 
@@ -138,7 +138,7 @@ public class Snowmen : MonoBehaviour
         transform.position += new Vector3(directionSnowman.x * Time.deltaTime * speedSnowman,directionSnowman.y * Time.deltaTime * speedSnowman*0f,directionSnowman.z * Time.deltaTime * speedSnowman);
         // look at the player changing only the x axis
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-        if (Vector3.Distance(transform.position, player.transform.position)<0.2f)
+        if (Vector3.Distance(transform.position, player.transform.position)<.7f)
         {
             FindObjectOfType<AudioManager>().Play("lose_sound");
             GameOver();
@@ -153,27 +153,6 @@ public class Snowmen : MonoBehaviour
             Debug.Log("Snowman hit");
             IsHit();
         }
-        else if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Game over");
-            GameOver();
-        }
-    }
-    
-    private void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("Collision detected with " + other.collider.name);
-        if (other.gameObject.CompareTag("Snowball"))
-        {
-            FindObjectOfType<AudioManager>().Play("snowball_hit");
-            Debug.Log("Snowman hit");
-            IsHit();
-        }
-        else if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Game over");
-            GameOver();
-        }
     }
 
     void IsHit()
@@ -186,8 +165,10 @@ public class Snowmen : MonoBehaviour
         }
         else
         {
-            Vector3 directionSnowman = GetInitialPositionFrontOfObstacles();
-            snowman.transform.localPosition = new Vector3(directionSnowman.x, .5f, directionSnowman.z);
+            
+            Vector3 initialPosition = GetInitialPositionFrontOfObstacles();
+            this.transform.position = new Vector3(initialPosition.x, initialPosition.y, initialPosition.z);
+            this.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, /*transform.localPosition.z*/ .5f);
             //snowman.transform.position = new Vector3(0f, 1f, 5f);
         }
     }
