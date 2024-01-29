@@ -116,6 +116,8 @@ public class FeeIA : MonoBehaviour
 
     private void Scared()
     {
+        FindObjectOfType<AudioManager>().Play("fairy_fear");
+        //FindObjectOfType<AudioManager>().Play("lose_sound");
         Debug.Log("Scared");
         target = new Vector3(0f,defaultHeight,5f);
         movementOver=false;
@@ -124,6 +126,9 @@ public class FeeIA : MonoBehaviour
 
     private void Success()
     {
+        FindObjectOfType<AudioManager>().Stop("bells");
+        FindObjectOfType<AudioManager>().Play("chest_unlock");
+        FindObjectOfType<AudioManager>().Play("victory_bell");
         Debug.Log("Success");
         GameManager.Instance.chestOpenable = true;
         chestSpawn.SetActive(true);

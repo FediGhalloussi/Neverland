@@ -25,7 +25,6 @@ public class Chest : MonoBehaviour
         
         if (!wasOpenOnce)
         {
-            objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(true);
             animator.SetBool("open", false);
         }
 
@@ -52,23 +51,23 @@ public class Chest : MonoBehaviour
         objectsInChest[index].gameObject.SetActive(false);
 
         index++;
-
-        if (index < objectsInChest.Length && !wasOpenOnce)
-        {
-            objectsInChest[index].gameObject.SetActive(true);
-        } 
         GameManager.Instance.chestOpenable = true;
     }
     
     public void OpenChest()
     {
+        
+        objectsInChest[GameManager.Instance.currentObjectIndex].gameObject.SetActive(true);
         Debug.Log("Open chest");
+        
         // play animation of opening chest
         animator.SetBool("open", true);
         // play sound of opening chest
+        FindObjectOfType<AudioManager>().Play("chest_open");
         
         isOpen = true;
         wasOpenOnce = true;
+        GameManager.Instance.chestOpenable = false;
     }
     
     public void CloseChest()

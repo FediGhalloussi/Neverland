@@ -89,20 +89,7 @@ public class BoxesSpawner : MonoBehaviour
         return (point.x > minX && point.x < maxX && point.z > minZ && point.z < maxZ);
     }
 
-    private void Update()
-    {
-        debugLineRenderer.positionCount = 4;
-        Debug.Log(boundary.GetConfigured());
-        var points = boundary.GetGeometry(OVRBoundary.BoundaryType.PlayArea);
-        for (int i = 0; i <= points.Length; i++)
-        {
-            Debug.LogWarning(trackingSpace.InverseTransformVector(points[i%points.Length]));
-            Debug.DrawLine(trackingSpace.InverseTransformVector(points[i%points.Length]),
-                           trackingSpace.InverseTransformVector(points[(i+1)%points.Length]),
-                           Color.green,10.0f,false);
-            debugLineRenderer.SetPosition(i,trackingSpace.InverseTransformVector(points[i%points.Length]));
-        }
-    }
+    private void Update() {}
 
 
     private void OnSceneModelLoadedSuccessfully()

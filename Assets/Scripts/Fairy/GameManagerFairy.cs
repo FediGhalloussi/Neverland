@@ -7,6 +7,7 @@ public class GameManagerFairy : MonoBehaviour
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("fairy");
+        FindObjectOfType<AudioManager>().Play("bells");
     }
 
 

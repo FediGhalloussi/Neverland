@@ -18,6 +18,7 @@ public class Snowball : MonoBehaviour
             GameManager.Instance.GameSnowStarted = true;
             Debug.Log("Snowball spawned !");
         }
+        FindObjectOfType<AudioManager>().Play("snowball_appear");
     }
 
     private void OnCollisionEnter(Collision other)
@@ -28,6 +29,7 @@ public class Snowball : MonoBehaviour
         {
             Debug.Log("Collision detected with other than hand " + other.collider.name);
             Debug.Log("Snowball destroyed !");
+            FindObjectOfType<AudioManager>().Play("snowball_miss");
             Destroy(gameObject);
         }
     }
