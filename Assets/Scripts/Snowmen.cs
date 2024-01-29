@@ -157,10 +157,11 @@ public class Snowmen : MonoBehaviour
         Debug.Log("Mini game successful!");
         
         FindObjectOfType<ParticleSystemShapeFitter>().gameObject.SetActive(false);
-        var chests = FindObjectsOfType<Chest>();
+        var chests = FindObjectsOfType<Chest>(true);
 
         foreach (var chest in chests)
         {
+            chest.gameObject.SetActive(true);
             chest.NextObject();
         }
         
