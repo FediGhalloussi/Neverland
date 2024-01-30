@@ -59,7 +59,6 @@ public class SnowGlobe : MonoBehaviour, GameActiver
         }
         else
         {
-            Debug.Log("Shake not detected");
             if (snowfallSnowballParticleSystem.isPlaying)
             {
                 snowfallSnowballParticleSystem.Stop();

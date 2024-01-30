@@ -25,7 +25,7 @@ public class Snowball : MonoBehaviour
     {
         Debug.Log("Collision detected with " + other.collider.name);
         SnowballSpawner snowballSpawner = FindObjectOfType<SnowballSpawner>();
-            if (snowballSpawner != null && !other.collider.CompareTag("Hand") && !other.collider.CompareTag("Snowball") && !other.collider.CompareTag("Player") && !snowballSpawner.hasInstantiatedSnowball)
+            if (snowballSpawner != null && !other.collider.CompareTag("Hand") && !other.collider.CompareTag("Snowball") && !other.collider.CompareTag("Player") && !other.collider.CompareTag("Fairy") && !snowballSpawner.hasInstantiatedSnowball)
         {
             Debug.Log("Collision detected with other than hand " + other.collider.name);
             Debug.Log("Snowball destroyed !");

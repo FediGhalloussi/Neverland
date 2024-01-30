@@ -15,8 +15,10 @@ public class FeeIA : MonoBehaviour
     private float movementDist;
     private float currentDist;
     private Vector3[] handPositions;
+    private Vector3[] hand2Positions;
     private int currentPositionIndex;
     [SerializeField] private GameObject hand;
+    [SerializeField] private GameObject hand2;
     private bool isScared;
     private bool wasScared;
     [SerializeField] private float interactionDistance;
@@ -31,6 +33,7 @@ public class FeeIA : MonoBehaviour
     {
         defaultHeight = transform.position.y;
         handPositions = new Vector3[10];
+        hand2Positions = new Vector3[10];
         currentPositionIndex = 0;
         speed = initialSpeed;
         movementOver=true;
@@ -94,10 +97,11 @@ public class FeeIA : MonoBehaviour
     private void TrackHandPosition()
     {
         handPositions[currentPositionIndex] = hand.transform.position;
+        hand2Positions[currentPositionIndex] = hand2.transform.position;
         if (currentPositionIndex<9) currentPositionIndex++;
         else currentPositionIndex=0;
         Invoke("TrackHandPosition",0.2f);
-        if (Vector3.Distance(hand.transform.position,transform.position)<interactionDistance&&!isScared)
+        if ((Vector3.Distance(hand.transform.position,transform.position)<interactionDistance)||(Vector3.Distance(hand2.transform.position,transform.position)<interactionDistance)&&!isScared)
         {
             if (SuccessOrScared())
             {
@@ -166,6 +170,27 @@ public class FeeIA : MonoBehaviour
         for (int i=0;i<currentPositionIndex;i++)
         {
             if (Vector3.Distance(handPositions[i],handPositions[i+1])>speedLimit/5f)
+            {
+                rep=false;
+            }
+        }
+        for (int i=currentPositionIndex;i<9;i++)
+        {
+            if (Vector3.Distance(hand2Positions[i],hand2Positions[i+1])>speedLimit/5f)
+            {
+                rep=false;
+            }
+        }
+        if (currentPositionIndex!=0) 
+        {
+            if (Vector3.Distance(hand2Positions[9],hand2Positions[0])>speedLimit/5f)
+            {
+                rep=false;
+            }
+        }
+        for (int i=0;i<currentPositionIndex;i++)
+        {
+            if (Vector3.Distance(hand2Positions[i],hand2Positions[i+1])>speedLimit/5f)
             {
                 rep=false;
             }
