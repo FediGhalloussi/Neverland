@@ -23,13 +23,11 @@ public class SetInteractiveShaderEffects : MonoBehaviour
     {
         if (target != null)
         {
-            Debug.Log("target position " + target.transform.position);
             transform.position = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
             Shader.SetGlobalVector("_Position", transform.position);        
         }
         else if (GameManager.Instance.floor != null)
         {
-            Debug.Log("target position 2" + GameManager.Instance.floor.gameObject.transform.position);
             target = GameManager.Instance.floor.gameObject.transform;
         }
     }

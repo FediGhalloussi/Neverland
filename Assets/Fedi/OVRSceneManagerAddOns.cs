@@ -19,11 +19,6 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
             SceneManager.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
         }
 
-        void Update()
-        {
-            //Debug.DrawRay(new Vector3(0f,0f,0f), GameManager.Instance.floor.transform.position * 1000f, Color.magenta, 10000f);
-            Debug.Log("draw ray update");
-        }
         private void OnSceneModelLoadedSuccessfully()
         {
             StartCoroutine(AddCollidersAndFixClassifications());
@@ -71,18 +66,12 @@ namespace MetaAdvancedFeatures.SceneUnderstanding
                 // Send a raycast from the camera position downwards
                 RaycastHit hit;
                 Debug.DrawRay(new Vector3(0f,0f,0f), GameManager.Instance.floor.transform.position*1000f, Color.magenta, 10000f);
-                Debug.Log("floor position " + GameManager.Instance.floor.transform.position);
                 if (Physics.Raycast(new Vector3(0f,0f,0f), GameManager.Instance.floor.transform.position * 1000f, out hit))
                 {
-                    Debug.Log("hit normal " + hit.normal);
                     // If the raycast hits the floor, get the normal
                     Vector3 hitNormal = hit.normal;
                     Debug.DrawRay(GameManager.Instance.floor.transform.position, hitNormal*1000f, Color.cyan, 10000f);
                     GameManager.Instance.floorNormal = - hitNormal;
-                }
-                else
-                {
-                    Debug.Log("no hit normal");
                 }
             }
 

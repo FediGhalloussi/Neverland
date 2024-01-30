@@ -18,16 +18,12 @@ public class SnowballSpawner : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("velocity " + OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch).magnitude);
-        Debug.Log("input detected " + (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) ||
-                                       OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)));
         if (hasInstantiatedSnowball && !(OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) ||
                                          OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)))
         {
             hasInstantiatedSnowball = false;
         }
 
-        Debug.Log("hasInstantiatedSnowball " + hasInstantiatedSnowball);
     }
 
     private void OnTriggerStay(Collider other)
@@ -75,4 +71,24 @@ public class SnowballSpawner : MonoBehaviour
         // snowball.transform.localScale = initialScale * scaleFactor; // Ensure the final scale is set correctly
     }
 
+    private void OnEnable()
+    {
+        //save current scale,, put scale to 0,0,0 and then lerp to saved scale
+        Vector3 initialScale = gameObject.transform.localScale;
+        gameObject.transform.localScale = Vector3.zero;
+        StartCoroutine(LerpToScale(initialScale));
+    }
+    
+    private IEnumerator LerpToScale(Vector3 finalScale)
+    {
+        float duration = 3f;
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, finalScale, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        gameObject.transform.localScale = finalScale;
+    }
 }
