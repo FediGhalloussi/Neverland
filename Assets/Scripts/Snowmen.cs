@@ -189,11 +189,8 @@ public class Snowmen : MonoBehaviour
         }
         
         GameManager.Instance.currentObjectIndex++;
-        
-        var snowGround  = FindObjectsOfType<OVRSemanticClassification>()
-            .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
-            .ToArray()[0].gameObject.transform.GetChild(2);
-        snowGround.gameObject.SetActive(false);
+
+        Destroy(FindObjectOfType<SnowballSpawner>().gameObject);
         
         Destroy(gameObject); //destroy the snowman bc game is finished
     }

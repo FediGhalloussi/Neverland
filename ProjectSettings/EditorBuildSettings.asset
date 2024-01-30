@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: "Assets/Scenes/L\xE9o.unity"
     guid: 7fdfaf832b323eb45ab5ffbabaf15afd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/VictoBonhomme.unity
     guid: 14c8e2750319ca84d86bae2554d09961
+  - enabled: 1
+    path: Assets/Scenes/neverland0.3.unity
+    guid: 16b76dc8b9ac1d54685a92866942297d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 5edd0556fd7a8424ca5d7b0d187e2f90,
       type: 2}
