@@ -6,8 +6,8 @@ public class CannonBall : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {   
+        FindObjectOfType<HapticManager>().PlayCannonHaptic();
     }
 
     // Update is called once per frame

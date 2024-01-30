@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Oculus.Haptics;
 using UnityEngine;
 
 public class SnowballSpawner : MonoBehaviour
@@ -24,6 +25,14 @@ public class SnowballSpawner : MonoBehaviour
             hasInstantiatedSnowball = false;
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Hand"))
+        {
+            FindObjectOfType<HapticManager>().PlayCanGrabHaptic(OVRInput.Controller.Active);
+        }
     }
 
     private void OnTriggerStay(Collider other)
