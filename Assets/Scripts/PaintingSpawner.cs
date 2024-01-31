@@ -6,14 +6,11 @@ using System.Drawing;
 public class PaintingSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] paintingPrefabs = new GameObject[3];
-    [SerializeField] List <Vector3> paintingPositions = new List<Vector3>();
-    Vector3 size;
+    private List<Transform> paintingTransforms;
 
     void Start()
     {
         SpawnAllPainting();
-        var renderer = paintingPrefabs[0].GetComponent<MeshRenderer>();
-        size = renderer.bounds.size;
     }
     
     private void SpawnPainting(GameObject painting, Transform spawnParent)
@@ -24,16 +21,23 @@ public class PaintingSpawner : MonoBehaviour
         p.transform.localPosition = new Vector3(Random.Range(dimension.x / 2f - dimension.x + 0.5f,dimension.x/2f - 0.5f),
                                            Random.Range(dimension.y / 2f - dimension.y + 0.5f, dimension.y / 2f - 0.5f),
                                            0.02f);
-        paintingPositions.Add(p.transform.localPosition);
-        foreach(var position in paintingPositions)
+        foreach(var t in paintingTransforms)
         {
-            if(Mathf.Abs(p.transform.localPosition.x-position.x)<size.x || Mathf.Abs(p.transform.localPosition.y - position.y) < size.y)
+            // if the painting we are spawning have the same parent has one of the instantiated painting, do the check
+            if (t.parent == p.transform.parent)
             {
-                paintingPositions.Remove(p.transform.localPosition);
-                Destroy(p);
-                SpawnPainting(painting, spawnParent);
+                // all painting have the same scale
+                // if painting overlap, destroy the instantiated painting and retry
+                if (Mathf.Abs(p.transform.localPosition.x - t.localPosition.x) < t.lossyScale.x ||
+                    Mathf.Abs(p.transform.localPosition.y - t.localPosition.y) < t.lossyScale.y)
+                {
+                    Destroy(p);
+                    SpawnPainting(painting, spawnParent);
+                    return;
+                }
             }
         }
+        paintingTransforms.Add(p.transform);
     }
     
     private void SpawnAllPainting()

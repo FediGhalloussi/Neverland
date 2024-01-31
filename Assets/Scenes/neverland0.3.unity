@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15885784, g: 0.5173301, b: 1.0391357, a: 1}
+  m_IndirectSpecularColor: {r: 0.15884578, g: 0.5173287, b: 1.0391194, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -277,7 +277,7 @@ Transform:
   m_GameObject: {fileID: 136631670}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.0053, y: 5, z: -55}
+  m_LocalPosition: {x: 2.947, y: 5.273, z: -55.463}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1562,6 +1562,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snow
       objectReference: {fileID: 0}
+    - target: {fileID: 1871405670535553122, guid: 68d2db43f1d0a8d48aba975d22f35729,
+        type: 3}
+      propertyPath: m_TagString
+      value: SnowParticle
+      objectReference: {fileID: 0}
     - target: {fileID: 7825131096226108689, guid: 68d2db43f1d0a8d48aba975d22f35729,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1678,7 +1683,7 @@ Transform:
   m_GameObject: {fileID: 1093509445}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.5053, y: 6, z: -55}
+  m_LocalPosition: {x: 5.495, y: 5.429, z: -55.346}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2601,7 +2606,7 @@ Transform:
   m_GameObject: {fileID: 1646623930}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.0053005, y: 7, z: -55}
+  m_LocalPosition: {x: 8.044, y: 5.849, z: -55.392}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
