@@ -1,44 +1,9 @@
 fileFormatVersion: 2
-guid: a565fbe183918724b85b6c625126c898
+guid: 2f693f27cd4a88e4196e5ad5d7a1cae8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_0-texture001.jpg
-    second: {fileID: 2100000, guid: 4982c8c9851cad649b7ac5591cf8b21f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_1-texture003.jpg
-    second: {fileID: 2100000, guid: 103f3b3da94fb50479f7cb99de037a2d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_2-texture002.jpg
-    second: {fileID: 2100000, guid: 0d4bab46003479547af93a41084b9b6a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_3-texture005.jpg
-    second: {fileID: 2100000, guid: fa325c371726bf547a31652cf0dff4dc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_4-texture004.jpg
-    second: {fileID: 2100000, guid: 7dda7eee13cb08042855b17b624712be, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_5-texture006.jpg
-    second: {fileID: 2100000, guid: 0e39e9d8e4797bc4493ee1a358c465e0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_6-texture000.jpg
-    second: {fileID: 2100000, guid: ce3d95ebef874604887256ac6a405d5d, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -134,7 +99,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

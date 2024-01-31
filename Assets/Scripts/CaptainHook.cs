@@ -27,6 +27,8 @@ public class CaptainHook : MonoBehaviour
         crocodile.SetActive(true);
         boatCollider = boat.GetComponent<Collider>();
         animCaptain = GetComponent<Animator>();
+        
+        animCaptain.SetBool("isRunning",true);
     }
 
     // Update is called once per frame
@@ -39,7 +41,7 @@ public class CaptainHook : MonoBehaviour
         }
         else
         {
-            animCaptain.SetBool("isRunning",false);
+            animCaptain.SetBool("isRunning",true);
         }
     }
 
