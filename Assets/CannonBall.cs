@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class CannonBall : MonoBehaviour
 {
+    private HapticManager _hapticManager;
+
+    private Transform player;
     // Start is called before the first frame update
     void Start()
-    {   
-        FindObjectOfType<HapticManager>().PlayCannonHaptic();
+    {
+        _hapticManager = FindObjectOfType<HapticManager>();
+        _hapticManager.PlayCannonHaptic();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        float d = (transform.position - player.position).magnitude;
+        if (d < 2f)
+        {
+            _hapticManager.PlayGrazeHaptic(d);
+        }
+
+        _hapticManager.StopGrazeHaptic();
     }
     
     private void OnTriggerEnter(Collider other)
