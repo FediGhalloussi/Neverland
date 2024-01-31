@@ -5,7 +5,8 @@ using UnityEngine;
 public interface GameActiver
 {
     void ActivateGame();
+   
     
-    GameObject gameObject { get ; } 
+    GameObject gameObject { get ; }
 
 }

@@ -12,7 +12,7 @@ public class SnowballSpawner : MonoBehaviour
     private void Start()
     {
         Vector3 normal = GetComponentInParent<OVRScenePlane>().gameObject.transform.forward;
-        gameObject.transform.position =
+        gameObject.transform.position = 
             GetComponentInParent<OVRScenePlane>().gameObject.transform.position + normal * offsetFloor;
         Debug.Log("Snowball spawner ON");
     }
@@ -37,23 +37,43 @@ public class SnowballSpawner : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Hand") && (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) && !hasInstantiatedSnowball)
+        if (other.CompareTag("RightHand"))
         {
-            Debug.Log("Trigger detected with hand");
+            Debug.Log("Trigger detected with RIGHT" + other.name);
+            Debug.Log("OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)" + OVRInput.Get(OVRInput.Button.SecondaryHandTrigger));
+            Debug.Log("hasInstantiatedSnowball" + hasInstantiatedSnowball);
+        }
+        
+        if (other.CompareTag("RightHand") && (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) && !hasInstantiatedSnowball)
+        {
+            // Instantiate the snowball with a smaller initial scale
+            GameObject snowballInstance = Instantiate(snowballPrefab, other.transform.position, Quaternion.identity);
+            snowballInstance.transform.localScale = new Vector3(0.03f, 0.03f, 0.03f); // Set the initial scale as per your preference
+
+            // Start a coroutine to gradually increase the snowball's scale only when moving
+            StartCoroutine(IncreaseSnowballScale(snowballInstance, OVRInput.Controller.RTouch));
+
+            hasInstantiatedSnowball = true;
+            Debug.Log("Spawning snowball!");
+        }
+        
+        if (other.CompareTag("LeftHand") && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) && !hasInstantiatedSnowball)
+        {
+            Debug.Log("Trigger detected with LEFT" + other.name);
 
             // Instantiate the snowball with a smaller initial scale
             GameObject snowballInstance = Instantiate(snowballPrefab, other.transform.position, Quaternion.identity);
             snowballInstance.transform.localScale = new Vector3(0.03f, 0.03f, 0.03f); // Set the initial scale as per your preference
 
             // Start a coroutine to gradually increase the snowball's scale only when moving
-            StartCoroutine(IncreaseSnowballScale(snowballInstance));
+            StartCoroutine(IncreaseSnowballScale(snowballInstance, OVRInput.Controller.LTouch));
 
             hasInstantiatedSnowball = true;
             Debug.Log("Spawning snowball!");
         }
     }
 
-    private IEnumerator IncreaseSnowballScale(GameObject snowball)
+    private IEnumerator IncreaseSnowballScale(GameObject snowball, OVRInput.Controller controller)
     {
         float duration = 2.0f;
         float scaleFactor = 5f;
@@ -64,10 +84,14 @@ public class SnowballSpawner : MonoBehaviour
         
         while (elapsedTime < duration)
         {
-            if (OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch).magnitude > 0.1f)
+            if (snowball == null)
+            {
+                yield break;
+            }
+            if (OVRInput.GetLocalControllerVelocity(controller).magnitude > 0.1f)
             {
                 // snowball.transform.localScale += initialScale * scaleFactor * Time.deltaTime / duration;
-                snowball.transform.localScale += (initialScale * scaleFactor - initialScale) * 3f * Time.deltaTime * OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch).magnitude;
+                snowball.transform.localScale += (initialScale * scaleFactor - initialScale) * 3f * Time.deltaTime * OVRInput.GetLocalControllerVelocity(controller).magnitude;
                 // snowball.transform.localScale = Vector3.Lerp(initialScale, initialScale * scaleFactor, elapsedTime / duration);
                 if (snowball.transform.localScale.x > initialScale.x * scaleFactor)
                 {
@@ -87,7 +111,20 @@ public class SnowballSpawner : MonoBehaviour
         gameObject.transform.localScale = Vector3.zero;
         StartCoroutine(LerpToScale(initialScale));
     }
-    
+
+    private void OnDisable()
+    {
+        //lerp material to opacity 0
+        StartCoroutine(LerpMaterialToTransparent());
+        //destroy all snowballs
+        GameObject[] snowballs = GameObject.FindGameObjectsWithTag("Snowball");
+        foreach (GameObject snowball in snowballs)
+        {
+            Destroy(snowball);
+        }
+        
+    }
+
     private IEnumerator LerpToScale(Vector3 finalScale)
     {
         float duration = 3f;
@@ -99,5 +136,20 @@ public class SnowballSpawner : MonoBehaviour
             yield return null;
         }
         gameObject.transform.localScale = finalScale;
+    }
+    
+    private IEnumerator LerpMaterialToTransparent()
+    {
+        float duration = 3f;
+        float elapsedTime = 0f;
+        Renderer renderer = GetComponent<Renderer>();
+        Color initialColor = renderer.material.color;
+        while (elapsedTime < duration)
+        {
+            renderer.material.color = Color.Lerp(initialColor, Color.clear, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        renderer.material.color = Color.clear;
     }
 }
