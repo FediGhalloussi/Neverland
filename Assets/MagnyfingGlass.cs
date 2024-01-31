@@ -6,7 +6,8 @@ using UnityEngine;
 public class MagnyfingGlass : MonoBehaviour , GameActiver
 {
     private LayerMask mask;
-
+    private float charge;
+    private float chargeToActivate = 2f;
     private PirateGameActiver activer;
     // Start is called before the first frame update
     void Start()
@@ -22,13 +23,18 @@ public class MagnyfingGlass : MonoBehaviour , GameActiver
         Ray ray = new Ray(transform.position,transform.forward);
         bool res = Physics.SphereCast(ray,0.5f,100f,mask);
 
-        if (res)
+        if (res) {
+            charge += Time.fixedTime;
+        } else {
+            charge -= Time.fixedTime;
+        }
+        if (charge < 0) {
+            charge = 0;
+        }
+
+        if (charge > chargeToActivate)
         {
-            Debug.Log("Start le jeu boulet de cannon");
-            if (activer != null)
-            {
-                activer.Active2();
-            }
+            activer.Active2();
         }
     }
     

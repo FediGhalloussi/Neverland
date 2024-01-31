@@ -6,7 +6,7 @@ using System.Drawing;
 public class PaintingSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] paintingPrefabs = new GameObject[3];
-    private List<Transform> paintingTransforms;
+    private List<Transform> paintingTransforms = new List<Transform>();
 
     void Start()
     {

@@ -12,8 +12,6 @@ public class BoxesSpawner : MonoBehaviour
     private Transform[] spawnerPosition=new Transform[2];
     [SerializeField] private Transform trackingSpace;
     OVRBoundary boundary = new OVRBoundary();
-    // I need this for debug purposes because Debug.Drawline does not show with quest link
-    private LineRenderer debugLineRenderer;
 
 
     //todo use this to spawn boxes after catching fairy
@@ -22,8 +20,6 @@ public class BoxesSpawner : MonoBehaviour
         // find ovr scene manager component in scene
         var sceneManager = FindObjectOfType<OVRSceneManager>();
         sceneManager.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
-        Debug.Log("Scene manager found");
-        debugLineRenderer = GetComponent<LineRenderer>();
     }
     
     private void boxeSpawn(Transform spawner)
