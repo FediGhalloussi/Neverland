@@ -13,10 +13,16 @@
     #   define UNITY_patchconstantfunc      patchconstantfunc
     #   define UNITY_outputcontrolpoints    outputcontrolpoints
 #endif
-#include <HLSLSupport.cginc>
 #include <UnityInstancing.cginc>
 
 
+// Initialize arbitrary structure with zero values.
+// Not supported on some backends (e.g. Cg-based particularly with nested structs).
+#if defined(UNITY_COMPILER_HLSL) || defined(SHADER_API_PSSL) || defined(UNITY_COMPILER_HLSLCC)
+#define UNITY_INITIALIZE_OUTPUT(type,name) name = (type)0;
+#else
+#define UNITY_INITIALIZE_OUTPUT(type,name)
+#endif
 struct Varyings
 {
     float3 worldPos : TEXCOORD1;
