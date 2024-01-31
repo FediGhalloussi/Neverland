@@ -179,7 +179,7 @@ public class Snowmen : MonoBehaviour
         FindObjectOfType<AudioManager>().Stop("wind");
         FindObjectOfType<AudioManager>().Play("chest_unlock");
         
-        FindObjectOfType<ParticleSystemShapeFitter>().gameObject.SetActive(false);
+        GameObject.FindWithTag("SnowParticle").gameObject.SetActive(false);
         var chests = FindObjectsOfType<Chest>(true);
 
         foreach (var chest in chests)

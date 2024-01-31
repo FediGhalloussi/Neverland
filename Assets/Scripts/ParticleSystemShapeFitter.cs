@@ -16,10 +16,12 @@ public class ParticleSystemShapeFitter : MonoBehaviour
 
     private void OnSceneModelLoadedSuccessfully()
         {
-            planeObject = FindObjectsOfType<OVRSemanticClassification>()
-                .Where(c => c.Contains(OVRSceneManager.Classification.Ceiling))
-                .ToArray()[0].gameObject;
-            
+            if (planeObject == null)
+            {
+                planeObject = FindObjectsOfType<OVRSemanticClassification>()
+                    .Where(c => c.Contains(OVRSceneManager.Classification.Ceiling))
+                    .ToArray()[0].gameObject;
+            }
             if (particleSystem == null || planeObject == null)
             {
                 Debug.LogError("Please assign Particle System and Plane Object in the inspector.");

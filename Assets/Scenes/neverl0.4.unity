@@ -2493,6 +2493,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snow
       objectReference: {fileID: 0}
+    - target: {fileID: 1871405670535553122, guid: 68d2db43f1d0a8d48aba975d22f35729,
+        type: 3}
+      propertyPath: m_TagString
+      value: SnowParticle
+      objectReference: {fileID: 0}
     - target: {fileID: 7825131096226108689, guid: 68d2db43f1d0a8d48aba975d22f35729,
         type: 3}
       propertyPath: m_LocalPosition.x

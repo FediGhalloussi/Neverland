@@ -32,17 +32,17 @@ Shader "Passthrough"
     {
         Tags
         {
-            "RenderType" = "Opaque"
             "IgnoreProjector" = "True"
             "UniversalMaterialType" = "Unlit"
             "RenderPipeline" = "UniversalPipeline"
+            
         }
         LOD 100
 
         // -------------------------------------
         // Render State Commands
-        BlendOp RevSub
-        Blend One Zero, Zero Zero
+        BlendOp Add
+        Blend Zero SrcAlpha, One Zero
         ZWrite [_ZWrite]
         Cull [_Cull]
 
@@ -56,6 +56,8 @@ Shader "Passthrough"
 
             HLSLPROGRAM
             #pragma target 2.0
+            #pragma enable_d3d11_debug_symbols
+
 
             // -------------------------------------
             // Shader Stages
