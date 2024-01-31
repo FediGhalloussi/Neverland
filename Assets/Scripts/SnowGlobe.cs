@@ -9,10 +9,16 @@ public class SnowGlobe : MonoBehaviour, GameActiver
     [SerializeField] private float shakeThreshold = 0.5f;
     private float lastShakeTime;
     [SerializeField] private float shakeCooldown = 1.0f;
+    private Grabbable grabbable;
+    private Rigidbody rb;
+    private bool canActivateGravity = false;
+
     void Start()
     {
         //snowfallParticleSystem.Stop();
         snowfallSnowballParticleSystem.Stop();
+        rb = GetComponent<Rigidbody>();
+        grabbable = GetComponent<Grabbable>();
         if (snowfallParticleSystem == null)
         {
             //todo pas beau
@@ -36,9 +42,25 @@ public class SnowGlobe : MonoBehaviour, GameActiver
                 demoSnow.gameObject.SetActive(true);
                 demoSnow.enabled = true;
                 //FIND object with tag
-                
-                
             }
+        }
+        
+        //if component is grabbed and gravity is false, then activate gravity
+        if (grabbable.SelectingPointsCount >= 1)
+        {
+            canActivateGravity = true;
+            rb.useGravity = true;
+            rb.isKinematic = false;
+        }
+        
+        if (canActivateGravity && grabbable.SelectingPointsCount == 0)
+        {
+            rb.isKinematic = false;
+        }
+        //if velocity is too high, then clamp it
+        if (rb.velocity.magnitude > 1f && grabbable.SelectingPointsCount == 0)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, 1f);
         }
     }
     float shakeStartTime = 0.0f;

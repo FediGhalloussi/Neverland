@@ -145,8 +145,6 @@ MonoBehaviour:
   _grabbable: {fileID: 3085994481119590200}
   _rigidbody: {fileID: 6638421737864498925}
   _scaleMassWithSize: 1
-  _linearVelocity: {x: 0, y: 0, z: 0}
-  _angularVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &6638421737864498925
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -223,7 +221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 5
-  pickedUp: 0
+  pickedUpRight: 0
+  pickedUpLeft: 0
   targetTag: Snowman
   aimAssistStrength: 0.2
   angleThreshold: 50

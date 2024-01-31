@@ -96,7 +96,7 @@ public class Chest : MonoBehaviour
         Debug.Log("Trigger detected with " + other.name);
         Debug.Log("Trigger detected with " + other.tag);
         Debug.Log(GameManager.Instance.chestOpenable);
-        if (other.gameObject.CompareTag("Hand") && GameManager.Instance.chestOpenable && !wasOpenOnce)
+        if ((other.gameObject.CompareTag("RightHand") || other.gameObject.CompareTag("LeftHand")) && GameManager.Instance.chestOpenable && !wasOpenOnce)
         {
             OpenChest();
         }

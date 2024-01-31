@@ -17,6 +17,7 @@ TagManager:
   - Fairy
   - SnowParticle
   - Painting
+  - LeftHand
   layers:
   - Default
   - TransparentFX
