@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7901688005481968204}
   - component: {fileID: 4039025600760901600}
   - component: {fileID: 7321067157305232931}
+  - component: {fileID: 8387349058328168610}
   m_Layer: 2
   m_Name: MagnyfingGlass
   m_TagString: Untagged
@@ -117,6 +118,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375b431fcb5e3434db38556256a5a993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdingHand: 2
+--- !u!114 &8387349058328168610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7217283217024714187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e72f4754d5927469245688597d06fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBeingRetrieved: 0
 --- !u!1 &8007046813766196618
 GameObject:
   m_ObjectHideFlags: 0

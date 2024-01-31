@@ -51,10 +51,10 @@ public class HapticManager : MonoBehaviour
         
     }
 
-    public void PlayGrazeHaptic(float distance)
+    public void PlayChangingHaptics(float strength,OVRInput.Controller controller)
     {
         grazedHaptics = true;
-        OVRInput.SetControllerVibration(1.0f,Mathf.Lerp(0.0f,1.0f,1-distance*0.5f));
+        OVRInput.SetControllerVibration(1.0f,strength,controller);
     }
 
     

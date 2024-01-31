@@ -30,12 +30,8 @@ public class SnowGlobe : MonoBehaviour, GameActiver
         // Check if the snow globe is being shaken and grabbed by the player
         if (IsShakeDetected() && GetComponent<Grabbable>().SelectingPointsCount >= 1)
         { 
-            Debug.LogError("WHAT THE FUCK 1 ?");
-            Debug.LogError("particle " + snowfallParticleSystem);
-            Debug.LogError("is Playing ? " + !snowfallParticleSystem.isPlaying);
             if (snowfallParticleSystem!= null && !snowfallParticleSystem.isPlaying)
             {
-                Debug.LogError("WHAT THE FUCK 2 ?");
                 snowfallParticleSystem.GetComponent<ParticleSystemShapeFitter>().enabled = true;
                 snowfallParticleSystem.Play();
                 DemoSnow demoSnow = FindFirstObjectByType<DemoSnow>(FindObjectsInactive.Include);

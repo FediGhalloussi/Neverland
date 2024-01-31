@@ -28,6 +28,8 @@ public class FeeIA : MonoBehaviour
     private float defaultHeight;
 
     [SerializeField] private FairyEnding fairyEndingScript;
+
+    [SerializeField] private MonoBehaviour nextAI;
     // Start is called before the first frame update
     void Start()
     {
@@ -136,7 +138,9 @@ public class FeeIA : MonoBehaviour
         Debug.Log("Success");
         GameManager.Instance.chestOpenable = true;
         chestSpawn.SetActive(true);
+        nextAI.enabled = true;
         fairyEndingScript.hasStarted=true;
+        Destroy(this);
         //TODO remove if we decide to do EndingScript
         //Invoke("DestroyFairy",3f);
     }

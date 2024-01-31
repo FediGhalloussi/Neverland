@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7527574638595573504}
   - component: {fileID: 4067706134858846925}
   - component: {fileID: 6713714805304114851}
+  - component: {fileID: 8908089498051940910}
   m_Layer: 0
   m_Name: SnowGlobe
   m_TagString: Snowball
@@ -147,8 +148,6 @@ MonoBehaviour:
   _grabbable: {fileID: 3085994481119590200}
   _rigidbody: {fileID: 6638421737864498925}
   _scaleMassWithSize: 1
-  _linearVelocity: {x: 0, y: 0, z: 0}
-  _angularVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &6638421737864498925
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -228,7 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 1000
-  pickedUp: 0
+  pickedUpRight: 0
+  pickedUpLeft: 0
   targetTag: YourTargetTag
   aimAssistStrength: 0.2
   angleThreshold: 15
@@ -249,6 +249,18 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &8908089498051940910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118235946060914716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e72f4754d5927469245688597d06fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6215408211816592936
 PrefabInstance:
   m_ObjectHideFlags: 0

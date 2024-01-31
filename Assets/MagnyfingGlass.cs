@@ -8,12 +8,21 @@ public class MagnyfingGlass : MonoBehaviour , GameActiver
 {
     private LayerMask mask;
     private float charge;
-    private float chargeToActivate = 2f;
+    private float chargeToActivate = 2.0f;
     private PirateGameActiver activer;
 
     private Rigidbody rb;
     private Grabbable grabbable;
     private bool canActivateGravity = false;
+
+    public enum Hand
+    {
+        Left,
+        Right,
+        None
+    }
+
+    public Hand holdingHand = Hand.None;
 
     
     // Start is called before the first frame update
@@ -33,20 +42,37 @@ public class MagnyfingGlass : MonoBehaviour , GameActiver
         bool res = Physics.SphereCast(ray,0.5f,100f,mask);
 
         if (res) {
-            charge += Time.fixedTime;
+            charge += Time.fixedDeltaTime;
         } else {
-            charge -= Time.fixedTime;
+            charge -= Time.fixedDeltaTime;
         }
         if (charge < 0) {
             charge = 0;
         }
 
+        Debug.Log("Charge = " + charge);
+        
         if (charge > chargeToActivate)
         {
+
             activer.Active2();
         }
-        
 
+
+        switch (holdingHand)
+        {
+            case Hand.Left:
+                FindObjectOfType<HapticManager>().PlayChangingHaptics(charge/chargeToActivate,OVRInput.Controller.LTouch);
+                break;
+            case Hand.Right:
+                FindObjectOfType<HapticManager>().PlayChangingHaptics(charge/chargeToActivate,OVRInput.Controller.RTouch);
+                break;
+            case Hand.None:
+                FindObjectOfType<HapticManager>().PlayChangingHaptics(0.0f,OVRInput.Controller.Active);
+                break;
+        }
+
+        
         //if component is grabbed and gravity is false, then activate gravity
         if (grabbable.SelectingPointsCount >= 1)
         {

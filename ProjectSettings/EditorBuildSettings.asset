@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/neverland0.3.unity
     guid: 16b76dc8b9ac1d54685a92866942297d
+  - enabled: 0
+    path: Assets/Scenes/neverl0.4.unity
+    guid: 3f723d49e4c49c44980cee98a7fb6eaa
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 5edd0556fd7a8424ca5d7b0d187e2f90,
       type: 2}

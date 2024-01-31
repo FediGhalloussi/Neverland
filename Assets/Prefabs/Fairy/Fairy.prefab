@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 1369350022504686951}
   - component: {fileID: 4285574786702297711}
   - component: {fileID: 3728164181264588575}
+  - component: {fileID: -7403183747419408221}
   m_Layer: 0
   m_Name: Fairy
   m_TagString: Untagged
@@ -272,10 +273,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   hand: {fileID: 0}
+  hand2: {fileID: 0}
   interactionDistance: 0.3
   chestSpawn: {fileID: 0}
   speedLimit: 2
   fairyEndingScript: {fileID: 3728164181264588575}
+  nextAI: {fileID: -7403183747419408221}
 --- !u!114 &3728164181264588575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +292,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasStarted: 0
+--- !u!114 &-7403183747419408221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7232320090740523695}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee87072478b356944a7ded0a45bb1714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7798790337426273512
 PrefabInstance:
   m_ObjectHideFlags: 0

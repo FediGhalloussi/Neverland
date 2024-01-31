@@ -6,6 +6,7 @@ using System.Drawing;
 public class PaintingSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] paintingPrefabs = new GameObject[3];
+    private OVRSemanticClassification[] walls;
     private List<Transform> paintingTransforms = new List<Transform>();
 
     void Start()
@@ -32,7 +33,8 @@ public class PaintingSpawner : MonoBehaviour
                     Mathf.Abs(p.transform.localPosition.y - t.localPosition.y) < t.lossyScale.y)
                 {
                     Destroy(p);
-                    SpawnPainting(painting, spawnParent);
+                    int r = Random.Range(0, walls.Length);
+                    SpawnPainting(painting, walls[r].transform);
                     return;
                 }
             }
@@ -44,7 +46,7 @@ public class PaintingSpawner : MonoBehaviour
     {
 
         // find all walls in scene model
-        var walls = FindObjectsOfType<OVRSemanticClassification>()
+        walls = FindObjectsOfType<OVRSemanticClassification>()
             .Where(c => c.Contains(OVRSceneManager.Classification.WallFace)).ToArray();
         
         foreach (var painting in paintingPrefabs)

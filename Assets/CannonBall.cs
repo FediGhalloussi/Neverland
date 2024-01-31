@@ -21,7 +21,8 @@ public class CannonBall : MonoBehaviour
         float d = (transform.position - player.position).magnitude;
         if (d < 2f)
         {
-            _hapticManager.PlayGrazeHaptic(d);
+            float s = Mathf.Lerp(0.0f, 1.0f, 2 - d);
+            _hapticManager.PlayChangingHaptics(s,OVRInput.Controller.Active);
         }
 
         _hapticManager.StopGrazeHaptic();

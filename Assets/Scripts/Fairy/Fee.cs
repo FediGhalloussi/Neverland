@@ -47,7 +47,7 @@ public class Fee : MonoBehaviour
             // Si la distance est supérieure à la distance minimale, faites avancer l'objet vers la caméra
             if (distance > minDistance)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(cameraTransform.position.x, defaultHeight, cameraTransform.position.z), moveSpeed * speedCurve.Evaluate(DistanceManagement())*Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(cameraTransform.position.x, cameraTransform.position.y, cameraTransform.position.z), moveSpeed * speedCurve.Evaluate(DistanceManagement())*Time.deltaTime);
             }
             else
             {
@@ -59,6 +59,7 @@ public class Fee : MonoBehaviour
         {
             // Faites tourner l'objet autour de la caméra
             transform.RotateAround(cameraTransform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+            transform.LookAt(cameraTransform);
             if (!startedSwap)
             {
                 startedSwap=true;
