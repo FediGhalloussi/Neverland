@@ -7,6 +7,7 @@ Sources :
 - Assets : https://assetstore.unity.com/packages/3d/environments/stylized-pirate-asset-set-free-pack-195470
   https://assetstore.unity.com/packages/3d/environments/low-poly-tropical-island-lite-242437
   https://assetstore.unity.com/packages/3d/environments/historic/3d-pirates-lowpoly-pack-233903
+  https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565
 - Animations and rig : www.mixamo.com
 - Sounds : https://pixabay.com/
 - Documentation : https://github.com/oculus-samples/Unity-DepthAPI
