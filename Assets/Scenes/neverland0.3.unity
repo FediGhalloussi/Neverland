@@ -188,12 +188,12 @@ PrefabInstance:
         type: 3}
       propertyPath: hand
       value: 
-      objectReference: {fileID: 1917095848}
+      objectReference: {fileID: 1025804973}
     - target: {fileID: 4285574786702297711, guid: 2f822455231dbc04ba4314d2b386b165,
         type: 3}
       propertyPath: hand2
       value: 
-      objectReference: {fileID: 1025804973}
+      objectReference: {fileID: 1917095848}
     - target: {fileID: 4285574786702297711, guid: 2f822455231dbc04ba4314d2b386b165,
         type: 3}
       propertyPath: nextAI
@@ -278,6 +278,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854760577143413996, guid: 2f822455231dbc04ba4314d2b386b165,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7403183747419408221, guid: 2f822455231dbc04ba4314d2b386b165, type: 3}

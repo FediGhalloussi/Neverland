@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fee : MonoBehaviour
+public class Fairy : MonoBehaviour
 {
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float minDistance;
     [SerializeField] private AnimationCurve speedCurve;
-    [SerializeField] private FeeIA IAScript;
+    [SerializeField] private FairyMinigameAI IAScript;
     float firstAnimDuration;
     float initialDist;
     float currentDist;

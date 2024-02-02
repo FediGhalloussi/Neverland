@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FeeIA : MonoBehaviour
+public class FairyMinigameAI : MonoBehaviour
 {
     public bool started = false;
     private bool localStarted = false;
@@ -24,6 +24,8 @@ public class FeeIA : MonoBehaviour
     [SerializeField] private float interactionDistance;
     [SerializeField] private GameObject chestSpawn;
     [SerializeField] private float speedLimit;
+
+    private OVRInput.Controller controller;
 
     private float defaultHeight;
 
@@ -125,6 +127,7 @@ public class FeeIA : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("fairy_fear");
         //FindObjectOfType<AudioManager>().Play("lose_sound");
         Debug.Log("Scared");
+        FindObjectOfType<HapticManager>().PlayFearHaptic(controller);
         target = new Vector3(0f,defaultHeight,5f);
         movementOver=false;
         movementDist = Vector3.Distance(transform.position,target);
@@ -140,7 +143,6 @@ public class FeeIA : MonoBehaviour
         chestSpawn.SetActive(true);
         nextAI.enabled = true;
         fairyEndingScript.hasStarted=true;
-        Destroy(this);
         //TODO remove if we decide to do EndingScript
         //Invoke("DestroyFairy",3f);
     }
@@ -162,6 +164,7 @@ public class FeeIA : MonoBehaviour
             if (Vector3.Distance(handPositions[i],handPositions[i+1])>speedLimit/5f)
             {
                 rep=false;
+                controller = OVRInput.Controller.LTouch;
             }
         }
         if (currentPositionIndex!=0) 
@@ -169,6 +172,7 @@ public class FeeIA : MonoBehaviour
             if (Vector3.Distance(handPositions[9],handPositions[0])>speedLimit/5f)
             {
                 rep=false;
+                controller = OVRInput.Controller.LTouch;
             }
         }
         for (int i=0;i<currentPositionIndex;i++)
@@ -176,6 +180,7 @@ public class FeeIA : MonoBehaviour
             if (Vector3.Distance(handPositions[i],handPositions[i+1])>speedLimit/5f)
             {
                 rep=false;
+                controller = OVRInput.Controller.LTouch;
             }
         }
         for (int i=currentPositionIndex;i<9;i++)
@@ -183,6 +188,7 @@ public class FeeIA : MonoBehaviour
             if (Vector3.Distance(hand2Positions[i],hand2Positions[i+1])>speedLimit/5f)
             {
                 rep=false;
+                controller = OVRInput.Controller.RTouch;
             }
         }
         if (currentPositionIndex!=0) 
@@ -190,6 +196,7 @@ public class FeeIA : MonoBehaviour
             if (Vector3.Distance(hand2Positions[9],hand2Positions[0])>speedLimit/5f)
             {
                 rep=false;
+                controller = OVRInput.Controller.RTouch;
             }
         }
         for (int i=0;i<currentPositionIndex;i++)
@@ -197,6 +204,7 @@ public class FeeIA : MonoBehaviour
             if (Vector3.Distance(hand2Positions[i],hand2Positions[i+1])>speedLimit/5f)
             {
                 rep=false;
+                controller = OVRInput.Controller.RTouch;
             }
         }
         // if we decide to move SuccessOrScared from positiontracking algo we need to add the last frames here

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChestSpawn : MonoBehaviour
+public class ChestReveal : MonoBehaviour
 {
     //todo : remove pblic
     public Chest[] chests;

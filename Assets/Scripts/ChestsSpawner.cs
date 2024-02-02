@@ -5,7 +5,7 @@ using System.Linq;
 using TMPro;
 using Random = UnityEngine.Random;
 
-public class BoxesSpawner : MonoBehaviour
+public class ChestsSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject boxPrefab;
     private OVRSemanticClassification[] spawnerObjects=new OVRSemanticClassification[2];
@@ -22,7 +22,7 @@ public class BoxesSpawner : MonoBehaviour
         sceneManager.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
     }
     
-    private void boxeSpawn(Transform spawner)
+    private void ChestSpawn(Transform spawner)
     {
         Debug.Log("Boxe spawn");
         GameObject box = Instantiate(boxPrefab, spawner);
@@ -109,8 +109,8 @@ public class BoxesSpawner : MonoBehaviour
             spawnerPosition[0] = spawnerObjects[1].transform;
         }
 
-        boxeSpawn(spawnerPosition[0]);
-        boxeSpawn(spawnerPosition[1]);
+        ChestSpawn(spawnerPosition[0]);
+        ChestSpawn(spawnerPosition[1]);
     }
 
 

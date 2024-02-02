@@ -29,20 +29,19 @@ public class SnowballSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hand"))
+        if (other.CompareTag("RightHand"))
         {
-            FindObjectOfType<HapticManager>().PlayCanGrabHaptic(OVRInput.Controller.Active);
+            FindObjectOfType<HapticManager>().PlayCanGrabHaptic(OVRInput.Controller.RTouch);
+        }
+        else if (other.CompareTag("LeftHand"))
+        {
+            FindObjectOfType<HapticManager>().PlayCanGrabHaptic(OVRInput.Controller.LTouch);
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("RightHand"))
-        {
-            Debug.Log("Trigger detected with RIGHT" + other.name);
-            Debug.Log("OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)" + OVRInput.Get(OVRInput.Button.SecondaryHandTrigger));
-            Debug.Log("hasInstantiatedSnowball" + hasInstantiatedSnowball);
-        }
+        
         
         if (other.CompareTag("RightHand") && (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) && !hasInstantiatedSnowball)
         {

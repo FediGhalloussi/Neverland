@@ -21,12 +21,10 @@ public class PirateGameActiver : MonoBehaviour
         part2.SetActive(true);
         Destroy(FindObjectOfType<MagnyfingGlass>().gameObject);
         //FindObjectOfType<OVRSceneRoom>().gameObject.SetActive(false);
-        var planeObjects = FindObjectsOfType<OVRSemanticClassification>()
-            .Where(c => c.Contains(OVRSceneManager.Classification.WallFace))
-            .ToArray();
-        foreach (var p in planeObjects)
+        var passthroughGradients = FindObjectsOfType<PassthroughFader>();
+        foreach (var gradient in passthroughGradients)
         {
-            p.transform.GetComponentInChildren<PassthroughGradient>().Disappear();
+            gradient.Disappear();
         }
 
         var paintings = GameObject.FindGameObjectsWithTag("Painting");
@@ -34,5 +32,12 @@ public class PirateGameActiver : MonoBehaviour
         {
             Destroy(p);
         }
+
+        var switchModels = FindObjectsOfType<SwitchModel>();
+        foreach (var model in switchModels)
+        {
+            model.Switch();
+        }
+        
     }
 }

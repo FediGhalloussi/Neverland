@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4251060097223836053}
   - component: {fileID: 854406862341039361}
   - component: {fileID: 7329915652745048277}
+  - component: {fileID: 5883100093050026036}
   m_Layer: 6
   m_Name: CeilingPlanePrefab
   m_TagString: Untagged
@@ -138,3 +139,16 @@ MonoBehaviour:
   PaddingZ: 0
   PaddingZMax: 0
   _pivotTransform: {fileID: 2634019197476865952}
+--- !u!114 &5883100093050026036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303299338288874185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a840c0f9cb393f44d8e95889dce5acd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 0}

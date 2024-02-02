@@ -27,15 +27,21 @@ public class HapticManager : MonoBehaviour
         player.Play(Controller.Both);
     }
 
+    public void PlayFearHaptic(OVRInput.Controller controller)
+    {
+        grazedHaptics = false;
+        StartCoroutine(PlayHaptic(1.0f,1.0f,1f,controller,1f));
+    }
     public void PlayCanGrabHaptic(OVRInput.Controller controller)
     {
         grazedHaptics = false;
-        StartCoroutine(PlayHaptic(1.0f,0.4f,0.1f,controller));
+        StartCoroutine(PlayHaptic(1.0f,0.04f,0.15f,controller));
 
     }
 
-    private IEnumerator PlayHaptic(float frequency, float strength, float duration, OVRInput.Controller controller)
+    private IEnumerator PlayHaptic(float frequency, float strength, float duration, OVRInput.Controller controller, float delay = 0f)
     {
+        yield return new WaitForSeconds(delay);
         OVRInput.SetControllerVibration(frequency,strength,controller);
         yield return new WaitForSeconds(duration);
         OVRInput.SetControllerVibration(frequency,0,controller);

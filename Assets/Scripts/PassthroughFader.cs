@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PassthroughGradient : MonoBehaviour
+public class PassthroughFader : MonoBehaviour
 {
     private Material mat;
 
@@ -18,7 +18,7 @@ public class PassthroughGradient : MonoBehaviour
 
     public void Disappear()
     {
-        particleSystem.Play();
+        //particleSystem.Play();
         StartCoroutine(FadeAway(0.05f));
     }
 
@@ -31,6 +31,6 @@ public class PassthroughGradient : MonoBehaviour
             mat.color = c;
             yield return new WaitForSeconds(t);
         }
-        Destroy(FindObjectOfType<OVRSceneRoom>().gameObject);
+        Destroy(gameObject);
     }
 }

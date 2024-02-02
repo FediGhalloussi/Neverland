@@ -14,7 +14,7 @@ public class FairyAI : MonoBehaviour
     [SerializeField] private float rotationSpeed;
 
     [SerializeField] private Transform player;
-    
+        
     private Vector3 boundaryDimensions;
 
     private Vector3 targetPosition;
