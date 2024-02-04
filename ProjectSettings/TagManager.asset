@@ -18,6 +18,9 @@ TagManager:
   - SnowParticle
   - Painting
   - LeftHand
+  - FxTemporaire
+  - RightHand1
+  - LeftHand1
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3477438664239710152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5805737760207037528}
+  - component: {fileID: 4221840274291301625}
+  m_Layer: 0
+  m_Name: VFX Factory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5805737760207037528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477438664239710152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6987021, y: 0.072932094, z: 0.19565329}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4221840274291301625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477438664239710152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0668b6fd4ba64949a9cf572193e909c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxPrefabs:
+  - vfxType: 0
+    prefab: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
+    preinstantiateCount: 3
+  - vfxType: 1
+    prefab: {fileID: 4772634663576830964, guid: e1385af346f4e624eb313ec1ea4fcd7e,
+      type: 3}
+    preinstantiateCount: 3
+  - vfxType: 2
+    prefab: {fileID: 5642766282230003982, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c,
+      type: 3}
+    preinstantiateCount: 3
+  - vfxType: 3
+    prefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0,
+      type: 3}
+    preinstantiateCount: 3
+  - vfxType: 4
+    prefab: {fileID: 3280519133390621005, guid: a71be3e7990efb040a07565c43cbb198,
+      type: 3}
+    preinstantiateCount: 3
+  - vfxType: 5
+    prefab: {fileID: 8791802859087666345, guid: ae07f2a45f14a82428409cfe410e6002,
+      type: 3}
+    preinstantiateCount: 3
+  - vfxType: 6
+    prefab: {fileID: 1978689737715041617, guid: afa54037ffe627545886e2741abb365d,
+      type: 3}
+    preinstantiateCount: 3

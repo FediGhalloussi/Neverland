@@ -50,7 +50,7 @@ public class Cannon : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("canon3");
         }
-
+        VFXFactory.Instance.GetVFX(VFXType.Shoot, cannon.position);
         GameObject cannonball = Instantiate(cannonballPrefab, cannon.position, Quaternion.identity);
         cannonball.GetComponent<Rigidbody>().velocity =
             (player.position - cannonball.transform.position).normalized * cannonballSpeed;

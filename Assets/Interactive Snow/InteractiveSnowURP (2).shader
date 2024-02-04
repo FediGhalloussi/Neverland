@@ -5,6 +5,7 @@ Shader "Custom/Snow Interactive" {
         _NoiseScale("Noise Scale", Range(0,2)) = 0.1
         _NoiseWeight("Noise Weight", Range(0,2)) = 0.1
         [HDR]_ShadowColor("Shadow Color", Color) = (0.5,0.5,0.5,1)
+        _SnowAmount("Snow Amount", Range(0,1)) = 0.1
 
         [Space]
         [Header(Tesselation)]
@@ -64,16 +65,15 @@ Shader "Custom/Snow Interactive" {
     ENDHLSL
 
     SubShader{
-        Tags{ "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline"}
-
+        Tags{  "RenderType" = "Transparent" "Queue" = "Transparent" "RenderPipeline" = "UniversalPipeline"}
+//        Blend SrcAlpha OneMinusSrcAlpha
         Pass{
-            Tags { "LightMode" = "UniversalForward" }
+            Tags { "LightMode" = "UniversalForward"  "RenderType" = "Transparent" "Queue" = "Transparent"}
 
             HLSLPROGRAM
             // vertex happens in snowtessellation.hlsl
             #pragma fragment frag
             #pragma target 4.0
-            
 
             sampler2D _MainTex, _SparkleNoise;
             float4 _Color, _RimColor;
@@ -83,12 +83,63 @@ Shader "Custom/Snow Interactive" {
             float _SparkleScale, _SparkCutoff;
             float _SnowTextureOpacity, _SnowTextureScale;
             float4 _ShadowColor;
-            
+            float _SnowAmount;
+ 
+#define HASHSCALE1 0.1031
+#define HASHSCALE2 float2(0.1031, 0.1030)
+#define HASHSCALE3 float3(0.1031, 0.1030, 0.0973)
+
+float permute(float x) {
+    return ((x * 34.0) + 1.0) * x;
+}
+
+float2 permute(float2 p) {
+    return frac((p * HASHSCALE2.x + HASHSCALE2.y) * p.x);
+}
+
+float3 permute(float3 p) {
+    return frac((p * HASHSCALE3.x + HASHSCALE3.y) * p.x + HASHSCALE3.z);
+}
+
+float fade(float t) {
+    return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
+}
+
+float2 grad(float2 hash, float2 x, float2 y) {
+    return hash * x + hash.yx * y;
+}
+
+float noise(float2 p) {
+    float2 i = floor(p);
+    float2 f = frac(p);
+
+    float2 u = f * f * (3.0 - 2.0 * f);
+
+    float2 p00 = grad(permute(i), f, float2(f.x - 1.0, f.y - 1.0));
+    float2 p10 = grad(permute(i + float2(1.0, 0.0)), float2(f.x - 1.0, f.y), float2(f.x - 1.0, f.y - 1.0));
+    float2 p01 = grad(permute(i + float2(0.0, 1.0)), f, float2(f.x - 1.0, f.y));
+    float2 p11 = grad(permute(i + float2(1.0, 1.0)), float2(f.x - 1.0, f.y), float2(f.x - 1.0, f.y - 1.0));
+
+    float2 res = lerp(lerp(p00, p10, u.x), lerp(p01, p11, u.x), u.y);
+
+    return res.x + res.y * 0.5;
+}
+           
+            // Function to generate pseudo-random value based on fragment position
+float pseudoRandom(float2 fragCoord, float groupingRadius)
+{
+    // Quantize the fragment coordinates
+    float2 quantizedCoord = floor(fragCoord / groupingRadius);
+    
+    // Use the quantized coordinates to sample Perlin noise
+    return frac(noise(quantizedCoord));
+}
+
+
 
             half4 frag(Varyings IN) : SV_Target{
 
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(IN);
-
                 // Effects RenderTexture Reading
                 float3 worldPosition = mul(unity_ObjectToWorld, IN.vertex).xyz;
                 float2 uv = IN.worldPos.xz - _Position.xz;
@@ -159,6 +210,26 @@ Shader "Custom/Snow Interactive" {
                 float4 final = litMainColors+ extraColors + float4(extraLights,0);
                 // add in fog
                 final.rgb = MixFog(final.rgb, IN.fogFactor);
+
+                // Simulate snow accumulation over time
+                // float snowAccumulation = saturate(snowTex.g - _SnowDepth);
+                // final.rgb *= smoothstep(0.5, 1.0, snowAccumulation);
+                
+                // // Calculate snow accumulation based on _SnowAmount
+                // float snowAccumulation = saturate(snowTex.g - _SnowDepth * _SnowAmount);
+
+                // Adjust alpha channel based on snow accumulation so that snow appears randomly on the mesh step by step
+                // Calculate snow accumulation based on a random value
+                float random = pseudoRandom(IN.worldPos.xy, 0.1);
+                if (random < _SnowAmount)
+                {
+                    final.a = 1;
+                }
+                else
+                {
+                    final.a = 0;
+                }
+
                 return final;
 
             }

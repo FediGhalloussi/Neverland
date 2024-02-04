@@ -109,6 +109,7 @@ public class SnowballSpawner : MonoBehaviour
         Vector3 initialScale = gameObject.transform.localScale;
         gameObject.transform.localScale = Vector3.zero;
         StartCoroutine(LerpToScale(initialScale));
+        StartCoroutine(LerpToSnowAmount(4));
     }
 
     private void OnDisable()
@@ -124,9 +125,8 @@ public class SnowballSpawner : MonoBehaviour
         
     }
 
-    private IEnumerator LerpToScale(Vector3 finalScale)
+    private IEnumerator LerpToScale(Vector3 finalScale, float duration = 3f)
     {
-        float duration = 3f;
         float elapsedTime = 0f;
         while (elapsedTime < duration)
         {
@@ -135,6 +135,26 @@ public class SnowballSpawner : MonoBehaviour
             yield return null;
         }
         gameObject.transform.localScale = finalScale;
+    }
+    
+    private IEnumerator LerpToSnowAmount(float duration = 3f)
+    {
+        float elapsedTime = 0f;
+        Renderer renderer = GetComponent<Renderer>();
+        Material material = renderer.material;
+        float initialSnowAmount = 0;
+        float targetSnowAmount = 1f; // Set your target snow amount here
+
+        while (elapsedTime < duration)
+        {
+            float currentSnowAmount = Mathf.Lerp(initialSnowAmount, targetSnowAmount, elapsedTime / duration);
+            material.SetFloat("_SnowAmount", currentSnowAmount);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the final snow amount is set correctly
+        material.SetFloat("_SnowAmount", targetSnowAmount);
     }
     
     private IEnumerator LerpMaterialToTransparent()
