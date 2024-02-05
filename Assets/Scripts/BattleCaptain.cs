@@ -26,7 +26,7 @@ public class BattleCaptain : MonoBehaviour
 
      private float lostDist = 0.5f;
 
-     private float crocoRange = 1f;
+     private float crocoRange = 2f;
 
      void Update()
      {
@@ -40,7 +40,7 @@ public class BattleCaptain : MonoBehaviour
           }
           else
           {
-               if ((Vector3.Distance(hand1.transform.position, hand2.transform.position) < handsCloseDist)&&(Vector3.Distance(hand1.transform.position,clock.transform.position)<handsCloseDist))
+               if ((Vector3.Distance(hand1.transform.position, hand2.transform.position) < handsCloseDist)&&(Vector3.Distance(hand1.transform.position,clock.transform.position)<handsCloseDist*3))
                {
                     if (Time.time - lastFearTime > fearTime)
                     {
