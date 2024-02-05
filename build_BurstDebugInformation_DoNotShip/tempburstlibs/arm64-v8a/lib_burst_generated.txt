@@ -8,6 +8,7 @@ Library: C:\Users\leogi\Desktop\Neverland\Temp\BurstOutput\tempburstlibs\arm64-v
 --float-precision=Standard
 --target-framework=NetFramework
 --assembly-defines=Assembly-CSharp;
+--assembly-defines=Meta.XR.Audio;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
 --assembly-defines=Oculus.Haptics;
@@ -119,6 +120,7 @@ Library: C:\Users\leogi\Desktop\Neverland\Temp\BurstOutput\tempburstlibs\arm64-v
 --target-framework=NetFramework
 --float-mode=Fast
 --assembly-defines=Assembly-CSharp;
+--assembly-defines=Meta.XR.Audio;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
 --assembly-defines=Oculus.Haptics;

@@ -1,17 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SwitchModel : MonoBehaviour
 {
 
-    [SerializeField] private Renderer firstModel;
+    
+    
+    [SerializeField] private Material material;
 
-    [SerializeField] private Renderer secondModel;
+    [SerializeField] private MeshRenderer renderer;
+
+
+    private void Start()
+    {
+    }
 
     public void Switch()
     {
-        firstModel.enabled = false;
-        secondModel.enabled = true;
+        renderer.materials[0] = material;
+        renderer.materials[1] = material;
     }
 }

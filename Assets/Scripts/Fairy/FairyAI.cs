@@ -101,6 +101,7 @@ public class FairyAI : MonoBehaviour
                 if ((transform.position - targetPosition).magnitude > 0.1f)
                 {
                     MoveTowardsTarget();
+                    
                 }
                 else
                 {
