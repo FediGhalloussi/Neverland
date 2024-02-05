@@ -10,7 +10,8 @@ public class Cannon : MonoBehaviour
     public float shootingInterval = 2f;
     [SerializeField] private Transform player;
     private float timer;
-    [SerializeField] private Animator anim_Hook;
+    //[SerializeField] private Animator anim_Hook;
+    [SerializeField] private GameObject nextGame;
 
     private void Start()
     {
@@ -62,7 +63,8 @@ public class Cannon : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("victory_bell");
         CancelInvoke();
         Debug.Log("player has won");
-        anim_Hook.Play("captain");
+        //anim_Hook.Play("captain");
+        nextGame.SetActive(true);
         Destroy(this);
     }
 

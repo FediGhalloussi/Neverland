@@ -3,7 +3,12 @@ guid: 958258e231dcc4b42b7dc6fe71c2212e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LPM
+    second: {fileID: 2100000, guid: d78922527df647349aa9aa2359b781f2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
