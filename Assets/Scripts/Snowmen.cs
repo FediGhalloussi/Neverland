@@ -25,6 +25,7 @@ public class Snowmen : MonoBehaviour
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("wind");
+        FindObjectOfType<AudioManager>().Play("voc1");
         numberOfHitsSnowman = 0;
         activer = FindObjectOfType<PirateGameActiver>();
         //player = GameObject.FindGameObjectWithTag("Player");

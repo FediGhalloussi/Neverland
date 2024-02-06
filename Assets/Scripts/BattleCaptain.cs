@@ -32,6 +32,7 @@ public class BattleCaptain : MonoBehaviour
      void Start()
      {
          animator.SetBool("isScared",false);
+         FindObjectOfType<AudioManager>().Play("voc3");
      }
      
      void Update()

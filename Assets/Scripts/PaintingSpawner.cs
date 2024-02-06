@@ -44,6 +44,7 @@ public class PaintingSpawner : MonoBehaviour
     
     private void SpawnAllPainting()
     {
+        FindObjectOfType<AudioManager>().Play("voc2");
 
         // find all walls in scene model
         walls = FindObjectsOfType<OVRSemanticClassification>()
