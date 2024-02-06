@@ -28,6 +28,12 @@ public class BattleCaptain : MonoBehaviour
 
      private float crocoRange = 2f;
 
+
+     void Start()
+     {
+         animator.SetBool("isScared",false);
+     }
+     
      void Update()
      {
           Move();
