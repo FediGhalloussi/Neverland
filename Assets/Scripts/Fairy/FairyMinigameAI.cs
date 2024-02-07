@@ -62,7 +62,7 @@ public class FairyMinigameAI : MonoBehaviour
     {
         if (movementOver) // todo: check
         {
-            target = new Vector3(Random.Range(-.25f,.25f),Random.Range(-.25f+defaultHeight,.25f+defaultHeight),Random.Range(.90f,1.1f));
+            target = new Vector3(Random.Range(-.25f,.25f),Random.Range(-.25f+defaultHeight,.25f+defaultHeight),Random.Range(.4f,.6f));
             movementOver=false;
             movementDist = Vector3.Distance(transform.position,target);
         }

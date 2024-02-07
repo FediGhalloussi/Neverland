@@ -37,8 +37,8 @@ public class BattleCaptain : MonoBehaviour
      
      void Update()
      {
-          var position = transform.position;
-          transform.LookAt(new Vector3(position.x,player.transform.position.y,position.z));
+          var playerPos = player.transform.position;
+          transform.LookAt(new Vector3(playerPos.x,transform.position.y,playerPos.z));
           Move();
           if (handsAreClose)
           {
