@@ -37,6 +37,8 @@ public class BattleCaptain : MonoBehaviour
      
      void Update()
      {
+          var position = transform.position;
+          transform.LookAt(new Vector3(position.x,player.transform.position.y,position.z));
           Move();
           if (handsAreClose)
           {
@@ -92,6 +94,18 @@ public class BattleCaptain : MonoBehaviour
      {
           FindObjectOfType<AudioManager>().Play("victory_bell");
           Destroy(gameObject);
+          Fireworks();
+          Invoke("Fireworks",3f);
+          Invoke("Fireworks",6f);
+          Invoke("Fireworks",9f);
+     }
+
+     void Fireworks()
+     {
+          VFXFactory.Instance.GetVFX(VFXType.Fireworks1, transform.position);
+          VFXFactory.Instance.GetVFX(VFXType.Fireworks2, new Vector3(-1,2,1));
+          VFXFactory.Instance.GetVFX(VFXType.Fireworks1, new Vector3(0,2,1));
+          VFXFactory.Instance.GetVFX(VFXType.Fireworks2, new Vector3(1,2,1));
      }
      
 }
